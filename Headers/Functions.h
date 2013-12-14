@@ -2,5 +2,5 @@
 #define FUNCTIONS_H_
 #include "../LPC22xx.h"
 #include "Basic_blinkled.h"
-
+#include "Asservissement_HL.h"
 #endif /* FUNCTIONS_H_ */
