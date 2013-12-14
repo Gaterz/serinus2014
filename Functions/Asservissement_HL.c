@@ -23,8 +23,8 @@ Consigne angle----->+  +--->PID+-------+-------+                      +------->D
                      |                                                                       |
                      +-----------------------------------------------------------------------+
 Constantes : P,I et D du PID de distance et de celui d'angle
-Fonctions : void Gestion_Asserv_HL(...) : Fonction de calcul des consignes en fonction de
-l'etat des codeuses.
+Fonctions : void Gestion_Asserv_HL(...) : Renvoi en sortie les consignes en fonction des
+valeurs de codeuses envoyées
 **************************************************************************************/
 #include "all_head.h"
 #define P_PID_DISTANCE 1

@@ -20,3 +20,18 @@ void init_UART0(void)
 	//UART0_LCR&=0b01111111;//clear latch
 	UART0_THR='E';
 }
+void UART0_Sendchar(char C)
+{
+	while ((UART0_LSR & (1<<5)) == 0);
+	UART0_THR = C;
+}
+
+void printString(char *Str)
+{
+unsigned int i = 0;
+	while(Str[i] != '\0')
+		{
+			UART0_Sendchar(Str[i]);
+			i++;
+		}
+}
