@@ -10,8 +10,7 @@ void UNDEF_Routine (void) __attribute__ ((interrupt("UNDEF")));
 /**********************************************************
                   Header files
  **********************************************************/
-#include "LPC22xx.h"
-#include "Headers/Basic_blinkled.h"
+#include "main.h"
 
 /**********************************************************
                        MAIN
@@ -23,7 +22,7 @@ int	main (void) {
 
 	// Initialize the system
 	Initialize();
-
+	initBlinkled();
 
 
 	// endless loop to toggle the red  LED P0.30

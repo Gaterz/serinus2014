@@ -7,6 +7,7 @@
 
 #ifndef MAIN_H_
 #define MAIN_H_
+#include "LPC22xx.h"
 #include "Functions/all_head.h"
 
 #endif /* MAIN_H_ */

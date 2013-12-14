@@ -5,7 +5,8 @@
 
 #define PLOCK 0x400
 
-void Initialize(void)  {
+void Initialize(void)
+{
 
 	// Setting Multiplier and Divider values
   	PLLCFG=0x23;
