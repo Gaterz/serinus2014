@@ -1,3 +1,11 @@
+/**************************UART.c*********************************************
+Auteur : Julien MAURAT
+Date : 14 déc. 2013
+Description : Initialisation de la PLL de l'ARM et de ces périphériques
+Constantes : N/A
+Fonctions :
+void init_UART0(void) : Configuration de la liason série 0(redirigée vers USB)
+**************************************************************************************/
 #include "all_head.h"
 void init_UART0(void)
 {

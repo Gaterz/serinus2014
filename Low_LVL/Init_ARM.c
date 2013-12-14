@@ -1,8 +1,16 @@
-#include "all_head.h"
-/**********************************************************
-                      Initialize
-**********************************************************/
+/**************************Init_ARM.c*********************************************
+Auteur : Julien MAURAT
+Date : 14 déc. 2013
+Description : Initialisation de la PLL de l'ARM et de ces périphériques
+Constantes :
+PLOCK : reglage de la fréquence de la PLL
 
+Fonctions :
+void Initialize(void) : configure et initialise la PLL
+
+void feed(void) : "confirmation" des paramètres de la PLL
+**************************************************************************************/
+#include "all_head.h"
 #define PLOCK 0x400
 
 void Initialize(void)

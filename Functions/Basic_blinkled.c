@@ -1,3 +1,15 @@
+/**************************Basic_blikled.c*********************************************
+Auteur : Julien MAURAT
+Date : 14 déc. 2013
+Description : fonction basique de blink de la led de la carte olimex
+Constantes : N/A
+Fonctions :
+void blinkled(void) : fonction bloquante avec temporisation a la barbare
+qui execute un clignotement de led
+
+void initBlinkled(void) : initialise la broche de sortie connectée a la led
+**************************************************************************************/
+
 #include "all_head.h"
 void blinkled(void)
 {
