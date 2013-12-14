@@ -11,7 +11,7 @@ MSG_BEGIN = "------ begin (proj:$(PROJNAME))------"
 MSG_END   = ------  end  ------
 LDSCRIPT = demo2294_blink_flash.cmd
 EXEC   = main
-SRCS = main.c testmulti.c
+SRCS = main.c Low_LVL/Init_ARM.c Low_LVL/UART.c Functions/Basic_blinkled.c
 
 CC      = arm-none-eabi-gcc
 LD      = arm-none-eabi-ld -v
@@ -50,7 +50,9 @@ crt.o: crt.s
 ########dir_funct########
 OBJ_DIR_CREATE:
 	@if [ ! -d $(OBJ_DIR) ]; then mkdir $(OBJ_DIR); fi;
-
+	@if [ ! -d $(OBJ_DIR)/Low_LVL ]; then mkdir $(OBJ_DIR)/Low_LVL; fi;
+	@if [ ! -d $(OBJ_DIR)/Functions ]; then mkdir $(OBJ_DIR)/Functions; fi;
+	
 OBJ_DIR = .build
 OBJS = $(addprefix $(OBJ_DIR)/,$(SRCS:.c=.o))
 
@@ -80,7 +82,4 @@ $(EXEC).out: $(OBJS) crt.o $(LDSCRIPT)
 $(OBJ_DIR)/%.o: %.c Makefile
 	@echo "compiling.. $<"
 	@$(CC) -MD -MF $(OBJ_DIR)/$<.dep $(CFLAGS) -c $< -o $@
-
-
-
 
