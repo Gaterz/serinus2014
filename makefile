@@ -11,7 +11,13 @@ MSG_BEGIN = "------ begin (proj:$(PROJNAME))------"
 MSG_END   = ------  end  ------
 LDSCRIPT = demo2294_blink_flash.cmd
 EXEC   = main
-SRCS = main.c Low_LVL/Init_ARM.c Low_LVL/UART.c Functions/Basic_blinkled.c Functions/Asservissement_HL.c
+define SRCS
+	main.c 
+	Low_LVL/Init_ARM.c 
+	Low_LVL/UART.c 
+	Functions/Basic_blinkled.c 
+	Functions/Asservissement_HL.c
+endef
 
 CC      = arm-none-eabi-gcc
 LD      = arm-none-eabi-ld -v
