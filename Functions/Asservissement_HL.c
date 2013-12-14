@@ -27,18 +27,21 @@ Fonctions : void Gestion_Asserv_HL(...) : Renvoi en sortie les consignes en fonc
 valeurs de codeuses envoyées
 **************************************************************************************/
 #include "all_head.h"
+///////////coefficients////////////////////////////////////////////////////
 #define P_PID_DISTANCE 1
 #define I_PID_DISTANCE 0
 #define D_PID_DISTANCE 0
 #define P_PID_ANGLE 1
 #define I_PID_ANGLE 0
 #define D_PID_ANGLE 0
+///////////gloabl_vars/////////////////////////////////////////////////////
 long Asserv_Cons_distance=0;
 long Asserv_Cons_angle=0;
 long Asserv_Integrale_Distance=0;
 long Asserv_Integrale_angle=0;
 long Asserv_Derivee_Distance=0;
 long Asserv_Derivee_angle=0;
+///////////////////////////////////////////////////////////////////////////
 void Gestion_Asserv_HL(long Tick_droit,long Tick_gauche,long* Cons_droite,long* Cons_gauche)
 {
 	//Moyennage////////////////////////////////////////////////////////////

@@ -21,7 +21,7 @@ int	main (void) {
 	while (1)
 	{
 		blinkled();
-		printString("hello world !");
+		printString("hello world 2!");
 	}
 }
 
