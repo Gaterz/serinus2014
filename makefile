@@ -9,6 +9,9 @@ TARGET = main
 OLIMEX_MSG = "OLIMEX OpenOCD projects (Eclipse Helios)"
 MSG_BEGIN = "------ begin (proj:$(PROJNAME))------"
 MSG_END   = ------  end  ------
+LDSCRIPT = demo2294_blink_flash.cmd
+EXEC   = main
+SRCS = main.c testmulti.c
 
 CC      = arm-none-eabi-gcc
 LD      = arm-none-eabi-ld -v
@@ -19,43 +22,16 @@ OD		= arm-none-eabi-objdump
 
 CFLAGS  = -I./ -c -fno-common -O0 -g
 AFLAGS  = -ahls -mapcs-32 -o crt.o
-LFLAGS  =  -Map main.map -Tdemo2294_blink_flash.cmd
+LFLAGS  =  -Map $(EXEC).map -T$(LDSCRIPT)
 CPFLAGS = -O binary
 HEXFLAGS = -O ihex
 ODFLAGS	= -x --syms
-
-all: begin build end
+##################################################
+##################################################
+all: begin OBJ_DIR_CREATE build end
 
 clean: begin clean_list end
 
-clean_list:
-	@ echo
-	@ echo "Cleaning project..."
-	@ echo
-	-rm -f crt.lst main.lst crt.o main.o main.out main.hex main.map main.dmp main.bin
-
-build: main.out
-	@ echo "...copying"
-	$(CP) $(CPFLAGS) main.out main.bin
-	$(OD) $(ODFLAGS) main.out
-	@echo "...building hex"
-	$(CP) $(HEXFLAGS) main.out main.hex
-
-main.out: testmulti.o crt.o main.o demo2294_blink_flash.cmd 
-	@ echo "..linking"
-	$(LD) $(LFLAGS) -o main.out  crt.o main.o testmulti.o
-
-crt.o: crt.s
-	@ echo ".assembling"
-	$(AS) $(AFLAGS) crt.s
-
-main.o: main.c
-	@ echo ".compiling"
-	$(CC) $(CFLAGS) main.c
-	
-testmulti.o: testmulti.c
-	@ echo ".compiling"
-	$(CC) $(CFLAGS) testmulti.c
 
 begin:
 	@echo 
@@ -65,3 +41,46 @@ begin:
 end:
 	@echo
 	@echo $(MSG_END)
+
+########gene_crt########
+crt.o: crt.s
+	@ echo ".assembling"
+	$(AS) $(AFLAGS) crt.s
+
+########dir_funct########
+OBJ_DIR_CREATE:
+	@if [ ! -d $(OBJ_DIR) ]; then mkdir $(OBJ_DIR); fi;
+
+OBJ_DIR = .build
+OBJS = $(addprefix $(OBJ_DIR)/,$(SRCS:.c=.o))
+
+########build########
+build: $(EXEC).out
+	@ echo "...copying"
+	$(CP) $(CPFLAGS) $(EXEC).out $(EXEC).bin
+	$(OD) $(ODFLAGS) $(EXEC).out
+	@echo "...building hex"
+	$(CP) $(HEXFLAGS) $(EXEC).out $(EXEC).hex
+
+########CLEAN########
+clean_list:
+	@ echo
+	@ echo "Cleaning project..."
+	@ echo
+	-rm -f crt.lst $(EXEC).lst crt.o $(EXEC).o $(EXEC).out $(EXEC).hex $(EXEC).map $(EXEC).dmp $(EXEC).bin
+	rm -rf $(OBJ_DIR) *~
+
+########LD########
+$(EXEC).out: $(OBJS) crt.o $(LDSCRIPT)
+	@ echo "..linking"
+	$(LD) $(LFLAGS) -o $(EXEC).out  crt.o $(OBJS)
+
+
+########CC########
+$(OBJ_DIR)/%.o: %.c Makefile
+	@echo "compiling.. $<"
+	@$(CC) -MD -MF $(OBJ_DIR)/$<.dep $(CFLAGS) -c $< -o $@
+
+
+
+
