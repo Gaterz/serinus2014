@@ -16,7 +16,8 @@ SRCS=\
 	Low_LVL/Init_ARM.c \
 	Low_LVL/UART.c \
 	Functions/Basic_blinkled.c \
-	Functions/Asservissement_HL.c
+	Functions/Asservissement_HL.c \
+	Functions/Odometrie_HL.c
 
 CC      = arm-none-eabi-gcc
 LD      = arm-none-eabi-ld -v
