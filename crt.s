@@ -99,8 +99,8 @@ strrn:          ldr     R1, =_etext
 
 				/* Clear .bss section (Zero init)  */
                 mov     R0, #0
-                ldr     R1, =_bss_start
-                ldr     R2, =_bss_end
+                ldr     R1, =__bss_start__
+                ldr     R2, =__bss_end__
 2:				cmp     R1, R2
                 strlo   R0, [R1], #4
                 blo     2b
