@@ -48,7 +48,7 @@ void SWI_Routine (void)  {
 void UNDEF_Routine (void) {
 	while (1) ;
 }
-void starttest(void)
+void start_tempo(void)//temporisation RAM
 {
 	int j;
 	for(j=0;j<100000;j++);

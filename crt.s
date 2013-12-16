@@ -87,7 +87,7 @@ Reset_Handler:
     			msr   CPSR_c, #MODE_SYS|I_BIT|F_BIT 	/* User Mode */
     			mov   sp, r0
 
-				b		starttest
+				b		start_tempo
 				/* copy .data section (Copy from ROM to RAM) */
 strrn:          ldr     R1, =_etext
                 ldr     R2, =_data
