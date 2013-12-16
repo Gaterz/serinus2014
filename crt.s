@@ -35,6 +35,7 @@
 
 .global	Reset_Handler
 .global _startup
+.global strrn
 .func   _startup
 
 _startup:
@@ -86,8 +87,9 @@ Reset_Handler:
     			msr   CPSR_c, #MODE_SYS|I_BIT|F_BIT 	/* User Mode */
     			mov   sp, r0
 
+				b		starttest
 				/* copy .data section (Copy from ROM to RAM) */
-                ldr     R1, =_etext
+strrn:          ldr     R1, =_etext
                 ldr     R2, =_data
                 ldr     R3, =_edata
 1:        		cmp     R2, R3
