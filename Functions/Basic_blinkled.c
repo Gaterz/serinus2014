@@ -10,7 +10,7 @@ qui execute un clignotement de led
 void initBlinkled(void) : initialise la broche de sortie connectée a la led
 **************************************************************************************/
 
-#include "all_head.h"
+#include "../all_head.h"
 void blinkled(void)
 {
 	int	j;

@@ -26,7 +26,7 @@ Constantes : P,I et D du PID de distance et de celui d'angle
 Fonctions : void Gestion_Asserv_HL(...) : Renvoi en sortie les consignes en fonction des
 valeurs de codeuses envoyées
 **************************************************************************************/
-#include "all_head.h"
+#include "../all_head.h"
 ///////////coefficients////////////////////////////////////////////////////
 #define P_PID_DISTANCE 1
 #define I_PID_DISTANCE 0
