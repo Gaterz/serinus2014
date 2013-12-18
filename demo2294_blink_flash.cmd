@@ -193,12 +193,12 @@ SECTIONS
 
 	.bss :								/* collect all uninitialized .bss sections that go into RAM  */
 	{
-		_bss_start = .;					/* define a global symbol marking the start of the .bss section */
+		__bss_start__ = .;					/* define a global symbol marking the start of the .bss section */
 		*(.bss)							/* all .bss sections  */
 	} >ram								/* put all the above in RAM (it will be cleared in the startup code */
 
 	. = ALIGN(4);						/* advance location counter to the next 32-bit boundary */
-	_bss_end = . ;						/* define a global symbol marking the end of the .bss section */
+	__bss_end__ = . ;						/* define a global symbol marking the end of the .bss section */
 }
-	_end = .;							/* define a global symbol marking the end of application RAM */
+	_exit = .;							/* define a global symbol marking the end of application RAM */
 	
