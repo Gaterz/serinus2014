@@ -6,10 +6,10 @@
 // Cree par : Valentin VERGEZ
 // Date de creation : novembre 2011
 //
-// Adapte par : --
+// Adapte par : Julien MAURAT
 //
 // Modifie par : --
-// Date de derniere modification : --
+// Date de derniere modification : 18/12/2013
 //
 // Etat du fichier (REDACTION/VALIDATION/VALIDE)
 // Etat : VALIDE
