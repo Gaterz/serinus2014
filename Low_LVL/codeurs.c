@@ -162,7 +162,7 @@ void lectureCodeursTest(unsigned long* regCodeurX, unsigned long* regCodeurY)  /
         *regCodeurX = (IO1PIN & 0x00FF0000)>>16;
         //Codeur Y  //P0.23:16
         *regCodeurY = (IO0PIN & 0x00FF0000)>>16;
-    printf("Oct2 | X : %.3lu - Y : %.3lu\n",*regCodeurX, *regCodeurY);
+    //printf("Oct2 | X : %.3lu - Y : %.3lu\n",*regCodeurX, *regCodeurY);
 
     //Selection ddu troisieme octet  (SEL1 = 0, SEL2 = 0)
     //P0.29 et P1.24 = 0
@@ -175,7 +175,7 @@ void lectureCodeursTest(unsigned long* regCodeurX, unsigned long* regCodeurY)  /
         *regCodeurX = (IO1PIN & 0x00FF0000) >> 16;
         //Codeur Y  //P0.23:16
         *regCodeurY = (IO0PIN & 0x00FF0000) >> 16;
-    printf("Oct3 | X : %.3lu - Y : %.3lu\n",*regCodeurX, *regCodeurY);
+    //printf("Oct3 | X : %.3lu - Y : %.3lu\n",*regCodeurX, *regCodeurY);
 
     //Selection de l'octet de poids faible  (SEL1 = 1, SEL2 = 0)
     //P0.29 et P1.24 = 1
@@ -190,7 +190,7 @@ void lectureCodeursTest(unsigned long* regCodeurX, unsigned long* regCodeurY)  /
         *regCodeurX = (IO1PIN & 0x00FF0000) >> 16;
         //Codeur Y  //P0.23:16
         *regCodeurY = (IO0PIN & 0x00FF0000) >> 16;
-    printf("Oct4 | X : %.3lu - Y : %.3lu\n",*regCodeurX, *regCodeurY);
+    //printf("Oct4 | X : %.3lu - Y : %.3lu\n",*regCodeurX, *regCodeurY);
 
     //On deverouille l'ecriture sur le bus (OE = 1)
     //P3.24 = 1

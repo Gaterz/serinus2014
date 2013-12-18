@@ -66,7 +66,14 @@
 #define IO1SET          (*((volatile unsigned long *) 0xE0028014))
 #define IO1DIR          (*((volatile unsigned long *) 0xE0028018))
 #define IO1CLR          (*((volatile unsigned long *) 0xE002801C))
-
+#define IO2PIN          (*((volatile unsigned long *) 0xE0028020))
+#define IO2SET          (*((volatile unsigned long *) 0xE0028024))
+#define IO2DIR          (*((volatile unsigned long *) 0xE0028028))
+#define IO2CLR          (*((volatile unsigned long *) 0xE002802C))
+#define IO3PIN          (*((volatile unsigned long *) 0xE0028030))
+#define IO3SET          (*((volatile unsigned long *) 0xE0028034))
+#define IO3DIR          (*((volatile unsigned long *) 0xE0028038))
+#define IO3CLR          (*((volatile unsigned long *) 0xE002803C))
 /* Memory Accelerator Module (MAM) */
 #define MAMCR          (*((volatile unsigned char *) 0xE01FC000))
 #define MAMTIM         (*((volatile unsigned char *) 0xE01FC004))
