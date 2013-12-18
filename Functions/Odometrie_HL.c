@@ -6,7 +6,7 @@ Constantes :
 Fonctions :
 **************************************************************************************/
 #include "../all_head.h"
-#include "math.h"
+#include <math.h>
 signed long Odo_pos_x=POS_X_INITIALLE;
 signed long Odo_pos_y=POS_Y_INITIALLE;
 signed long Odo_angle=ANGLE_INITIAL;
@@ -19,7 +19,7 @@ void Gestion_Odometrie_HL(signed long Delta_Tick_droit,signed long Delta_Tick_ga
 
 
 	Odo_angle+=Delta_angle/ENTRAXE_TICK;
-	Odo_pos_x=Delta_Distance*cosf(Odo_angle);
-	Odo_pos_y=Delta_Distance*sinf(Odo_angle);
+	Odo_pos_x=Delta_Distance*cos(Odo_angle);
+	Odo_pos_y=Delta_Distance*sin(Odo_angle);
 
 }

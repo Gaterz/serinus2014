@@ -83,7 +83,7 @@ clean_list:
 ########LD########
 $(EXEC).out: $(OBJS) crt.o $(LDSCRIPT)
 	@ echo "..linking"
-	$(LD) $(LFLAGS) -o $(EXEC).out  crt.o $(OBJS)
+	$(LD) $(LFLAGS) -o $(EXEC).out crt.o $(OBJS) -lm
 
 
 ########CC########
