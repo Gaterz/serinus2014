@@ -28,12 +28,12 @@ valeurs de codeuses envoyées
 **************************************************************************************/
 #include "../all_head.h"
 ///////////coefficients////////////////////////////////////////////////////
-#define P_PID_DISTANCE 1
-#define I_PID_DISTANCE 0
-#define D_PID_DISTANCE 0
-#define P_PID_ANGLE 1
-#define I_PID_ANGLE 0
-#define D_PID_ANGLE 0
+#define P_PID_DISTANCE 1.0
+#define I_PID_DISTANCE 0.0
+#define D_PID_DISTANCE 0.0
+#define P_PID_ANGLE 1.0
+#define I_PID_ANGLE 0.0
+#define D_PID_ANGLE 0.0
 #define MODE_P 0
 #define MODE_PI 1
 #define MODE_PD 2
