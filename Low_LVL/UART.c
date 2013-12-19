@@ -67,6 +67,7 @@ void printLongVal(long value)
 			value /= 10;
 			i++;
 	}while(value >0);
+	i--;
 	do
 	{
 		UART0_Sendchar(val_send[i]);
