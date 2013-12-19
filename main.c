@@ -22,8 +22,11 @@ int	main (void) {
 	while (1)
 	{
 		blinkled();
-		printString("hello world 2!");
-		Gestion_Asserv_HL(100,100,&c_droit,&c_gauche);
+		printString("hello world !");
+		UART0_Sendchar('\n');
+		printLongVal(-15321);
+		UART0_Sendchar('\n');
+		//Gestion_Asserv_HL(100,100,&c_droit,&c_gauche);
 		//Asserv_Cons_distance=500;
 	}
 }
