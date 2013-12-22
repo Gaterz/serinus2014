@@ -4,4 +4,6 @@
 #include "Init_ARM.h"
 #include "UART.h"
 #include "Asservissement_LL.h"
+#include "Interupt.h"
+#include "Timer.h"
 #endif /* LOW_LVL_H_ */
