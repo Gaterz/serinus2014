@@ -7,7 +7,6 @@
 /**********************************************************
                        MAIN
 **********************************************************/
-
 int	main (void) {
 	// loop counter (stack variable)
 	//long c_droit=0;
@@ -17,20 +16,22 @@ int	main (void) {
 	signed long codeur2;
 	Initialize();
 	initBlinkled();
-	initES_cod();
-	resetCodeurs();
+	InitTimer1();
+	//initES_cod();
+	//resetCodeurs();
 
 	Asserv_Cons_distance=500;
 	// endless loop to toggle the red  LED P0.30
 	while (1)
 	{
 		blinkled();
-		lectureCodeursSigned(&codeur1,&codeur2);
+		//testtimeval=TIMER1_TC;
+		/*lectureCodeursSigned(&codeur1,&codeur2);
 		printString("Codeur 1 : ");
 		printLongVal(codeur1);
 		printString(" Codeur 2 : ");
 		printLongVal(codeur2);
-		UART0_Sendchar('\n');
+		UART0_Sendchar('\n');*/
 		//Gestion_Asserv_HL(100,100,&c_droit,&c_gauche);
 		//Asserv_Cons_distance=500;
 	}

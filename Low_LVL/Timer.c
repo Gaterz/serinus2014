@@ -6,10 +6,12 @@ Constantes :
 Fonctions :
 **************************************************************************************/
 #include "../all_head.h"
-
-void TIMER1InterruptServiceRoutine (void)
+int testtimeval=0;
+void __attribute__ ((interrupt("IRQ"))) TIMER1InterruptServiceRoutine (void)
 {
+	testtimeval=5;
     TIMER1_IR = 1 ; // Clears MR0 interrupt
+    VICVectAddr = 0;
 }
 void InitTimer1(void)
 {
