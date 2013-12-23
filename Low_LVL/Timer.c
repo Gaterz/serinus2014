@@ -9,7 +9,7 @@ Fonctions :
 int testtimeval=0;
 void __attribute__ ((interrupt("IRQ"))) TIMER1InterruptServiceRoutine (void)
 {
-	testtimeval=5;
+	testtimeval++;
     TIMER1_IR = 1 ; // Clears MR0 interrupt
     VICVectAddr = 0;
 }
@@ -25,7 +25,7 @@ void InitTimer1(void)
     //    If PCLK = 4 * 14.7456 MHz
     //    We want T = 0.1 ms (counter is incremented every 100 µs), so F = 10 kHz
     //    So: PRESCALER = PCLK / F - 1 = 5897
-    TIMER1_PR = ((589824) / 10000) - 1 ;
+    TIMER1_PR = ((58982400) / 10000) - 1 ;
     //--- 3. Set Match Register 0
     //    We want an interrupt every milli-second (1ms = 10 * 100 µs)
     TIMER1_MR0 = 10 - 1 ;

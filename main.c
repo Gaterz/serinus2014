@@ -16,6 +16,7 @@ int	main (void) {
 	signed long codeur2;
 	Initialize();
 	initBlinkled();
+	enableIRQ();
 	InitTimer1();
 	//initES_cod();
 	//resetCodeurs();

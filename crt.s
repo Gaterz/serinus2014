@@ -26,8 +26,8 @@
 .set  MODE_UND, 0x1B            		/* Undefined Processing Undefined Instructions Mode 		*/
 .set  MODE_SYS, 0x1F            		/* System Running Priviledged Operating System Tasks  Mode	*/
 
-.set  I_BIT, 0x00/*0x80               		/* when I bit is set, IRQ is disabled (program status registers) */
-.set  F_BIT, 0x00/*0x40               		/* when F bit is set, FIQ is disabled (program status registers) */
+.set  I_BIT, 0x80/*0x80               		/* when I bit is set, IRQ is disabled (program status registers) */
+.set  F_BIT, 0x40/*0x40               		/* when F bit is set, FIQ is disabled (program status registers) */
 
 
 .text
