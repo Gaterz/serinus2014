@@ -15,5 +15,6 @@ void routine_1ms(void)
 	//gestion codeurs
 	lectureCodeursSigned(&Codeur_d,&Codeur_g);
 	//gestion odoetrie
+	Gestion_Odometrie_LL(Codeur_d,Codeur_g);
 	//gestion asserv
 }

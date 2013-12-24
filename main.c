@@ -29,10 +29,10 @@ int	main (void) {
 		//testtimeval=TIMER1_TC;
 				//Gestion_Asserv_HL(100,100,&c_droit,&c_gauche);
 				//Asserv_Cons_distance=500;
-				printString("Codeur 1 : ");
-				//printLongVal(Codeur_d);
-				printString(" Codeur 2 : ");
-				//printLongVal(Codeur_g);
+				printString("X : ");
+				printLongVal(Odo_pos_x);
+				printString(" Y : ");
+				printLongVal(Odo_pos_y);
 				UART0_Sendchar('\n');
 		//////////////////////////////////////////////
 	}
