@@ -12,29 +12,29 @@ int	main (void) {
 	//long c_droit=0;
 	//long c_gauche=0;
 	// Initialize the system
-	signed long codeur1;
-	signed long codeur2;
 	Initialize();
 	initBlinkled();
-	enableIRQ();
+	initES_cod();
+	resetCodeurs();
 	InitTimer1();
-	//initES_cod();
-	//resetCodeurs();
+	enableIRQ();
 
 	Asserv_Cons_distance=500;
 	// endless loop to toggle the red  LED P0.30
 	while (1)
 	{
 		blinkled();
+
+		//////////////////debug///////////////////////
 		//testtimeval=TIMER1_TC;
-		/*lectureCodeursSigned(&codeur1,&codeur2);
-		printString("Codeur 1 : ");
-		printLongVal(codeur1);
-		printString(" Codeur 2 : ");
-		printLongVal(codeur2);
-		UART0_Sendchar('\n');*/
-		//Gestion_Asserv_HL(100,100,&c_droit,&c_gauche);
-		//Asserv_Cons_distance=500;
+				//Gestion_Asserv_HL(100,100,&c_droit,&c_gauche);
+				//Asserv_Cons_distance=500;
+				printString("Codeur 1 : ");
+				//printLongVal(Codeur_d);
+				printString(" Codeur 2 : ");
+				//printLongVal(Codeur_g);
+				UART0_Sendchar('\n');
+		//////////////////////////////////////////////
 	}
 }
 

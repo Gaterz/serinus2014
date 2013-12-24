@@ -9,7 +9,7 @@ Fonctions :
 int testtimeval=0;
 void __attribute__ ((interrupt("IRQ"))) TIMER1InterruptServiceRoutine (void)
 {
-	testtimeval++;
+	routine_1ms();
     TIMER1_IR = 1 ; // Clears MR0 interrupt
     VICVectAddr = 0;
 }
