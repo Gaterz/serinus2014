@@ -7,6 +7,7 @@ Fonctions :
 void init_UART0(void) : Configuration de la liason série 0(redirigée vers USB)
 **************************************************************************************/
 #include "../all_head.h"
+#include <math.h>
 void init_UART0(void)
 {
 	PINSEL0 |= 0x00000005;
@@ -23,6 +24,7 @@ void init_UART0(void)
 void UART0_Sendchar(char C)
 {
 	while ((UART0_LSR & (1<<5)) == 0);
+	if(C == '\n') UART0_Sendchar(0xD);
 	UART0_THR = C;
 }
 
@@ -34,4 +36,42 @@ unsigned int i = 0;
 			UART0_Sendchar(Str[i]);
 			i++;
 		}
+}
+void printLongVal(long value)
+{
+	char val_send[10];
+	int i=0;
+	if(value == 0)
+	{
+		UART0_Sendchar('0');
+		return;
+	}
+	if(value <0)
+	{
+		UART0_Sendchar('-');
+		value =abs(value);
+	}
+	/*for(i=0;i<10;i++)
+	{
+		val_send[9-i] = (value % 10)+'0';
+		value /= 10;
+	}
+	for(i=0;i<10;i++)
+	{
+		UART0_Sendchar(val_send[i]);
+	}
+	*/
+	do
+	{
+			val_send[i] = (value % 10)+'0';
+			value /= 10;
+			i++;
+	}while(value >0);
+	i--;
+	do
+	{
+		UART0_Sendchar(val_send[i]);
+		i--;
+	}while(i>=0);
+
 }

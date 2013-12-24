@@ -19,7 +19,7 @@ void blinkled(void)
 					for (j = 0; j < 500000; j++ );
 					IO0SET |= 0x40000000;
 					for (j = 0; j < 2000000; j++ );
-					UART0_THR='7';
+					//UART0_THR='7';
 				}
 }
 void initBlinkled(void)

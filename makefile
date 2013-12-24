@@ -19,7 +19,10 @@ SRCS=\
 	Functions/Asservissement_HL.c \
 	Functions/Odometrie_HL.c \
 	Low_LVL/pwm.c \
-	Low_LVL/Asservissement_LL.c
+	Low_LVL/Asservissement_LL.c \
+	Low_LVL/codeurs.c \
+	Low_LVL/Interupt.c \
+	Low_LVL/Timer.c
 
 CC      = arm-none-eabi-gcc
 LD      = arm-none-eabi-gcc
