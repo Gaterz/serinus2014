@@ -30,9 +30,9 @@ int	main (void) {
 				//Gestion_Asserv_HL(100,100,&c_droit,&c_gauche);
 				//Asserv_Cons_distance=500;
 				printString("X : ");
-				printLongVal(Odo_pos_x);
+				printLongVal(Odo_pos_x);//2147483647);
 				printString(" Y : ");
-				printLongVal(Odo_pos_y);
+				printLongVal(Odo_pos_y);//-2147483647);
 				UART0_Sendchar('\n');
 		//////////////////////////////////////////////
 	}

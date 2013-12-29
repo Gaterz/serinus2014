@@ -37,7 +37,7 @@ unsigned int i = 0;
 			i++;
 		}
 }
-void printLongVal(long value)
+void printLongVal(signed long value)
 {
 	char val_send[10];
 	int i=0;
