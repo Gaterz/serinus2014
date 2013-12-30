@@ -25,6 +25,10 @@ Consigne angle----->+  +--->PID+-------+-------+                      +------->D
 Constantes : P,I et D du PID de distance et de celui d'angle
 Fonctions : void Gestion_Asserv_HL(...) : Renvoi en sortie les consignes en fonction des
 valeurs de codeuses envoyées
+void Mode_Asserv(int mode) : Change le mode de l'asservissement entre P,PI,PD
+	!!Toujours utiliser les define de MODE!!
+void Asserv_Reset_Integrateur(void) : Reset des intégrateurs
+void Asserv_Reset_Derivateur(void) : Reset des dérivateurs
 **************************************************************************************/
 #include "../all_head.h"
 ///////////coefficients////////////////////////////////////////////////////
@@ -34,9 +38,6 @@ valeurs de codeuses envoyées
 #define P_PID_ANGLE 1.0
 #define I_PID_ANGLE 0.0
 #define D_PID_ANGLE 0.0
-#define MODE_P 0
-#define MODE_PI 1
-#define MODE_PD 2
 ///////////global_vars/////////////////////////////////////////////////////
 signed long Asserv_Cons_distance = 0;
 signed long Asserv_Cons_angle = 0;
@@ -49,7 +50,7 @@ static signed long Asserv_Derivee_angle = 0;
 ///////////////////////////////////////////////////////////////////////////
 void Gestion_Asserv_HL(signed long Tick_droit,signed long Tick_gauche,signed long* Cons_droite,signed long* Cons_gauche)
 {
-	//Vars////////////////////////////////////////////////////////////
+	//Vars/////////////////////////////////////////////////////////////////
 	signed long delta_distance=0;
 	signed long delta_angle=0;
 	//Moyennage////////////////////////////////////////////////////////////

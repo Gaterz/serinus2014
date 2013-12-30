@@ -1,9 +1,9 @@
 /**************************Interupt.c*********************************************
 Auteur : Julien MAURAT
 Date : 22 déc. 2013
-Description : 
-Constantes :
-Fonctions :
+Description : Fonction pour activier et désactiver les interruption dans le stack acuel
+Constantes : N/A
+Fonctions : unsigned [enable/disable]IRQ(void) : active ou désactive les intéruptions
 **************************************************************************************/
 #include "../all_head.h"
 #define IRQ_MASK 0x00000080

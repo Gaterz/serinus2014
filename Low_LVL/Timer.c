@@ -1,9 +1,10 @@
 /**************************Timer.c*********************************************
 Auteur : Julien MAURAT
 Date : 22 déc. 2013
-Description : 
-Constantes :
-Fonctions :
+Description : Fonction d'initialisation du timer1 et gestion de son intéruption
+Constantes : N/A
+Fonctions : void InitTimer1(void) : initialise le Timer1 a une période prédéfinie
+TIMER1InterruptServiceRoutine (void) : Fonction gérant l'intéruption du timer1
 **************************************************************************************/
 #include "../all_head.h"
 int testtimeval=0;
