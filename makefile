@@ -24,7 +24,8 @@ SRCS=\
 	Low_LVL/Interupt.c \
 	Low_LVL/Timer.c \
 	Low_LVL/Odometrie_LL.c \
-	Functions/Routine_1ms.c
+	Functions/Routine_1ms.c \
+	Functions/init.c
 
 CC      = arm-none-eabi-gcc
 LD      = arm-none-eabi-gcc

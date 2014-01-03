@@ -11,19 +11,16 @@ int	main (void) {
 	// loop counter (stack variable)
 	//long c_droit=0;
 	//long c_gauche=0;
-	// Initialize the system
-	Initialize();
-	initBlinkled();
-	initES_cod();
-	resetCodeurs();
-	InitTimer1();
-	enableIRQ();
+	init_global();
 
 	Asserv_Cons_distance=500;
+
+
 	// endless loop to toggle the red  LED P0.30
 	while (1)
 	{
 		blinkled();
+
 
 		//////////////////debug///////////////////////
 		//testtimeval=TIMER1_TC;
