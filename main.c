@@ -13,15 +13,15 @@ int	main (void) {
 	//long c_gauche=0;
 	init_global();
 
-	Asserv_Cons_distance=500;
-
+	Asserv_Cons_distance=1000;
+	Mode_Asserv(MODE_PI);
 
 	// endless loop to toggle the red  LED P0.30
 	while (1)
 	{
 		blinkled();
 
-
+		/*
 		//////////////////debug///////////////////////
 		//testtimeval=TIMER1_TC;
 				//Gestion_Asserv_HL(100,100,&c_droit,&c_gauche);
@@ -30,7 +30,7 @@ int	main (void) {
 				printLongVal(Odo_pos_x);//2147483647);
 				printString(" Y : ");
 				printLongVal(Odo_pos_y);//-2147483647);
-				UART0_Sendchar('\n');
+				UART0_Sendchar('\n');*/
 		//////////////////////////////////////////////
 	}
 }

@@ -33,10 +33,10 @@ void Asserv_Reset_Derivateur(void) : Reset des dérivateurs
 #include "../all_head.h"
 ///////////coefficients////////////////////////////////////////////////////
 #define P_PID_DISTANCE 1.0
-#define I_PID_DISTANCE 0.0
+#define I_PID_DISTANCE 0.1
 #define D_PID_DISTANCE 0.0
 #define P_PID_ANGLE 1.0
-#define I_PID_ANGLE 0.0
+#define I_PID_ANGLE 0.1
 #define D_PID_ANGLE 0.0
 ///////////global_vars/////////////////////////////////////////////////////
 signed long Asserv_Cons_distance = 0;
@@ -90,8 +90,13 @@ void Gestion_Asserv_HL(signed long Tick_droit,signed long Tick_gauche,signed lon
 							delta_angle * D_PID_ANGLE;
 
 	//Calcul des consignes/////////////////////////////////////////////////
-	*Cons_droite=ordre_distance+ordre_angle;
-	*Cons_gauche=ordre_distance-ordre_angle;
+	*Cons_droite=ordre_distance-ordre_angle;
+	*Cons_gauche=ordre_distance+ordre_angle;
+	if(*Cons_droite<-10000) *Cons_droite=-10000;
+	if(*Cons_droite>10000) *Cons_droite=10000;
+	if(*Cons_gauche<-10000) *Cons_gauche=-10000;
+	if(*Cons_gauche>10000) *Cons_gauche=10000;
+
 }
 void Mode_Asserv(int mode)
 {

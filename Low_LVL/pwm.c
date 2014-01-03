@@ -256,19 +256,19 @@ void controlMotor1_invert(int dutyCycle)
         //Recul
 		in_Mot1(1,0); 					// Commande du pont en H
 		dutyCycle = -dutyCycle;			// Passage du rapport cyclique en positif
-		pwmU1var((unsigned int)(10000 - dutyCycle)); // Génération de la PWM
+		pwmU1((unsigned int)(10000 - dutyCycle)); // Génération de la PWM
 	}
 	else if (dutyCycle>0)
 	{
 	    //Avance
 		in_Mot1(0,1); 					// Commande du pont en H
-		pwmU1var((unsigned int)(10000 - dutyCycle)); // Génération de la PWM
+		pwmU1((unsigned int)(10000 - dutyCycle)); // Génération de la PWM
 	}
   else
   {
       //Arrêt
     in_Mot1(1,1);           // Commande du pont en H
-    pwmU1var(0); // Génération de la PWM
+    pwmU1(0); // Génération de la PWM
   }
 }
 
@@ -293,19 +293,19 @@ void controlMotor2_invert(int dutyCycle)
 	    //Recul
 		in_Mot2(1,0); 					// Commande du pont en H
 		dutyCycle = -dutyCycle;			// Passage du rapport cyclique en positif
-		pwmU2var((unsigned int)(10000 - dutyCycle)); // Génération de la PWM
+		pwmU2((unsigned int)(10000 - dutyCycle)); // Génération de la PWM
 	}
 	else if(dutyCycle>0)
 	{
 	    //Avance
 		in_Mot2(0,1); 					// Commande du pont en H
-		pwmU2var((unsigned int)(10000 - dutyCycle)); // Génération de la PWM
+		pwmU2((unsigned int)(10000 - dutyCycle)); // Génération de la PWM
 	}
   else
   {
       //Arrêt
     in_Mot2(1,1);           // Commande du pont en H
-    pwmU2var(0); // Génération de la PWM
+    pwmU2(0); // Génération de la PWM
   }
 }
 
