@@ -48,13 +48,13 @@ static signed long Asserv_Integrale_angle = 0;
 static signed long Asserv_Derivee_Distance = 0;
 static signed long Asserv_Derivee_angle = 0;
 ///////////////////////////////////////////////////////////////////////////
-void Gestion_Asserv_HL(signed long Tick_droit,signed long Tick_gauche,signed long* Cons_droite,signed long* Cons_gauche)
+void Gestion_Asserv_HL(signed long Tick_droit,signed long Tick_gauche,signed long* ordre_distance,signed long* ordre_angle)
 {
 	//Vars/////////////////////////////////////////////////////////////////
 	signed long delta_distance=0;
 	signed long delta_angle=0;
-	signed long ordre_distance=0;
-	signed long ordre_angle=0;
+	//signed long ordre_distance=0;
+	//signed long ordre_angle=0;
 	//Si pas en STOP///////////////////////////////////////////////////////
 	if(Asserv_mode !=MODE_STOP)
 	{
@@ -86,21 +86,17 @@ void Gestion_Asserv_HL(signed long Tick_droit,signed long Tick_gauche,signed lon
 		Asserv_Derivee_angle	=Erreur_angle;
 	}
 	//Application des coefficients/////////////////////////////////////////
-	ordre_distance	=		Erreur_distance	* P_PID_DISTANCE	+
+	*ordre_distance	=		Erreur_distance	* P_PID_DISTANCE	+
 							Asserv_Integrale_Distance * I_PID_DISTANCE 	-
 							delta_distance * D_PID_DISTANCE;
 
-	ordre_angle		=		Erreur_angle * P_PID_ANGLE			+
+	*ordre_angle		=		Erreur_angle * P_PID_ANGLE			+
 							Asserv_Integrale_angle * I_PID_ANGLE 		-
 							delta_angle * D_PID_ANGLE;
 
 	//Calcul des consignes/////////////////////////////////////////////////
-	*Cons_droite=ordre_distance-ordre_angle;
-	*Cons_gauche=ordre_distance+ordre_angle;
-	if(*Cons_droite<-10000) *Cons_droite=-10000;
-	if(*Cons_droite>10000) *Cons_droite=10000;
-	if(*Cons_gauche<-10000) *Cons_gauche=-10000;
-	if(*Cons_gauche>10000) *Cons_gauche=10000;
+	//*Cons_droite=ordre_distance-ordre_angle;
+	//*Cons_gauche=ordre_distance+ordre_angle;
 	}
 }
 void Mode_Asserv(int mode)
