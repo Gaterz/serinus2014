@@ -73,6 +73,10 @@ void Gestion_Asserv_HL(signed long Tick_droit,signed long Tick_gauche,signed lon
 	{
 		Asserv_Integrale_Distance	+=Erreur_distance;
 		Asserv_Integrale_angle		+=Erreur_angle;
+		if(Asserv_Integrale_Distance> ASSERV_MAX_INTEGRALE_DST)	Asserv_Integrale_Distance=	ASSERV_MAX_INTEGRALE_DST;
+		if(Asserv_Integrale_Distance<-ASSERV_MAX_INTEGRALE_DST)	Asserv_Integrale_Distance= -ASSERV_MAX_INTEGRALE_DST;
+		if(Asserv_Integrale_angle>	ASSERV_MAX_INTEGRALE_ANG)	Asserv_Integrale_angle=	ASSERV_MAX_INTEGRALE_ANG;
+		if(Asserv_Integrale_angle< -ASSERV_MAX_INTEGRALE_ANG)	Asserv_Integrale_angle=-ASSERV_MAX_INTEGRALE_ANG;
 	}
 
 	//Dérivation///////////////////////////////////////////////////////////
