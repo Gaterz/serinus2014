@@ -4,6 +4,8 @@
 #define MODE_P 1
 #define MODE_PI 2
 #define MODE_PD 3
+void Mode_Asserv(int mode);
+int get_Mode_Asserv();
 extern signed long Asserv_Cons_distance;
 extern signed long Asserv_Cons_angle;
 void Gestion_Asserv_HL(long Tick_droit,long Tick_gauche,long* ordre_distance,long* ordre_angle);

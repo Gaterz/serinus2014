@@ -56,7 +56,7 @@ void Gestion_Asserv_HL(signed long Tick_droit,signed long Tick_gauche,signed lon
 	//signed long ordre_distance=0;
 	//signed long ordre_angle=0;
 	//Si pas en STOP///////////////////////////////////////////////////////
-	if(Asserv_mode !=MODE_STOP)
+	if(get_Mode_Asserv() !=MODE_STOP)
 	{
 	//Moyennage////////////////////////////////////////////////////////////
 	signed long Moyenne = (Tick_droit+Tick_gauche)/2;
@@ -118,6 +118,10 @@ void Mode_Asserv(int mode)
 		break;
 	}
 	Asserv_mode=mode;
+}
+int get_Mode_Asserv()
+{
+	return Asserv_mode;
 }
 void Asserv_Reset_Integrateur(void)
 {
