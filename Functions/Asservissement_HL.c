@@ -53,6 +53,11 @@ void Gestion_Asserv_HL(signed long Tick_droit,signed long Tick_gauche,signed lon
 	//Vars/////////////////////////////////////////////////////////////////
 	signed long delta_distance=0;
 	signed long delta_angle=0;
+	signed long ordre_distance=0;
+	signed long ordre_angle=0;
+	//Si pas en STOP///////////////////////////////////////////////////////
+	if(Asserv_mode !=MODE_STOP)
+	{
 	//Moyennage////////////////////////////////////////////////////////////
 	signed long Moyenne = (Tick_droit+Tick_gauche)/2;
 
@@ -81,11 +86,11 @@ void Gestion_Asserv_HL(signed long Tick_droit,signed long Tick_gauche,signed lon
 		Asserv_Derivee_angle	=Erreur_angle;
 	}
 	//Application des coefficients/////////////////////////////////////////
-	signed long ordre_distance	=	Erreur_distance	* P_PID_DISTANCE	+
+	ordre_distance	=		Erreur_distance	* P_PID_DISTANCE	+
 							Asserv_Integrale_Distance * I_PID_DISTANCE 	-
 							delta_distance * D_PID_DISTANCE;
 
-	signed long ordre_angle		=	Erreur_angle * P_PID_ANGLE			+
+	ordre_angle		=		Erreur_angle * P_PID_ANGLE			+
 							Asserv_Integrale_angle * I_PID_ANGLE 		-
 							delta_angle * D_PID_ANGLE;
 
@@ -96,12 +101,15 @@ void Gestion_Asserv_HL(signed long Tick_droit,signed long Tick_gauche,signed lon
 	if(*Cons_droite>10000) *Cons_droite=10000;
 	if(*Cons_gauche<-10000) *Cons_gauche=-10000;
 	if(*Cons_gauche>10000) *Cons_gauche=10000;
-
+	}
 }
 void Mode_Asserv(int mode)
 {
 	switch(mode)
 	{
+		case MODE_STOP:
+			Asserv_Reset_Integrateur();
+			Asserv_Reset_Derivateur();
 		case MODE_P:
 			Asserv_Reset_Integrateur();
 			Asserv_Reset_Derivateur();
