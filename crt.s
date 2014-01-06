@@ -12,8 +12,8 @@
 .set  UND_STACK_SIZE, 0x00000004		/* stack for "undefined instruction" interrupts is 4 bytes  */
 .set  ABT_STACK_SIZE, 0x00000004		/* stack for "abort" interrupts is 4 bytes                  */
 .set  FIQ_STACK_SIZE, 0x00000004		/* stack for "FIQ" interrupts  is 4 bytes         			*/
-.set  IRQ_STACK_SIZE, 0X00000004		/* stack for "IRQ" normal interrupts is 4 bytes    			*/
-.set  SVC_STACK_SIZE, 0x00000004		/* stack for "SVC" supervisor mode is 4 bytes  				*/
+.set  IRQ_STACK_SIZE, 0x00000F00		/* stack for "IRQ" normal interrupts is 4 bytes    			*/
+.set  SVC_STACK_SIZE, 0x00000F00		/* stack for "SVC" supervisor mode is 4 bytes  				*/
 
 
 
@@ -26,8 +26,8 @@
 .set  MODE_UND, 0x1B            		/* Undefined Processing Undefined Instructions Mode 		*/
 .set  MODE_SYS, 0x1F            		/* System Running Priviledged Operating System Tasks  Mode	*/
 
-.set  I_BIT, 0x80               		/* when I bit is set, IRQ is disabled (program status registers) */
-.set  F_BIT, 0x40               		/* when F bit is set, FIQ is disabled (program status registers) */
+.set  I_BIT, 0x80/*0x80               		/* when I bit is set, IRQ is disabled (program status registers) */
+.set  F_BIT, 0x40/*0x40               		/* when F bit is set, FIQ is disabled (program status registers) */
 
 
 .text
@@ -48,7 +48,7 @@ _vectors:       ldr     PC, Reset_Addr
                 ldr     PC, PAbt_Addr
                 ldr     PC, DAbt_Addr
                 nop							/* Reserved Vector (holds Philips ISP checksum) */
-                ldr     PC, [PC,#-0xFF0]	/* see page 71 of "Insiders Guide to the Philips ARM7-Based Microcontrollers" by Trevor Martin  */
+                ldr     PC, [PC,#-0xFF0]/*PC, IRQ_Addr	/* see page 71 of "Insiders Guide to the Philips ARM7-Based Microcontrollers" by Trevor Martin  */
                 ldr     PC, FIQ_Addr
 
 Reset_Addr:     .word   Reset_Handler		/* defined in this module below  */
@@ -99,8 +99,8 @@ strrn:          ldr     R1, =_etext
 
 				/* Clear .bss section (Zero init)  */
                 mov     R0, #0
-                ldr     R1, =_bss_start
-                ldr     R2, =_bss_end
+                ldr     R1, =__bss_start__
+                ldr     R2, =__bss_end__
 2:				cmp     R1, R2
                 strlo   R0, [R1], #4
                 blo     2b

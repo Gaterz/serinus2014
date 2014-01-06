@@ -5,4 +5,5 @@
 #include "Asservissement_HL.h"
 #include "Odometrie_HL.h"
 #include "Deplacements.h"
+#include "init.h"
 #endif /* FUNCTIONS_H_ */

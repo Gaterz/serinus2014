@@ -16,12 +16,20 @@ SRCS=\
 	Low_LVL/Init_ARM.c \
 	Low_LVL/UART.c \
 	Functions/Basic_blinkled.c \
+	Functions/Deplacements.c \
 	Functions/Asservissement_HL.c \
 	Functions/Odometrie_HL.c \
-	Functions/Deplacements.c
+	Low_LVL/pwm.c \
+	Low_LVL/Asservissement_LL.c \
+	Low_LVL/codeurs.c \
+	Low_LVL/Interupt.c \
+	Low_LVL/Timer.c \
+	Low_LVL/Odometrie_LL.c \
+	Functions/Routine_1ms.c \
+	Functions/init.c
 
 CC      = arm-none-eabi-gcc
-LD      = arm-none-eabi-ld -v
+LD      = arm-none-eabi-gcc
 AR      = arm-none-eabi-ar
 AS      = arm-none-eabi-as
 CP      = arm-none-eabi-objcopy
@@ -29,7 +37,7 @@ OD		= arm-none-eabi-objdump
 
 CFLAGS  = -I./ -c -fno-common -O0 -g
 AFLAGS  = -ahls -mapcs-32 -o crt.o
-LFLAGS  =  -Map $(EXEC).map -T$(LDSCRIPT)
+LFLAGS  = -T$(LDSCRIPT) -Xlinker -Map=$(EXEC).map -nostartfiles -v 
 CPFLAGS = -O binary
 HEXFLAGS = -O ihex
 ODFLAGS	= -x --syms
@@ -82,7 +90,7 @@ clean_list:
 ########LD########
 $(EXEC).out: $(OBJS) crt.o $(LDSCRIPT)
 	@ echo "..linking"
-	$(LD) $(LFLAGS) -o $(EXEC).out  crt.o $(OBJS)
+	$(LD) $(LFLAGS) -o $(EXEC).out crt.o $(OBJS) -lm
 
 
 ########CC########

@@ -6,6 +6,7 @@ Constantes :
 Fonctions :
 **************************************************************************************/
 #include "../all_head.h"
+#include <math.h>
 void get_linear_coord(signed long x_dest,signed long y_dest,signed long x_source,signed long y_source,signed long* distance,long double* angle)
 {
 	signed long delta_x=x_dest-x_source;

@@ -25,18 +25,19 @@ Consigne angle----->+  +--->PID+-------+-------+                      +------->D
 Constantes : P,I et D du PID de distance et de celui d'angle
 Fonctions : void Gestion_Asserv_HL(...) : Renvoi en sortie les consignes en fonction des
 valeurs de codeuses envoyées
+void Mode_Asserv(int mode) : Change le mode de l'asservissement entre P,PI,PD
+	!!Toujours utiliser les define de MODE!!
+void Asserv_Reset_Integrateur(void) : Reset des intégrateurs
+void Asserv_Reset_Derivateur(void) : Reset des dérivateurs
 **************************************************************************************/
 #include "../all_head.h"
 ///////////coefficients////////////////////////////////////////////////////
-#define P_PID_DISTANCE 1
-#define I_PID_DISTANCE 0
-#define D_PID_DISTANCE 0
-#define P_PID_ANGLE 1
-#define I_PID_ANGLE 0
-#define D_PID_ANGLE 0
-#define MODE_P 0
-#define MODE_PI 1
-#define MODE_PD 2
+#define P_PID_DISTANCE 1.0
+#define I_PID_DISTANCE 0.1
+#define D_PID_DISTANCE 0.0
+#define P_PID_ANGLE 1.0
+#define I_PID_ANGLE 0.1
+#define D_PID_ANGLE 0.0
 ///////////global_vars/////////////////////////////////////////////////////
 signed long Asserv_Cons_distance = 0;
 signed long Asserv_Cons_angle = 0;
@@ -47,11 +48,16 @@ static signed long Asserv_Integrale_angle = 0;
 static signed long Asserv_Derivee_Distance = 0;
 static signed long Asserv_Derivee_angle = 0;
 ///////////////////////////////////////////////////////////////////////////
-void Gestion_Asserv_HL(signed long Tick_droit,signed long Tick_gauche,signed long* Cons_droite,signed long* Cons_gauche)
+void Gestion_Asserv_HL(signed long Tick_droit,signed long Tick_gauche,signed long* ordre_distance,signed long* ordre_angle)
 {
-	//Vars////////////////////////////////////////////////////////////
+	//Vars/////////////////////////////////////////////////////////////////
 	signed long delta_distance=0;
 	signed long delta_angle=0;
+	//signed long ordre_distance=0;
+	//signed long ordre_angle=0;
+	//Si pas en STOP///////////////////////////////////////////////////////
+	if(get_Mode_Asserv() !=MODE_STOP)
+	{
 	//Moyennage////////////////////////////////////////////////////////////
 	signed long Moyenne = (Tick_droit+Tick_gauche)/2;
 
@@ -67,6 +73,10 @@ void Gestion_Asserv_HL(signed long Tick_droit,signed long Tick_gauche,signed lon
 	{
 		Asserv_Integrale_Distance	+=Erreur_distance;
 		Asserv_Integrale_angle		+=Erreur_angle;
+		if(Asserv_Integrale_Distance> ASSERV_MAX_INTEGRALE_DST)	Asserv_Integrale_Distance=	ASSERV_MAX_INTEGRALE_DST;
+		if(Asserv_Integrale_Distance<-ASSERV_MAX_INTEGRALE_DST)	Asserv_Integrale_Distance= -ASSERV_MAX_INTEGRALE_DST;
+		if(Asserv_Integrale_angle>	ASSERV_MAX_INTEGRALE_ANG)	Asserv_Integrale_angle=	ASSERV_MAX_INTEGRALE_ANG;
+		if(Asserv_Integrale_angle< -ASSERV_MAX_INTEGRALE_ANG)	Asserv_Integrale_angle=-ASSERV_MAX_INTEGRALE_ANG;
 	}
 
 	//Dérivation///////////////////////////////////////////////////////////
@@ -80,22 +90,26 @@ void Gestion_Asserv_HL(signed long Tick_droit,signed long Tick_gauche,signed lon
 		Asserv_Derivee_angle	=Erreur_angle;
 	}
 	//Application des coefficients/////////////////////////////////////////
-	signed long ordre_distance	=	Erreur_distance	* P_PID_DISTANCE	+
+	*ordre_distance	=		Erreur_distance	* P_PID_DISTANCE	+
 							Asserv_Integrale_Distance * I_PID_DISTANCE 	-
 							delta_distance * D_PID_DISTANCE;
 
-	signed long ordre_angle		=	Erreur_angle * P_PID_ANGLE			+
+	*ordre_angle		=		Erreur_angle * P_PID_ANGLE			+
 							Asserv_Integrale_angle * I_PID_ANGLE 		-
 							delta_angle * D_PID_ANGLE;
 
 	//Calcul des consignes/////////////////////////////////////////////////
-	*Cons_droite=ordre_distance+ordre_angle;
-	*Cons_gauche=ordre_distance-ordre_angle;
+	//*Cons_droite=ordre_distance-ordre_angle;
+	//*Cons_gauche=ordre_distance+ordre_angle;
+	}
 }
 void Mode_Asserv(int mode)
 {
 	switch(mode)
 	{
+		case MODE_STOP:
+			Asserv_Reset_Integrateur();
+			Asserv_Reset_Derivateur();
 		case MODE_P:
 			Asserv_Reset_Integrateur();
 			Asserv_Reset_Derivateur();
@@ -108,6 +122,10 @@ void Mode_Asserv(int mode)
 		break;
 	}
 	Asserv_mode=mode;
+}
+int get_Mode_Asserv()
+{
+	return Asserv_mode;
 }
 void Asserv_Reset_Integrateur(void)
 {
