@@ -4,5 +4,4 @@
 #define POS_Y_INITIALLE 0
 #define ANGLE_INITIAL 0
 #define ENTRAXE_TICK 1
-#define MAX_CONSIGNE_DISTANCE 500
 #endif /* CONST_H_ */
