@@ -25,4 +25,13 @@ void Gestion_Odometrie_HL(signed long Delta_Tick_droit,signed long Delta_Tick_ga
 	Odo_angle+=(long double)(Delta_angle/ENTRAXE_TICK);
 	Odo_pos_x+=(long double)(Delta_Distance*cos(Odo_angle));
 	Odo_pos_y+=(long double)(Delta_Distance*sin(Odo_angle));
+	//Normalisation de l'angle////////////////////////////////////////
+	if(Odo_angle>ODO_ANGLE_MAX)
+	{
+		Odo_angle-=2*ODO_PI;
+	}
+	if(Odo_angle<ODO_ANGLE_MAX)
+	{
+		Odo_angle+=2*ODO_PI;
+	}
 }
