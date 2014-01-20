@@ -8,6 +8,7 @@ TIMER1InterruptServiceRoutine (void) : Fonction gérant l'intéruption du timer1
 **************************************************************************************/
 #include "../all_head.h"
 int testtimeval=0;
+unsigned int Frequence_IT=10;
 void __attribute__ ((interrupt("IRQ"))) TIMER1InterruptServiceRoutine (void)
 {
 	routine_1ms();
@@ -26,7 +27,7 @@ void InitTimer1(void)
     //    If PCLK = 4 * 14.7456 MHz
     //    We want T = 0.1 ms (counter is incremented every 100 µs), so F = 10 kHz
     //    So: PRESCALER = PCLK / F - 1 = 5897
-    TIMER1_PR = ((58982400) / (FREQUENCE_IT*10)) - 1 ;//((58982400) / 10000)
+    TIMER1_PR = ((58982400) / (Frequence_IT*10)) - 1 ;//((58982400) / 10000)
     //--- 3. Set Match Register 0
     //    We want an interrupt every milli-second (1ms = 10 * 100 µs)
     TIMER1_MR0 = 10 - 1 ;
@@ -63,4 +64,14 @@ void InitTimer1(void)
     // Bit 1 : 0 (no Reset)
     TIMER1_TCR = 1 ;
 
+}
+void set_frequence_IT(unsigned int frequence)
+{
+	TIMER1_TCR = 2 ;
+	TIMER1_PR = ((58982400) / (Frequence_IT*10)) - 1 ;
+	TIMER1_TCR = 1 ;
+}
+unsigned int get_grequence_IT()
+{
+	return Frequence_IT;
 }
