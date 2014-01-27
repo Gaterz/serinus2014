@@ -23,31 +23,55 @@ signed long Asserv_Cons_angle = 0;
 static int Asserv_mode=0;
 */
 static signed int phase_deplacement=DEPLACEMENT_ARRET;
-void move_to(signed long x_dest,signed long y_dest)
+signed int move_to(signed long x_dest,signed long y_dest)
 {
 	signed long distance;
 	long double angle;
 	get_linear_coord(x_dest,y_dest,Odo_pos_x,Odo_pos_x,&distance,&angle);
-	Mode_Asserv(MODE_PD);
+
 	getDeplacement_state(distance,angle);
+	switch(phase_deplacement)
+	{
+	case DEPLACEMENT_ARRET :
+		Mode_Asserv(MODE_ARRET);
+		break;
+	case DEPLACEMENT_ROTATION :
+		Mode_Asserv(MODE_PD);
+		break;
+	case DEPLACEMENT_AVANCE :
+		Mode_Asserv(MODE_PD);
+		break;
+	case DEPLACEMENT_RALENTI :
+		Mode_Asserv(MODE_PI);
+
+		break;
+
+	}
+	return phase_deplacement;
 }
 
-signed int getDeplacement_state(signed long distance,long double angle)
+void getDeplacement_state(signed long distance,long double angle)
 {
-	signed int state=DEPLACEMENT_ARRET;
 	if(angle < THRESHOLD_ANGLE)
 	{
-		if(distance < THRESHOLD_DISTANCE)
+		if(distance < THRESHOLD_DISTANCE_AV && distance > THRESHOLD_DISTANCE_RA )
 		{
-			state=DEPLACEMENT_ARRET;
+			phase_deplacement=DEPLACEMENT_RALENTI;
 		}
 		else
 		{
-			state=DEPLACEMENT_AVANCE;
+			if(distance < THRESHOLD_DISTANCE_RA)
+			{
+				phase_deplacement=DEPLACEMENT_ARRET;
+			}
+			else
+			{
+				phase_deplacement=DEPLACEMENT_AVANCE;
+			}
 		}
 	}
 	else
 	{
-		state=DEPLACEMENT_ROTATION;
+		phase_deplacement=DEPLACEMENT_ROTATION;
 	}
 }
