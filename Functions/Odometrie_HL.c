@@ -30,7 +30,7 @@ void Gestion_Odometrie_HL(signed long Delta_Tick_droit,signed long Delta_Tick_ga
 	{
 		Odo_angle-=2*ODO_PI;
 	}
-	if(Odo_angle<ODO_ANGLE_MAX)
+	if(Odo_angle<ODO_ANGLE_MIN)
 	{
 		Odo_angle+=2*ODO_PI;
 	}

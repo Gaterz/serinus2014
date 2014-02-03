@@ -28,11 +28,11 @@ void routine_1ms(void)
 	Gestion_Odometrie_LL(Codeur_d,Codeur_g);
 	//gestion asserv
 	Gestion_Asserv_LL(Codeur_d,Codeur_g,&Cons_droite,&Cons_gauche);
-	controlMotor1_invert(Cons_droite);
-	controlMotor2_invert(Cons_gauche);
+	//controlMotor1_invert(Cons_droite);
+	//controlMotor2_invert(Cons_gauche);
 
 					printString("cdroite : ");
-					printLongVal(Cons_droite);//2147483647);
+					printLongVal(Odo_angle*10000);//2147483647);
 					printString(" cgauche : ");
 					printLongVal(Cons_gauche);//-2147483647);
 					UART0_Sendchar('\n');

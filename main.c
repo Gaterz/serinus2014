@@ -13,7 +13,7 @@ int	main (void) {
 	//long c_gauche=0;
 	init_global();
 	Asserv_Cons_distance=10000;
-	Mode_Asserv(MODE_PI);
+	Mode_Asserv(MODE_STOP);
 
 	// endless loop to toggle the red  LED P0.30
 	while (1)
