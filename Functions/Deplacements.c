@@ -32,17 +32,23 @@ signed int move_to(signed long x_dest,signed long y_dest)
 	getDeplacement_state(distance,angle);
 	switch(phase_deplacement)
 	{
+
+	case DEPLACEMENT_DEBUT :
+
+		break;
 	case DEPLACEMENT_ARRET :
-		Mode_Asserv(MODE_ARRET);
+
 		break;
 	case DEPLACEMENT_ROTATION :
-		Mode_Asserv(MODE_PD);
+
 		break;
 	case DEPLACEMENT_AVANCE :
-		Mode_Asserv(MODE_PD);
+
 		break;
 	case DEPLACEMENT_RALENTI :
-		Mode_Asserv(MODE_PI);
+
+		break;
+	case DEPLACEMENT_FIN :
 
 		break;
 
@@ -52,26 +58,5 @@ signed int move_to(signed long x_dest,signed long y_dest)
 
 void getDeplacement_state(signed long distance,long double angle)
 {
-	if(angle < THRESHOLD_ANGLE)
-	{
-		if(distance < THRESHOLD_DISTANCE_AV && distance > THRESHOLD_DISTANCE_RA )
-		{
-			phase_deplacement=DEPLACEMENT_RALENTI;
-		}
-		else
-		{
-			if(distance < THRESHOLD_DISTANCE_RA)
-			{
-				phase_deplacement=DEPLACEMENT_ARRET;
-			}
-			else
-			{
-				phase_deplacement=DEPLACEMENT_AVANCE;
-			}
-		}
-	}
-	else
-	{
-		phase_deplacement=DEPLACEMENT_ROTATION;
-	}
+
 }
