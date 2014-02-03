@@ -3,4 +3,5 @@
 #include "Headers/Low_LVL.h"
 #include "Headers/Functions.h"
 #include "const.h"
+#include "flags.h"
 #endif /* ALL_HEAD_H_ */
