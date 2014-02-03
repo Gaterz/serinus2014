@@ -16,6 +16,13 @@ void routine_1ms(void)
 	signed long Cons_droite=0;
 	signed long Cons_gauche=0;
 	//gestion codeurs
+	if(FLAG_RESET_CODEURS==1)
+	{
+		resetCodeurs();
+		reset_tick_Odometrie();
+		Mode_Asserv(MODE_STOP);
+		FLAG_RESET_CODEURS=0;
+	}
 	lectureCodeursSigned(&Codeur_d,&Codeur_g);
 	//gestion odoetrie
 	Gestion_Odometrie_LL(Codeur_d,Codeur_g);
