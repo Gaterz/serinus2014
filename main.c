@@ -12,8 +12,6 @@ int	main (void) {
 	//long c_droit=0;
 	//long c_gauche=0;
 	init_global();
-	int test_i=0;
-	int state=0;
 	Asserv_Cons_distance=10000;
 	Mode_Asserv(MODE_PI);
 
@@ -21,28 +19,7 @@ int	main (void) {
 	while (1)
 	{
 		blinkled();
-		if(Odo_pos_x>9500 && get_Mode_Asserv()==MODE_PI && state==0)
-		{
-			test_i++;
-			if(test_i > 4)
-			{
-				Asserv_Cons_distance=0;
-				test_i=0;
-				state=1;
 
-
-			}
-		}
-		if(Odo_pos_x<500 && get_Mode_Asserv()==MODE_PI && state==1)
-				{
-					test_i++;
-					if(test_i > 4)
-					{
-						Asserv_Cons_distance=10000;
-						test_i=0;
-						state=0;
-					}
-				}
 
 		/*
 		//////////////////debug///////////////////////
