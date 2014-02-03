@@ -32,8 +32,8 @@ void routine_1ms(void)
 	controlMotor2_invert(Cons_gauche);
 
 					printString("cdroite : ");
-					printLongVal(Cons_droite);//2147483647);
+					printLongVal(Odo_pos_x);//2147483647);
 					printString(" cgauche : ");
-					printLongVal(Cons_gauche);//-2147483647);
+					printLongVal(Odo_pos_y);//-2147483647);
 					UART0_Sendchar('\n');
 }
