@@ -24,3 +24,8 @@ void Gestion_Odometrie_LL(signed long Tick_droit,signed long Tick_gauche)
 	//Passage fonction HL//////////////////////////////////////////////////
 	Gestion_Odometrie_HL(Delta_Tick_droit,Delta_Tick_gauche);
 }
+void reset_tick_Odometrie()
+{
+	Odometrie_last_tick_d = 0;
+	Odometrie_last_tick_g = 0;
+}
