@@ -40,7 +40,7 @@ void Asserv_Reset_Derivateur(void) : Reset des dérivateurs
 #define D_PID_ANGLE 0.0
 ///////////global_vars/////////////////////////////////////////////////////
 signed long Asserv_Cons_distance = 0;
-signed long Asserv_Cons_angle = 0;
+long double Asserv_Cons_angle = 0;
 ///////////static_vars/////////////////////////////////////////////////////
 static int Asserv_mode=0;
 static signed long Asserv_Integrale_Distance = 0;
@@ -62,11 +62,11 @@ void Gestion_Asserv_HL(signed long Tick_droit,signed long Tick_gauche,signed lon
 	signed long Moyenne = (Tick_droit+Tick_gauche)/2;
 
 	//Différence///////////////////////////////////////////////////////////
-	signed long Difference = Tick_droit-Tick_gauche;
+	signed long Difference = Tick_gauche-Tick_droit;
 
 	//Calcul d'erreur//////////////////////////////////////////////////////
 	signed long Erreur_distance 	=Asserv_Cons_distance	-	Moyenne;
-	signed long Erreur_angle 		=Asserv_Cons_angle		-	Difference;
+	signed long Erreur_angle 		=Asserv_Cons_angle*ENTRAXE_TICK_DIA		-	Difference;
 
 	//Intégration//////////////////////////////////////////////////////////
 	if(Asserv_mode==MODE_PI)
