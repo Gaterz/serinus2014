@@ -20,7 +20,7 @@ int	main (void) {
 	while (1)
 	{
 		blinkled();
-		move_to(1000,-10000);
+		move_to(1000,1000);
 
 
 

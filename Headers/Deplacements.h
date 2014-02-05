@@ -6,7 +6,7 @@
 #define DEPLACEMENT_RALENTI 3
 #define DEPLACEMENT_DEBUT 4
 #define DEPLACEMENT_FIN 5
-void get_linear_coord(signed long x_dest,signed long y_dest,signed long x_source,signed long y_source,signed long* distance,long double* angle);
+void get_linear_coord(signed long x_dest,signed long y_dest,signed long x_source,signed long y_source,signed long* distance,double* angle);
 signed int move_to(signed long x_dest,signed long y_dest);
 void getDeplacement_state(signed long distance,long double angle);
 #endif /* DEPLACEMENTS_H_ */

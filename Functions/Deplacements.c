@@ -8,7 +8,7 @@ Fonctions :
 #include "../all_head.h"
 #include <math.h>
 //static int
-void get_linear_coord(signed long x_dest,signed long y_dest,signed long x_source,signed long y_source,signed long* distance,long double* angle)
+void get_linear_coord(signed long x_dest,signed long y_dest,signed long x_source,signed long y_source,signed long* distance,double* angle)
 {
 	signed long delta_x=x_dest-x_source;
 	signed long delta_y=y_dest-y_source;
@@ -27,7 +27,7 @@ static unsigned int Tempo_move_to=0;
 signed int move_to(signed long x_dest,signed long y_dest)
 {
 	signed long distance;
-	long double angle;
+	double angle;
 	get_linear_coord(x_dest,y_dest,Odo_pos_x,Odo_pos_y,&distance,&angle);
 	switch(phase_deplacement)
 	{
