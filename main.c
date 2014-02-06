@@ -12,7 +12,7 @@ int	main (void) {
 	//long c_droit=0;
 	//long c_gauche=0;
 	init_global();
-	Asserv_Cons_angle=-1.57;
+	//Asserv_Cons_angle=-1.57;
 	Mode_Asserv(MODE_PI);
 
 	// endless loop to toggle the red  LED P0.30
