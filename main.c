@@ -3,7 +3,7 @@
  **********************************************************/
 
 #include "main.h"
-
+extern signed int phase_deplacement;
 /**********************************************************
                        MAIN
 **********************************************************/
@@ -11,6 +11,7 @@ int	main (void) {
 	// loop counter (stack variable)
 	//long c_droit=0;
 	//long c_gauche=0;
+	int k=0;
 	init_global();
 	//Asserv_Cons_distance=10000;
 	//Asserv_Cons_angle=-1.57;
@@ -21,7 +22,16 @@ int	main (void) {
 	while (1)
 	{
 		//blinkled();
-		//move_to(10000,0);
+		phase_deplacement=DEPLACEMENT_DEBUT;
+		do
+		{
+			k=move_to(10000,10000);
+		}while(k!=DEPLACEMENT_ARRET);
+		phase_deplacement=DEPLACEMENT_DEBUT;
+		do
+		{
+			k=move_to(10000,-10000);
+		}while(k!=DEPLACEMENT_ARRET);
 
 
 
@@ -61,7 +71,7 @@ void UNDEF_Routine (void) {
 }
 void start_tempo(void)//temporisation RAM
 {
-	unsigned int j=0;
+	int j=0;
 	for(j=0;j<100000;j++);
 	asm("b strrn");
 }

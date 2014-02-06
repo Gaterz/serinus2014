@@ -35,8 +35,8 @@ void Asserv_Reset_Derivateur(void) : Reset des dérivateurs
 #define P_PID_DISTANCE 1.0
 #define I_PID_DISTANCE 0.1
 #define D_PID_DISTANCE 0.0
-#define P_PID_ANGLE 0.2
-#define I_PID_ANGLE 0.0
+#define P_PID_ANGLE 1.0
+#define I_PID_ANGLE 0.1
 #define D_PID_ANGLE 0.0
 ///////////global_vars/////////////////////////////////////////////////////
 signed long Asserv_Cons_distance = 0;
@@ -94,7 +94,7 @@ void Gestion_Asserv_HL(signed long Tick_droit,signed long Tick_gauche,signed lon
 							Asserv_Integrale_Distance * I_PID_DISTANCE 	-
 							delta_distance * D_PID_DISTANCE;
 
-	*ordre_angle		=		(long double)(Erreur_angle * P_PID_ANGLE)			+
+	*ordre_angle		=	Erreur_angle * P_PID_ANGLE			+
 							Asserv_Integrale_angle * I_PID_ANGLE 		-
 							delta_angle * D_PID_ANGLE;
 

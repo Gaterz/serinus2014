@@ -30,13 +30,9 @@ void routine_1ms(void)
 	Gestion_Asserv_LL(Codeur_d,Codeur_g,&Cons_droite,&Cons_gauche);
 	controlMotor1_invert(Cons_droite);
 	controlMotor2_invert(Cons_gauche);
-	if(Cons_gauche==10000)
-	{
-		Cons_gauche=10000;
-	}
 					printString("cdroite : ");
-					printLongVal(Codeur_d);//2147483647);
+					printLongVal(Odo_angle*10000);//2147483647);
 					printString(" cgauche : ");
-					printLongVal(Codeur_g);//-2147483647);
+					printLongVal(Cons_gauche);//-2147483647);
 					UART0_Sendchar('\n');
 }

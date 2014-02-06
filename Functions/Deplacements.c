@@ -47,7 +47,7 @@ void get_linear_coord(signed long x_dest,signed long y_dest,signed long x_source
 		}
 		else
 		{
-			*angle=atan((double)(delta_y/delta_x));
+			*angle=atan((float)((float)delta_y/(float)delta_x));
 			if(delta_x<0)
 			{
 				if(delta_y<0)
@@ -71,7 +71,7 @@ signed long Asserv_Cons_angle = 0;
 ///////////static_vars/////////////////////////////////////////////////////
 static int Asserv_mode=0;
 */
-static signed int phase_deplacement=DEPLACEMENT_DEBUT;
+signed int phase_deplacement=DEPLACEMENT_DEBUT;
 static unsigned int Tempo_move_to=0;
 signed int move_to(signed long x_dest,signed long y_dest)
 {
@@ -85,7 +85,7 @@ signed int move_to(signed long x_dest,signed long y_dest)
 		phase_deplacement=DEPLACEMENT_ROTATION;
 		break;
 	case DEPLACEMENT_ARRET :
-		FLAG_RESET_CODEURS=1;
+		//FLAG_RESET_CODEURS=1;
 		break;
 	case DEPLACEMENT_ROTATION :
 		Asserv_Cons_angle=angle;
