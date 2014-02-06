@@ -15,12 +15,13 @@ int	main (void) {
 	//Asserv_Cons_distance=10000;
 	//Asserv_Cons_angle=-1.57;
 	Mode_Asserv(MODE_PI);
+	Asserv_Cons_angle=0;
 
 	// endless loop to toggle the red  LED P0.30
 	while (1)
 	{
-		blinkled();
-		move_to(1000,1000);
+		//blinkled();
+		//move_to(10000,0);
 
 
 
@@ -60,7 +61,7 @@ void UNDEF_Routine (void) {
 }
 void start_tempo(void)//temporisation RAM
 {
-	int j;
+	unsigned int j=0;
 	for(j=0;j<100000;j++);
 	asm("b strrn");
 }

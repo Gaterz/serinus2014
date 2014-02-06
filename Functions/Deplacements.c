@@ -12,8 +12,57 @@ void get_linear_coord(signed long x_dest,signed long y_dest,signed long x_source
 {
 	signed long delta_x=x_dest-x_source;
 	signed long delta_y=y_dest-y_source;
-	*distance=sqrt(delta_x*delta_x+delta_y*delta_y);
-	*angle=atan2(delta_y,delta_x);
+	if(delta_x==0 && delta_y ==0)
+	{
+		*distance=0;
+		*angle=0;
+	}
+	else
+	{
+		*distance=sqrt(delta_x*delta_x+delta_y*delta_y);
+		if(delta_y==0||delta_x==0)
+		{
+			if(delta_y==0)
+			{
+				if(delta_x>0)
+				{
+					*angle=0;
+				}
+				else
+				{
+					*angle=ODO_PI;
+				}
+			}
+			else
+			{
+				if(delta_y>0)
+				{
+					*angle=ODO_PI/2;
+				}
+				else
+				{
+					*angle=-(ODO_PI/2);
+				}
+			}
+		}
+		else
+		{
+			*angle=atan((double)(delta_y/delta_x));
+			if(delta_x<0)
+			{
+				if(delta_y<0)
+				{
+					*angle-=ODO_PI;
+				}
+				else
+				{
+					*angle+=ODO_PI;
+				}
+			}
+		}
+	}
+
+
 }
 /*
 signed long Asserv_Cons_distance = 0;
