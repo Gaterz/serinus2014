@@ -20,7 +20,7 @@ void routine_1ms(void)
 	{
 		resetCodeurs();
 		reset_tick_Odometrie();
-		Mode_Asserv(MODE_STOP);
+		//Mode_Asserv(MODE_STOP);
 		FLAG_RESET_CODEURS=0;
 	}
 	lectureCodeursSigned(&Codeur_d,&Codeur_g);
