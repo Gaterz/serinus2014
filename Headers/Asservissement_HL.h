@@ -11,4 +11,5 @@ extern long double Asserv_Cons_angle;
 void Gestion_Asserv_HL(long Tick_droit,long Tick_gauche,long* ordre_distance,long* ordre_angle);
 void Asserv_Reset_Integrateur(void);
 void Asserv_Reset_Derivateur(void);
+void set_Asserv_angle_abs(long double angle_abs);
 #endif /* ASSERVISSEMENT_HL_H_ */
