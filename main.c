@@ -25,7 +25,7 @@ int	main (void) {
 		phase_deplacement=DEPLACEMENT_DEBUT;
 		do
 		{
-			k=move_to(10000,10000);
+			k=move_to(-10000,10000);
 		}while(k!=DEPLACEMENT_ARRET);
 		phase_deplacement=DEPLACEMENT_DEBUT;
 		do

@@ -82,13 +82,14 @@ signed int move_to(signed long x_dest,signed long y_dest)
 	{
 
 	case DEPLACEMENT_DEBUT :
+		FLAG_RESET_CODEURS=1;
+		while(FLAG_RESET_CODEURS==1);
 		phase_deplacement=DEPLACEMENT_ROTATION;
 		break;
 	case DEPLACEMENT_ARRET :
-		//FLAG_RESET_CODEURS=1;
 		break;
 	case DEPLACEMENT_ROTATION :
-		Asserv_Cons_angle=angle;
+		set_Asserv_angle_abs(angle);
 		if(Tempo_move_to<THRESHOLD_ANGLE_TEMPO)
 		{
 			if(Odo_angle<angle+THRESHOLD_ANGLE && Odo_angle>angle-THRESHOLD_ANGLE)
