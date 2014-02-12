@@ -23,6 +23,9 @@ void routine_1ms(void)
 		//Mode_Asserv(MODE_STOP);
 		Asserv_Reset_Integrateur();
 		Asserv_Reset_Derivateur();
+		Asserv_zero=Odo_angle;
+		Asserv_Cons_distance = 0;
+		Asserv_Cons_angle = 0;
 		FLAG_RESET_CODEURS=0;
 	}
 	lectureCodeursSigned(&Codeur_d,&Codeur_g);
@@ -33,8 +36,8 @@ void routine_1ms(void)
 	controlMotor1_invert(Cons_droite);
 	controlMotor2_invert(Cons_gauche);
 					printString("cdroite : ");
-					printLongVal(Odo_angle*10000);//2147483647);
+					printLongVal(Codeur_d);//2147483647);
 					printString(" cgauche : ");
-					printLongVal(Cons_gauche);//-2147483647);
+					printLongVal(Codeur_g);//-2147483647);
 					UART0_Sendchar('\n');
 }

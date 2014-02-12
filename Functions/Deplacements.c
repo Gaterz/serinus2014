@@ -104,7 +104,7 @@ signed int move_to(signed long x_dest,signed long y_dest)
 		else
 		{
 			Tempo_move_to=0;
-			phase_deplacement=DEPLACEMENT_ARRET;
+			phase_deplacement=DEPLACEMENT_AVANCE;
 		}
 
 		break;

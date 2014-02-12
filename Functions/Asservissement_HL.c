@@ -41,6 +41,7 @@ void Asserv_Reset_Derivateur(void) : Reset des dérivateurs
 ///////////global_vars/////////////////////////////////////////////////////
 signed long Asserv_Cons_distance = 0;
 long double Asserv_Cons_angle = 0;
+long double Asserv_zero = 0;
 ///////////static_vars/////////////////////////////////////////////////////
 static int Asserv_mode=0;
 static signed long Asserv_Integrale_Distance = 0;
@@ -139,7 +140,7 @@ void Asserv_Reset_Derivateur(void)
 }
 void set_Asserv_angle_abs(long double angle_abs)
 {
-	Asserv_Cons_angle = angle_abs-Odo_angle;
+	Asserv_Cons_angle = angle_abs-Asserv_zero;
 	if(Asserv_Cons_angle>ODO_ANGLE_MAX)
 		{
 			Asserv_Cons_angle-=2*ODO_PI;
