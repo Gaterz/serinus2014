@@ -27,7 +27,8 @@ SRCS=\
 	Low_LVL/Odometrie_LL.c \
 	Functions/Routine_1ms.c \
 	Functions/init.c \
-	flags.c
+	flags.c \
+	Functions/Identification.c
 
 CC      = arm-none-eabi-gcc
 LD      = arm-none-eabi-gcc
