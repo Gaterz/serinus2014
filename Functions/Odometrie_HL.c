@@ -19,8 +19,8 @@ void Gestion_Odometrie_HL(signed long Delta_Tick_droit,signed long Delta_Tick_ga
 	long double Delta_Distance;
 	long double Delta_angle;
 	//Calculs delta position et angle/////////////////////////////////
-	Delta_Distance	=(Delta_Tick_droit + Delta_Tick_gauche)/2;
-	Delta_angle		=(Delta_Tick_droit - Delta_Tick_gauche)/2;
+	Delta_Distance	=(Delta_Tick_gauche + Delta_Tick_droit)/2;
+	Delta_angle		=(Delta_Tick_gauche - Delta_Tick_droit)/2;
 	//Calculs nouvelle position///////////////////////////////////////
 	Odo_angle+=(long double)(Delta_angle/ENTRAXE_TICK);
 	Odo_pos_x+=(long double)(Delta_Distance*cos(Odo_angle));

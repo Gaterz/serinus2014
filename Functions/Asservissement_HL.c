@@ -41,6 +41,8 @@ void Asserv_Reset_Derivateur(void) : Reset des dérivateurs
 ///////////global_vars/////////////////////////////////////////////////////
 signed long Asserv_Cons_distance = 0;
 long double Asserv_Cons_angle = 0;
+long double Asserv_zero = 0;
+long double Asserv_dst_act =0;
 ///////////static_vars/////////////////////////////////////////////////////
 static int Asserv_mode=0;
 static signed long Asserv_Integrale_Distance = 0;
@@ -61,11 +63,13 @@ void Gestion_Asserv_HL(signed long Tick_droit,signed long Tick_gauche,signed lon
 	//Moyennage////////////////////////////////////////////////////////////
 	signed long Moyenne = (Tick_droit+Tick_gauche)/2;
 
+
 	//Différence///////////////////////////////////////////////////////////
 	signed long Difference = Tick_gauche-Tick_droit;
 
 	//Calcul d'erreur//////////////////////////////////////////////////////
 	signed long Erreur_distance 	=Asserv_Cons_distance	-	Moyenne;
+	Asserv_dst_act=Erreur_distance;
 	signed long Erreur_angle 		=Asserv_Cons_angle*ENTRAXE_TICK_DIA		-	Difference;
 
 	//Intégration//////////////////////////////////////////////////////////
@@ -94,7 +98,7 @@ void Gestion_Asserv_HL(signed long Tick_droit,signed long Tick_gauche,signed lon
 							Asserv_Integrale_Distance * I_PID_DISTANCE 	-
 							delta_distance * D_PID_DISTANCE;
 
-	*ordre_angle		=		Erreur_angle * P_PID_ANGLE			+
+	*ordre_angle		=	Erreur_angle * P_PID_ANGLE			+
 							Asserv_Integrale_angle * I_PID_ANGLE 		-
 							delta_angle * D_PID_ANGLE;
 
@@ -136,4 +140,18 @@ void Asserv_Reset_Derivateur(void)
 {
 	Asserv_Derivee_Distance = 0;
 	Asserv_Derivee_angle = 0;
+}
+void set_Asserv_angle_abs(long double angle_abs)
+{
+	long double tmp = angle_abs-Asserv_zero;
+	//Asserv_Cons_angle = angle_abs-Asserv_zero;
+	if(tmp>ODO_ANGLE_MAX)
+	{
+	tmp-=2*ODO_PI;
+	}
+	if(tmp<ODO_ANGLE_MIN)
+	{
+		tmp+=2*ODO_PI;
+	}
+	Asserv_Cons_angle=tmp;
 }

@@ -3,7 +3,7 @@
  **********************************************************/
 
 #include "main.h"
-
+extern signed int phase_deplacement;
 /**********************************************************
                        MAIN
 **********************************************************/
@@ -11,14 +11,36 @@ int	main (void) {
 	// loop counter (stack variable)
 	//long c_droit=0;
 	//long c_gauche=0;
+	int k=0;
 	init_global();
-	//Asserv_Cons_angle=-1.57;
 	Mode_Asserv(MODE_PI);
+	Asserv_Cons_angle=0;
 
 	// endless loop to toggle the red  LED P0.30
 	while (1)
 	{
 		blinkled();
+		phase_deplacement=DEPLACEMENT_DEBUT;
+		do
+		{
+			k=move_to(20000,0);
+		}while(k!=DEPLACEMENT_ARRET);
+		phase_deplacement=DEPLACEMENT_DEBUT;
+		do
+		{
+			k=move_to(20000,20000);
+		}while(k!=DEPLACEMENT_ARRET);
+		phase_deplacement=DEPLACEMENT_DEBUT;
+		do
+		{
+			k=move_to(0,20000);
+		}while(k!=DEPLACEMENT_ARRET);
+		phase_deplacement=DEPLACEMENT_DEBUT;
+		do
+		{
+			k=move_to(100,100);
+		}while(k!=DEPLACEMENT_ARRET);
+
 
 
 		/*
@@ -57,7 +79,7 @@ void UNDEF_Routine (void) {
 }
 void start_tempo(void)//temporisation RAM
 {
-	int j;
+	int j=0;
 	for(j=0;j<100000;j++);
 	asm("b strrn");
 }

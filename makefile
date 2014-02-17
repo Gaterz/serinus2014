@@ -16,6 +16,7 @@ SRCS=\
 	Low_LVL/Init_ARM.c \
 	Low_LVL/UART.c \
 	Functions/Basic_blinkled.c \
+	Functions/Deplacements.c \
 	Functions/Asservissement_HL.c \
 	Functions/Odometrie_HL.c \
 	Low_LVL/pwm.c \
