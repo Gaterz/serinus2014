@@ -15,12 +15,11 @@ void routine_1ms(void)
 	signed long Codeur_g=0;
 	signed long Cons_droite=0;
 	signed long Cons_gauche=0;
-	//gestion codeurs
+	//gestion du reset codeur
 	if(FLAG_RESET_CODEURS==1)
 	{
 		resetCodeurs();
 		reset_tick_Odometrie();
-		//Mode_Asserv(MODE_STOP);
 		Asserv_Reset_Integrateur();
 		Asserv_Reset_Derivateur();
 		Asserv_zero=Odo_angle;
@@ -28,6 +27,7 @@ void routine_1ms(void)
 		Asserv_Cons_angle = 0;
 		FLAG_RESET_CODEURS=0;
 	}
+	//gestion codeurs
 	lectureCodeursSigned(&Codeur_d,&Codeur_g);
 	//gestion odoetrie
 	Gestion_Odometrie_LL(Codeur_d,Codeur_g);
@@ -35,10 +35,15 @@ void routine_1ms(void)
 	Gestion_Asserv_LL(Codeur_d,Codeur_g,&Cons_droite,&Cons_gauche);
 	controlMotor1_invert(Cons_droite);
 	controlMotor2_invert(Cons_gauche);
-					/*printString("cdroite : ");
+					printString("cdroite : ");
 					printLongVal(Codeur_d);//2147483647);
 					printString(" cgauche : ");
 					printLongVal(Codeur_g);//-2147483647);
-					UART0_Sendchar('\n');*/
+					printString(" asserv_cons_angle : ");
+					printLongVal(Asserv_Cons_angle*1000);//2147483647);
+					printString(" Asserv_zero : ");
+					printLongVal(Asserv_zero*1000);//-2147483647);
+
+					UART0_Sendchar('\n');
 					 FLAG_IT_1MS=0;
 }

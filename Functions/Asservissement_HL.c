@@ -143,13 +143,15 @@ void Asserv_Reset_Derivateur(void)
 }
 void set_Asserv_angle_abs(long double angle_abs)
 {
-	Asserv_Cons_angle = angle_abs-Asserv_zero;
-	if(Asserv_Cons_angle>ODO_ANGLE_MAX)
-		{
-			Asserv_Cons_angle-=2*ODO_PI;
-		}
-		if(Asserv_Cons_angle<ODO_ANGLE_MIN)
-		{
-			Asserv_Cons_angle+=2*ODO_PI;
-		}
+	long double tmp = angle_abs-Asserv_zero;
+	//Asserv_Cons_angle = angle_abs-Asserv_zero;
+	if(tmp>ODO_ANGLE_MAX)
+	{
+	tmp-=2*ODO_PI;
+	}
+	if(tmp<ODO_ANGLE_MIN)
+	{
+		tmp+=2*ODO_PI;
+	}
+	Asserv_Cons_angle=tmp;
 }
