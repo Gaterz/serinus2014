@@ -83,33 +83,54 @@ signed int move_to(signed long x_dest,signed long y_dest)
 
 	case DEPLACEMENT_DEBUT :
 		FLAG_RESET_CODEURS=1;
+		Mode_Asserv(MODE_PI);
 		while(FLAG_RESET_CODEURS==1);
 		phase_deplacement=DEPLACEMENT_ROTATION;
 		break;
 	case DEPLACEMENT_ARRET :
+		Mode_Asserv(MODE_STOP);
 		break;
 	case DEPLACEMENT_ROTATION :
 		set_Asserv_angle_abs(angle);
-		if(Tempo_move_to<THRESHOLD_ANGLE_TEMPO)
-		{
-			if(Odo_angle<angle+THRESHOLD_ANGLE && Odo_angle>angle-THRESHOLD_ANGLE)
-			{
-				Tempo_move_to++;
-			}
-			else
-			{
-				Tempo_move_to=0;
-			}
-		}
-		else
-		{
-			Tempo_move_to=0;
-			phase_deplacement=DEPLACEMENT_AVANCE;
-		}
+				if(Tempo_move_to<THRESHOLD_ANGLE_TEMPO)
+				{
+					if(Odo_angle<angle+THRESHOLD_ANGLE && Odo_angle>angle-THRESHOLD_ANGLE)
+					{
+						Tempo_move_to++;
+					}
+					else
+					{
+						Tempo_move_to=0;
+					}
+				}
+				else
+				{
+					Tempo_move_to=0;
+					phase_deplacement=DEPLACEMENT_AVANCE;
+					Asserv_Cons_distance=distance;
+					FLAG_IT_1MS=1;
+					while(FLAG_IT_1MS==1);
+				}
+
 
 		break;
 	case DEPLACEMENT_AVANCE :
-
+		if(Tempo_move_to<THRESHOLD_ANGLE_TEMPO)
+				{
+					if(Asserv_dst_act<THRESHOLD_DISTANCE_AV && Asserv_dst_act>-THRESHOLD_DISTANCE_AV)
+					{
+						Tempo_move_to++;
+					}
+					else
+					{
+						Tempo_move_to=0;
+					}
+				}
+				else
+				{
+					Tempo_move_to=0;
+					phase_deplacement=DEPLACEMENT_ARRET;
+				}
 		break;
 	case DEPLACEMENT_RALENTI :
 
