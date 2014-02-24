@@ -19,8 +19,10 @@ int	main (void) {
 	// endless loop to toggle the red  LED P0.30
 	while (1)
 	{
+		Identification_entraxe();
 		blinkled();
-		phase_deplacement=DEPLACEMENT_DEBUT;
+		while(1);
+		/*phase_deplacement=DEPLACEMENT_DEBUT;
 		do
 		{
 			k=move_to(20000,0);
@@ -40,7 +42,7 @@ int	main (void) {
 		{
 			k=move_to(100,100);
 		}while(k!=DEPLACEMENT_ARRET);
-
+		*/
 
 
 		/*

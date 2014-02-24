@@ -12,6 +12,7 @@ en angle, en x et en y puis les ajoute aux coordonée actuelles.
 signed long Odo_pos_x=POS_X_INITIALLE;
 signed long Odo_pos_y=POS_Y_INITIALLE;
 long double Odo_angle=ANGLE_INITIAL;
+int n_tour=0;
 ///////////////////////////////////////////////////////////////////////////
 void Gestion_Odometrie_HL(signed long Delta_Tick_droit,signed long Delta_Tick_gauche)
 {
@@ -29,9 +30,11 @@ void Gestion_Odometrie_HL(signed long Delta_Tick_droit,signed long Delta_Tick_ga
 	if(Odo_angle>ODO_ANGLE_MAX)
 	{
 		Odo_angle-=2*ODO_PI;
+		n_tour++;
 	}
 	if(Odo_angle<ODO_ANGLE_MIN)
 	{
 		Odo_angle+=2*ODO_PI;
+		n_tour--;
 	}
 }

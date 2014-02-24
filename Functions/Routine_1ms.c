@@ -36,9 +36,9 @@ void routine_1ms(void)
 	controlMotor1_invert(Cons_droite);
 	controlMotor2_invert(Cons_gauche);
 					printString("cdroite : ");
-					printLongVal(Codeur_d);//2147483647);
+					printLongVal(Cons_droite);//2147483647);
 					printString(" cgauche : ");
-					printLongVal(Codeur_g);//-2147483647);
+					printLongVal(Cons_gauche);//-2147483647);
 					printString(" asserv_cons_angle : ");
 					printLongVal(Asserv_Cons_angle*1000);//2147483647);
 					printString(" Asserv_zero : ");

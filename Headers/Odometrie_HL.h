@@ -4,4 +4,5 @@ void Gestion_Odometrie_HL(signed long Delta_Tick_droit,signed long Delta_Tick_ga
 extern signed long Odo_pos_x;
 extern signed long Odo_pos_y;
 extern long double Odo_angle;
+extern int n_tour;
 #endif /* ODOMETRIE_HL_H_ */
