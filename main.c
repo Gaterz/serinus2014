@@ -13,13 +13,13 @@ int	main (void) {
 	//long c_gauche=0;
 	int k=0;
 	init_global();
-	Mode_Asserv(MODE_PI);
+	Mode_Asserv(MODE_P);
 	Asserv_Cons_angle=0;
 
 	// endless loop to toggle the red  LED P0.30
 	while (1)
 	{
-		Identification_entraxe();
+		Identification_constante_temps_lineaire();
 		blinkled();
 		while(1);
 		/*phase_deplacement=DEPLACEMENT_DEBUT;

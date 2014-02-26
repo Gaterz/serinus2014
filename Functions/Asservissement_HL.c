@@ -62,6 +62,9 @@ void Gestion_Asserv_HL(signed long Tick_droit,signed long Tick_gauche,signed lon
 	{
 	//Moyennage////////////////////////////////////////////////////////////
 	signed long Moyenne = (Tick_droit+Tick_gauche)/2;
+	temp_dst=Moyenne;
+	tableau_identif[temp_i]=Moyenne;
+	temp_i++;
 
 
 	//Différence///////////////////////////////////////////////////////////

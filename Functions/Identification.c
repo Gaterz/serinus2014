@@ -59,3 +59,46 @@ void Identification_entraxe()
 	}
 
 }
+signed int tableau_identif[1000];
+signed int temp_i=0;
+signed int temp_dst=0;
+void Identification_constante_temps_lineaire()
+{
+	int i;
+	while(temp_i<200)
+	{
+		if(temp_i<100)
+		{
+			Asserv_Cons_distance=5000+temp_dst;
+			FLAG_IT_1MS=1;
+			while(FLAG_IT_1MS==1);
+		}
+		else
+		{
+			Asserv_Cons_distance=6500+temp_dst;
+			FLAG_IT_1MS=1;
+			while(FLAG_IT_1MS==1);
+		}
+	}
+	Mode_Asserv(MODE_STOP);
+	while(1)
+	{
+		for(i=0;i<200;i++)
+		{
+			printLongVal(tableau_identif[i]);//2147483647);
+			printString(",");
+
+		}
+		UART0_Sendchar('\n');
+		for(i=0;i<2000000;i++);
+		for(i=0;i<2000000;i++);
+		for(i=0;i<2000000;i++);
+		for(i=0;i<2000000;i++);
+		for(i=0;i<2000000;i++);
+		for(i=0;i<2000000;i++);
+		for(i=0;i<2000000;i++);
+		for(i=0;i<2000000;i++);
+
+	}
+
+}
