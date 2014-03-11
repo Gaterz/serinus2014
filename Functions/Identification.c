@@ -65,25 +65,49 @@ signed int temp_dst=0;
 void Identification_constante_temps_lineaire()
 {
 	int i;
-	while(temp_i<200)
+	static int j=0;
+	while(temp_i<400)
 	{
-		if(temp_i<100)
+		if(temp_i<200 && j==0)
 		{
-			Asserv_Cons_distance=5000+temp_dst;
-			FLAG_IT_1MS=1;
-			while(FLAG_IT_1MS==1);
+			controlMotor1_invert(7000);
+			controlMotor2_invert(7000);
+			j=1;
+			//Asserv_Cons_distance=0;
+			//FLAG_IT_1MS=1;
+			//while(FLAG_IT_1MS==1);
 		}
-		else
+		else if(j==1 && temp_i>=200)
 		{
-			Asserv_Cons_distance=6500+temp_dst;
-			FLAG_IT_1MS=1;
-			while(FLAG_IT_1MS==1);
+			controlMotor1_invert(9000);
+			controlMotor2_invert(9000);
+			j=2;
+			//Asserv_Cons_distance=5000;
+			//FLAG_IT_1MS=1;
+			//while(FLAG_IT_1MS==1);
 		}
+		/*else if(j==2 && temp_i>=400)
+				{
+					controlMotor1_invert(9000);
+					controlMotor2_invert(9000);
+					j=3;
+					//Asserv_Cons_distance=5000;
+					//FLAG_IT_1MS=1;
+					//while(FLAG_IT_1MS==1);
+				}*/
 	}
-	Mode_Asserv(MODE_STOP);
+	controlMotor1_invert(-8000);
+	controlMotor2_invert(-8000);
+	while(temp_i<800)
+		{
+
+		}
+	//Mode_Asserv(MODE_STOP);
+	controlMotor1_invert(0);
+	controlMotor2_invert(0);
 	while(1)
 	{
-		for(i=0;i<200;i++)
+		for(i=0;i<400;i++)
 		{
 			printLongVal(tableau_identif[i]);//2147483647);
 			printString(",");

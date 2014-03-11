@@ -15,7 +15,7 @@ int	main (void) {
 	init_global();
 	Mode_Asserv(MODE_P);
 	Asserv_Cons_angle=0;
-
+	Asserv_Cons_distance = 5000;
 	// endless loop to toggle the red  LED P0.30
 	while (1)
 	{
