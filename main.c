@@ -12,17 +12,45 @@ int	main (void) {
 	//long c_droit=0;
 	//long c_gauche=0;
 	int k=0;
+	char x=0;
+	char y=0;
+	char dist=0;
+	char x_last=0;
 	init_global();
-	Mode_Asserv(MODE_PID);
+	Mode_Asserv(MODE_STOP);
+	CANinit_HW();
 	Asserv_Cons_angle=0;
-
+	canMsgType Msg1 ={
+			1,
+			1,
+			0x44,
+			0x0
+	};
 	// endless loop to toggle the red  LED P0.30
 	while (1)
 	{
-		blinkled();
+		//blinkled();
+		if(CANReceiveMessage(&Msg1)==1)
+		{
+			dist=Msg1.dataL&0xFF;
+			x=(Msg1.dataL>>8)&0xFF;
+			y=(Msg1.dataL>>16)&0xFF;
+			if(x_last != x)
+			{
+				x_last=x;
+				printString("x : ");
+				printLongVal(x);//2147483647);
+				printString(" y : ");
+				printLongVal(y);//-2147483647);
+				printString(" dist : ");
+				printLongVal(dist);//2147483647);
+				UART0_Sendchar('\n');
+			}
+		}
+
 		//Asserv_Cons_distance = 15000;
 
-		phase_deplacement=DEPLACEMENT_DEBUT;
+		/*phase_deplacement=DEPLACEMENT_DEBUT;
 		do
 		{
 			k=move_to(20000,0);
@@ -43,7 +71,7 @@ int	main (void) {
 			k=move_to(100,100);
 		}while(k!=DEPLACEMENT_ARRET);
 
-
+		*/
 
 		/*
 		//////////////////debug///////////////////////

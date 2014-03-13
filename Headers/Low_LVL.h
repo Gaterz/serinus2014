@@ -7,4 +7,5 @@
 #include "Interupt.h"
 #include "Timer.h"
 #include "Odometrie_LL.h"
+#include "can.h"
 #endif /* LOW_LVL_H_ */

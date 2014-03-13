@@ -35,6 +35,7 @@ void routine_1ms(void)
 	Gestion_Asserv_LL(Codeur_d,Codeur_g,&Cons_droite,&Cons_gauche);
 	controlMotor1_invert(Cons_droite);
 	controlMotor2_invert(Cons_gauche);
+	/*
 					printString("cdroite : ");
 					printLongVal(Codeur_d);//2147483647);
 					printString(" cgauche : ");
@@ -45,5 +46,6 @@ void routine_1ms(void)
 					printLongVal(Asserv_zero*1000);//-2147483647);
 
 					UART0_Sendchar('\n');
+					*/
 					 FLAG_IT_1MS=0;
 }
