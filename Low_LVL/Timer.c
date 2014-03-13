@@ -8,7 +8,7 @@ TIMER1InterruptServiceRoutine (void) : Fonction gérant l'intéruption du timer1
 **************************************************************************************/
 #include "../all_head.h"
 int testtimeval=0;
-unsigned int Frequence_IT=10;
+unsigned int Frequence_IT=100;
 void __attribute__ ((interrupt("IRQ"))) TIMER1InterruptServiceRoutine (void)
 {
 	routine_1ms();

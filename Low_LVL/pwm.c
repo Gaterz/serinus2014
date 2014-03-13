@@ -256,13 +256,13 @@ void controlMotor1_invert(int dutyCycle)
         //Recul
 		in_Mot1(1,0); 					// Commande du pont en H
 		dutyCycle = -dutyCycle;			// Passage du rapport cyclique en positif
-		pwmU1((unsigned int)(1000 - dutyCycle)); // Génération de la PWM
+		pwmU1((unsigned int)(10000 - dutyCycle)); // Génération de la PWM
 	}
 	else if (dutyCycle>0)
 	{
 	    //Avance
 		in_Mot1(0,1); 					// Commande du pont en H
-		pwmU1((unsigned int)(1000 - dutyCycle)); // Génération de la PWM
+		pwmU1((unsigned int)(10000 - dutyCycle)); // Génération de la PWM
 	}
   else
   {
@@ -293,13 +293,13 @@ void controlMotor2_invert(int dutyCycle)
 	    //Recul
 		in_Mot2(1,0); 					// Commande du pont en H
 		dutyCycle = -dutyCycle;			// Passage du rapport cyclique en positif
-		pwmU2((unsigned int)(1000 - dutyCycle)); // Génération de la PWM
+		pwmU2((unsigned int)(10000 - dutyCycle)); // Génération de la PWM
 	}
 	else if(dutyCycle>0)
 	{
 	    //Avance
 		in_Mot2(0,1); 					// Commande du pont en H
-		pwmU2((unsigned int)(1000 - dutyCycle)); // Génération de la PWM
+		pwmU2((unsigned int)(10000 - dutyCycle)); // Génération de la PWM
 	}
   else
   {
@@ -337,7 +337,7 @@ void initPWM()
     */
     PWM_MCR = 0x00000002;    //Reset de PWMTC sur MR0
 
-    PWM_MR0 = 1000 ;        //Période de PWMTC de 10 000 * 17 ns = 170 us, soit Fpwm = 5900 Hz
+    PWM_MR0 = 10000 ;        //Période de PWMTC de 10 000 * 17 ns = 170 us, soit Fpwm = 5900 Hz
                             //(On laisse PWMPR à 0, ainsi PWMTC compte tout les fronts pclk)
 
     /*

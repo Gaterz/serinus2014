@@ -4,6 +4,7 @@
 #define MODE_P 1
 #define MODE_PI 2
 #define MODE_PD 3
+#define MODE_PID 4
 void Mode_Asserv(int mode);
 int get_Mode_Asserv();
 extern signed long Asserv_Cons_distance;

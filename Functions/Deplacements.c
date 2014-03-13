@@ -83,7 +83,7 @@ signed int move_to(signed long x_dest,signed long y_dest)
 
 	case DEPLACEMENT_DEBUT :
 		FLAG_RESET_CODEURS=1;
-		Mode_Asserv(MODE_PI);
+		Mode_Asserv(MODE_PID);
 		while(FLAG_RESET_CODEURS==1);
 		phase_deplacement=DEPLACEMENT_ROTATION;
 		break;

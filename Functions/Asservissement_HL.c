@@ -32,12 +32,12 @@ void Asserv_Reset_Derivateur(void) : Reset des dérivateurs
 **************************************************************************************/
 #include "../all_head.h"
 ///////////coefficients////////////////////////////////////////////////////
-#define P_PID_DISTANCE 1.0
-#define I_PID_DISTANCE 0.1
-#define D_PID_DISTANCE 0.0
-#define P_PID_ANGLE 1.0
-#define I_PID_ANGLE 0.1
-#define D_PID_ANGLE 0.0
+#define P_PID_DISTANCE 5.7//5.7 3.1
+#define I_PID_DISTANCE 0.2//0.2 0.22
+#define D_PID_DISTANCE 20.0//20.0 37.0
+#define P_PID_ANGLE 5.1//5.1 2.6
+#define I_PID_ANGLE 0.25//0.25 0.27
+#define D_PID_ANGLE 15.3//15.3 23.0
 ///////////global_vars/////////////////////////////////////////////////////
 signed long Asserv_Cons_distance = 0;
 long double Asserv_Cons_angle = 0;
@@ -73,7 +73,7 @@ void Gestion_Asserv_HL(signed long Tick_droit,signed long Tick_gauche,signed lon
 	signed long Erreur_angle 		=Asserv_Cons_angle*ENTRAXE_TICK_DIA		-	Difference;
 
 	//Intégration//////////////////////////////////////////////////////////
-	if(Asserv_mode==MODE_PI)
+	if(Asserv_mode==MODE_PI || Asserv_mode==MODE_PID)
 	{
 		Asserv_Integrale_Distance	+=Erreur_distance;
 		Asserv_Integrale_angle		+=Erreur_angle;
@@ -84,7 +84,7 @@ void Gestion_Asserv_HL(signed long Tick_droit,signed long Tick_gauche,signed lon
 	}
 
 	//Dérivation///////////////////////////////////////////////////////////
-	if(Asserv_mode==MODE_PD)
+	if(Asserv_mode==MODE_PD || Asserv_mode==MODE_PID)
 	{
 		//..distance//
 		delta_distance	=Erreur_distance	-	Asserv_Derivee_Distance;
@@ -95,11 +95,11 @@ void Gestion_Asserv_HL(signed long Tick_droit,signed long Tick_gauche,signed lon
 	}
 	//Application des coefficients/////////////////////////////////////////
 	*ordre_distance	=		Erreur_distance	* P_PID_DISTANCE	+
-							Asserv_Integrale_Distance * I_PID_DISTANCE 	-
+							Asserv_Integrale_Distance * I_PID_DISTANCE 	+
 							delta_distance * D_PID_DISTANCE;
 
 	*ordre_angle		=	Erreur_angle * P_PID_ANGLE			+
-							Asserv_Integrale_angle * I_PID_ANGLE 		-
+							Asserv_Integrale_angle * I_PID_ANGLE 		+
 							delta_angle * D_PID_ANGLE;
 
 	//Calcul des consignes/////////////////////////////////////////////////
@@ -123,6 +123,10 @@ void Mode_Asserv(int mode)
 		break;
 		case MODE_PD:
 			Asserv_Reset_Integrateur();
+		break;
+		case MODE_PID:
+			Asserv_Reset_Integrateur();
+			Asserv_Reset_Derivateur();
 		break;
 	}
 	Asserv_mode=mode;
