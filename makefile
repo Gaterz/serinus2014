@@ -28,7 +28,8 @@ SRCS=\
 	Functions/Routine_1ms.c \
 	Functions/init.c \
 	flags.c \
-	Low_LVL/can.c
+	Low_LVL/can.c \
+	Functions/can_HL.c
 
 CC      = arm-none-eabi-gcc
 LD      = arm-none-eabi-gcc
