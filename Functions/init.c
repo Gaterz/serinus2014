@@ -13,8 +13,8 @@ void init_global()
 	initBlinkled();
 	initES_cod();
 	resetCodeurs();
-	InitTimer1();
-	enableIRQ();
+	//InitTimer1();
+	//enableIRQ();
 	initES_PWM();
 	initFunction_PWM();
 	initPWM();

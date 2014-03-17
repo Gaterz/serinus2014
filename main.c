@@ -38,13 +38,10 @@ int	main (void) {
 			if(x_last != x)
 			{
 				x_last=x;
-				printString("x : ");
-				printLongVal(x);//2147483647);
-				printString(" y : ");
-				printLongVal(y);//-2147483647);
-				printString(" dist : ");
-				printLongVal(dist);//2147483647);
-				UART0_Sendchar('\n');
+				printString("x");
+				UART0_Sendchar(x);//2147483647);
+				UART0_Sendchar(y);//-2147483647);
+				UART0_Sendchar(dist);//2147483647);
 			}
 		}
 

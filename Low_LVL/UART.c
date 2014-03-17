@@ -41,6 +41,7 @@ void printLongVal(signed long value)
 {
 	char val_send[10];
 	int i=0;
+	int j=0;
 	if(value == 0)
 	{
 		UART0_Sendchar('0');
