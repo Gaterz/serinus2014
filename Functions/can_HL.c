@@ -6,12 +6,6 @@ Constantes :
 Fonctions :
 **************************************************************************************/
 #include "../all_head.h"
-canMsgType Message_R ={
-			0,
-			0,
-			0,
-			0
-};
 void Routine_CAN()
 {
 	if(CANReceiveMessage(&Message_R)==1)

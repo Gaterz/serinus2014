@@ -7,7 +7,7 @@
 
 #ifndef CAN_HL_H_
 void Routine_CAN();
-extern canMsgType Message_R;
+
 
 #define CAN_HL_H_
 

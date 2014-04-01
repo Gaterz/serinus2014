@@ -47,5 +47,5 @@ void routine_1ms(void)
 
 					UART0_Sendchar('\n');
 					*/
-					 FLAG_IT_1MS=0;
+	FLAG_IT_1MS=0;
 }
