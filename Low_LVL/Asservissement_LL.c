@@ -15,6 +15,8 @@ void Gestion_Asserv_LL(signed long Tick_droit,signed long Tick_gauche,signed lon
 	{
 	//Appel du HL//////////////////////////////////////////////////////////
 	Gestion_Asserv_HL(Tick_droit,Tick_gauche,&ordre_distance,&ordre_angle);
+	if(ordre_distance >8000)ordre_distance =8000;
+	if(ordre_distance <-8000)ordre_distance =-8000;
 	*Cons_droite=ordre_distance+ordre_angle;
 	*Cons_gauche=ordre_distance-ordre_angle;
 	//Normalisation des conssignes/////////////////////////////////////////
