@@ -40,9 +40,9 @@ void Asserv_Reset_Derivateur(void) : Reset des dérivateurs
 #define D_PID_ANGLE 15.3//15.3 23.0
 ///////////global_vars/////////////////////////////////////////////////////
 signed long Asserv_Cons_distance = 0;
-long double Asserv_Cons_angle = 0;
-long double Asserv_zero = 0;
-long double Asserv_dst_act =0;
+double Asserv_Cons_angle = 0;
+double Asserv_zero = 0;
+double Asserv_dst_act =0;
 ///////////static_vars/////////////////////////////////////////////////////
 static int Asserv_mode=0;
 static signed long Asserv_Integrale_Distance = 0;
@@ -145,9 +145,9 @@ void Asserv_Reset_Derivateur(void)
 	Asserv_Derivee_Distance = 0;
 	Asserv_Derivee_angle = 0;
 }
-void set_Asserv_angle_abs(long double angle_abs)
+void set_Asserv_angle_abs(double angle_abs)
 {
-	long double tmp = angle_abs-Asserv_zero;
+	double tmp = angle_abs-Asserv_zero;
 	//Asserv_Cons_angle = angle_abs-Asserv_zero;
 	if(tmp>ODO_ANGLE_MAX)
 	{

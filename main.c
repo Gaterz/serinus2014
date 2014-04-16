@@ -15,7 +15,9 @@ int	main (void) {
 	init_global();
 	Mode_Asserv(MODE_PID);
 	Asserv_Cons_angle=0;
-
+	//printString("AT+BAUD6");
+	//UART0_Sendchar('\n');
+	//while(1);
 	// endless loop to toggle the red  LED P0.30
 	while (1)
 	{

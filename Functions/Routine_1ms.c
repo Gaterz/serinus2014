@@ -16,6 +16,8 @@ void routine_1ms(void)
 	signed long Cons_droite=0;
 	signed long Cons_gauche=0;
 	//gestion du reset codeur
+
+	IO0SET |= 0x40000000;
 	if(FLAG_RESET_CODEURS==1)
 	{
 		resetCodeurs();
@@ -35,7 +37,8 @@ void routine_1ms(void)
 	Gestion_Asserv_LL(Codeur_d,Codeur_g,&Cons_droite,&Cons_gauche);
 	controlMotor1_invert(Cons_droite);
 	controlMotor2_invert(Cons_gauche);
-					/*printString("cdroite : ");
+					/*
+					printString("cdroite : ");
 					printLongVal(Codeur_d);//2147483647);
 					printString(" cgauche : ");
 					printLongVal(Codeur_g);//-2147483647);
@@ -46,4 +49,5 @@ void routine_1ms(void)
 
 					UART0_Sendchar('\n');*/
 					 FLAG_IT_1MS=0;
+	IO0CLR |= 0x40000000;
 }

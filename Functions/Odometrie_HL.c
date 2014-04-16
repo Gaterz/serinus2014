@@ -11,7 +11,7 @@ en angle, en x et en y puis les ajoute aux coordonée actuelles.
 ///////////global_vars/////////////////////////////////////////////////////
 signed long Odo_pos_x=POS_X_INITIALLE;
 signed long Odo_pos_y=POS_Y_INITIALLE;
-long double Odo_angle=ANGLE_INITIAL;
+double Odo_angle=ANGLE_INITIAL;
 ///////////////////////////////////////////////////////////////////////////
 void Gestion_Odometrie_HL(signed long Delta_Tick_droit,signed long Delta_Tick_gauche)
 {
@@ -22,9 +22,9 @@ void Gestion_Odometrie_HL(signed long Delta_Tick_droit,signed long Delta_Tick_ga
 	Delta_Distance	=(Delta_Tick_gauche + Delta_Tick_droit)/2;
 	Delta_angle		=(Delta_Tick_gauche - Delta_Tick_droit)/2;
 	//Calculs nouvelle position///////////////////////////////////////
-	Odo_angle+=(long double)(Delta_angle/ENTRAXE_TICK);
-	Odo_pos_x+=(long double)(Delta_Distance*cos(Odo_angle));
-	Odo_pos_y+=(long double)(Delta_Distance*sin(Odo_angle));
+	Odo_angle+=(double)(Delta_angle/ENTRAXE_TICK);
+	Odo_pos_x+=(long)(Delta_Distance*cos(Odo_angle));
+	Odo_pos_y+=(long)(Delta_Distance*sin(Odo_angle));
 	//Normalisation de l'angle////////////////////////////////////////
 	if(Odo_angle>ODO_ANGLE_MAX)
 	{
