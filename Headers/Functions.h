@@ -6,4 +6,5 @@
 #include "Odometrie_HL.h"
 #include "Deplacements.h"
 #include "init.h"
+#include "Debug_Bridge.h"
 #endif /* FUNCTIONS_H_ */
