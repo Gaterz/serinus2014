@@ -19,11 +19,13 @@ int	main (void) {
 	//UART0_Sendchar('\n');
 	//while(1);
 	// endless loop to toggle the red  LED P0.30
+	addDebug(&Odo_pos_x, TYPE_LONG);
+	addDebug(&Odo_pos_y, TYPE_LONG);
 	while (1)
 	{
 		blinkled();
 		//Asserv_Cons_distance = 15000;
-
+		/*
 		phase_deplacement=DEPLACEMENT_DEBUT;
 		do
 		{
@@ -45,7 +47,7 @@ int	main (void) {
 			k=move_to(100,100);
 		}while(k!=DEPLACEMENT_ARRET);
 
-
+		*/
 
 		/*
 		//////////////////debug///////////////////////
