@@ -13,5 +13,8 @@
 #define TYPE_ULONG 3
 #define TYPE_DOUBLE 4
 void routine_DebugBridge();
-void addDebug(void* varAdr, unsigned char varType);
+unsigned char addDebug(void* varAdr, unsigned char varType);
+void init_DebugBridge();
+void addToSend(unsigned char id);
+void removeToSend(unsigned char id);
 #endif /* DEBUG_BRIDGE_H_ */

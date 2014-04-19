@@ -18,4 +18,5 @@ void init_global()
 	initES_PWM();
 	initFunction_PWM();
 	initPWM();
+	init_DebugBridge();
 }
