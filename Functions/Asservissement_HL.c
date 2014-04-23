@@ -42,7 +42,7 @@ void Asserv_Reset_Derivateur(void) : Reset des dérivateurs
 signed long Asserv_Cons_distance = 0;
 double Asserv_Cons_angle = 0;
 double Asserv_zero = 0;
-double Asserv_dst_act =0;
+signed long Asserv_dst_act =0;
 ///////////static_vars/////////////////////////////////////////////////////
 static int Asserv_mode=0;
 static signed long Asserv_Integrale_Distance = 0;

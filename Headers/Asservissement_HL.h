@@ -10,7 +10,7 @@ int get_Mode_Asserv();
 extern signed long Asserv_Cons_distance;
 extern double Asserv_Cons_angle;
 extern double Asserv_zero;
-extern double Asserv_dst_act;
+extern signed long Asserv_dst_act;
 void Gestion_Asserv_HL(long Tick_droit,long Tick_gauche,long* ordre_distance,long* ordre_angle);
 void Asserv_Reset_Integrateur(void);
 void Asserv_Reset_Derivateur(void);
