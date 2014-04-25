@@ -10,8 +10,8 @@ Fonctions :
 //static int
 void get_linear_coord(signed long x_dest,signed long y_dest,signed long x_source,signed long y_source,signed long* distance,double* angle)
 {
-	signed long delta_x=x_dest-x_source;
-	signed long delta_y=y_dest-y_source;
+	signed long delta_x=(x_dest-x_source)/100;
+	signed long delta_y=(y_dest-y_source)/100;
 	if(delta_x==0 && delta_y ==0)
 	{
 		*distance=0;
@@ -19,7 +19,7 @@ void get_linear_coord(signed long x_dest,signed long y_dest,signed long x_source
 	}
 	else
 	{
-		*distance=sqrt(delta_x*delta_x+delta_y*delta_y);
+		*distance=sqrt(delta_x*delta_x+delta_y*delta_y)*100;
 		if(delta_y==0||delta_x==0)
 		{
 			if(delta_y==0)
