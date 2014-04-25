@@ -32,7 +32,14 @@ void UART0_Sendchar_u(char C)
 	while ((UART0_LSR & (1<<5)) == 0);
 	UART0_THR = C;
 }
-
+unsigned char UART0_GetAvailable()
+{
+	return UART0_LSR & 1;
+}
+unsigned char UART0_Read()
+{
+	return UART0_RBR;
+}
 void printString(char *Str)
 {
 unsigned int i = 0;
