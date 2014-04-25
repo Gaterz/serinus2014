@@ -17,4 +17,6 @@ unsigned char addDebug(void* varAdr, unsigned char varType);
 void init_DebugBridge();
 void addToSend(unsigned char id);
 void removeToSend(unsigned char id);
+void RX_routine();
+void addToRXBuffer(unsigned char c);
 #endif /* DEBUG_BRIDGE_H_ */

@@ -90,5 +90,55 @@ unsigned char addDebug(void* varAdr, unsigned char varType)
 	//ToSend[Ndebug]=1;
 	Ndebug++;
 	return Ndebug-1;
+}
+unsigned char RX_buffer[10];
+void addToRXBuffer(unsigned char c)
+{
+	int i;
+	for(i=1;i<10;i++)
+	{
+		RX_buffer[i]=RX_buffer[i-1];
+	}
+	RX_buffer[0]=c;
+	if(RX_buffer[0]==0x5A && RX_buffer[1]==0x6B)
+	{
+		RX_routine();
+	}
 
 }
+void RX_routine()
+{
+unsigned char type= RX_buffer[2];
+unsigned char id=RX_buffer[3];
+switch(type)
+{
+case TYPE_INT :
+	*(int*)debugList[id]=RX_buffer[3]>>8;
+	*(int*)debugList[id]+=RX_buffer[4];
+			break;
+case TYPE_UINT :
+	*(unsigned int*)debugList[id]=RX_buffer[3]>>8;
+	*(unsigned int*)debugList[id]+=RX_buffer[4];
+			break;
+case TYPE_LONG :
+	*(long*)debugList[id]=RX_buffer[3]>>24;
+	*(long*)debugList[id]+=RX_buffer[4]>>16;
+	*(long*)debugList[id]+=RX_buffer[5]>>8;
+	*(long*)debugList[id]+=RX_buffer[6];
+			break;
+case TYPE_ULONG :
+	*(unsigned long*)debugList[id]=RX_buffer[3]>>24;
+	*(unsigned long*)debugList[id]+=RX_buffer[4]>>16;
+	*(unsigned long*)debugList[id]+=RX_buffer[5]>>8;
+	*(unsigned long*)debugList[id]+=RX_buffer[6];
+			break;
+case TYPE_DOUBLE :
+	tmp.data[0]=RX_buffer[3];
+	tmp.data[1]=RX_buffer[4];
+	tmp.data[2]=RX_buffer[5];
+	tmp.data[3]=RX_buffer[6];
+	*(double*)debugList[id]=tmp.f;
+		break;
+}
+}
+
