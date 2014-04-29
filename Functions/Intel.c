@@ -46,6 +46,7 @@ void initIntel()
 		N_RUN[i]=-1;
 		PARAM[i]=0;
 	}
+	RUN[0]=1;
 }
 void addTask(void (*Task)(unsigned char Step, unsigned int Params),unsigned char type, char n_run, unsigned int param)
 {
@@ -60,7 +61,7 @@ void runTasks()
 	int i;
 	for(i=0;i<N_Task;i++)
 	{
-		if(N_RUN[i]==-1 || N_RUN[i] > 0)
+		if(RUN[i]==1 &&(N_RUN[i]==-1 || N_RUN[i] > 0))
 		{
 			act_TASK=i;
 			(*Task_pool[i])(STEP[i],PARAM[i]);
@@ -84,7 +85,8 @@ void move_task(unsigned char Step, unsigned int Params)
 		if(k==DEPLACEMENT_ARRET)
 		{
 			N_RUN[act_TASK]--;
-			N_RUN[act_TASK+1]++;
+			RUN[act_TASK]=0;
+			RUN[act_TASK+1]=1;
 			STEP[act_TASK]=0;
 		}
 		break;
