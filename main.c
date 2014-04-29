@@ -14,7 +14,11 @@ int	main (void) {
 	int k=0;
 	init_global();
 	Mode_Asserv(MODE_PID);
-	Asserv_Cons_angle=0;
+	addTask(move_task,TASK_MOVE, 1, 0);
+	addTask(move_task,TASK_MOVE, 0, 1);
+	addTask(move_task,TASK_MOVE, 0, 2);
+	addTask(move_task,TASK_MOVE, 0, 3);
+	//Asserv_Cons_angle=0;
 	//printString("AT+BAUD6");
 	//UART0_Sendchar('\n');
 	//while(1);
@@ -22,9 +26,10 @@ int	main (void) {
 	while (1)
 	{
 		blinkled();
+		runTasks();
 		//Asserv_Cons_distance = 15000;
 
-		phase_deplacement=DEPLACEMENT_DEBUT;
+		/*phase_deplacement=DEPLACEMENT_DEBUT;
 		do
 		{
 			k=move_to(60000,0);
@@ -43,7 +48,7 @@ int	main (void) {
 		do
 		{
 			k=move_to(100,100);
-		}while(k!=DEPLACEMENT_ARRET);
+		}while(k!=DEPLACEMENT_ARRET);*/
 
 
 

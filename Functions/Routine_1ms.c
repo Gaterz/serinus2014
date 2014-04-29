@@ -17,7 +17,7 @@ void routine_1ms(void)
 	signed long Cons_gauche=0;
 	//gestion du reset codeur
 
-	IO0SET |= 0x40000000;
+	//IO0SET |= 0x40000000;
 	if(FLAG_RESET_CODEURS==1)
 	{
 		resetCodeurs();
@@ -49,5 +49,5 @@ void routine_1ms(void)
 
 					UART0_Sendchar('\n');*/
 					 FLAG_IT_1MS=0;
-	IO0CLR |= 0x40000000;
+	//IO0CLR |= 0x40000000;
 }
