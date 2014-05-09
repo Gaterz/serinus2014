@@ -65,9 +65,41 @@ void runTasks()
 		{
 			act_TASK=i;
 			(*Task_pool[i])(STEP[i],PARAM[i]);
+
 		}
-		if(N_RUN[i]<-1)N_RUN[i]=-1;
+
 	}
+}
+void runNextType()
+{
+	int nextID=getNextType();
+	if(nextID!=-1)
+	{
+		startTask(nextID);
+	}
+}
+int getNextType()
+{
+	unsigned char actType=TYPE[act_TASK];
+	int i;
+	for(i=act_TASK+1;i<N_Task;i++)
+	{
+		if(TYPE[i]==actType)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+void startTask(int id)
+{
+	STEP[id]=0;
+	RUN[id]=1;
+}
+void endTask()
+{
+	N_RUN[act_TASK]--;
+	if(N_RUN[act_TASK]<-1)N_RUN[act_TASK]=-1;
 }
 int tmp_coordx[5]={40000,40000,0,100};
 int tmp_coordy[5]={0,40000,40000,100};
@@ -84,10 +116,8 @@ void move_task(unsigned char Step, unsigned int Params)
 		k=move_to(tmp_coordx[Params],tmp_coordy[Params]);
 		if(k==DEPLACEMENT_ARRET)
 		{
-			N_RUN[act_TASK]--;
-			RUN[act_TASK]=0;
-			RUN[act_TASK+1]=1;
-			STEP[act_TASK]=0;
+			endTask();
+			runNextType();
 		}
 		break;
 	}
