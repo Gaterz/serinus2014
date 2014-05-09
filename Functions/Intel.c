@@ -96,29 +96,16 @@ void startTask(int id)
 	STEP[id]=0;
 	RUN[id]=1;
 }
+void stopTask(int id)
+{
+	RUN[id]=0;
+}
 void endTask()
 {
 	N_RUN[act_TASK]--;
 	if(N_RUN[act_TASK]<-1)N_RUN[act_TASK]=-1;
 }
-int tmp_coordx[5]={40000,40000,0,100};
-int tmp_coordy[5]={0,40000,40000,100};
-void move_task(unsigned char Step, unsigned int Params)
+void setStep(unsigned char step)
 {
-	unsigned char k;
-	switch(Step)
-	{
-	case 0 :
-		phase_deplacement=DEPLACEMENT_DEBUT;
-		STEP[act_TASK]=1;
-		break;
-	case 1 :
-		k=move_to(tmp_coordx[Params],tmp_coordy[Params]);
-		if(k==DEPLACEMENT_ARRET)
-		{
-			endTask();
-			runNextType();
-		}
-		break;
-	}
+	STEP[act_TASK]=step;
 }

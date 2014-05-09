@@ -14,10 +14,10 @@ int	main (void) {
 	int k=0;
 	init_global();
 	Mode_Asserv(MODE_PID);
-	addTask(move_task,TASK_MOVE, 1, 0);
-	addTask(move_task,TASK_MOVE, 1, 1);
-	addTask(move_task,TASK_MOVE, 1, 2);
-	addTask(move_task,TASK_MOVE, 1, 3);
+	addTask(move_systask,TASK_MOVE, 1, 0);
+	addTask(move_systask,TASK_MOVE, 1, 1);
+	addTask(move_systask,TASK_MOVE, 1, 2);
+	addTask(move_systask,TASK_MOVE, 1, 3);
 	//Asserv_Cons_angle=0;
 	//printString("AT+BAUD6");
 	//UART0_Sendchar('\n');

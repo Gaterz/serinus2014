@@ -11,6 +11,24 @@
 #define N_MAX_TASK 50
 //#define N_TASK_ATTRIBUTES 6
 
+
+///////////TASK STATE
+//extern unsigned char STATE[];
+
+///////////TASK TYPE
+//extern unsigned char TYPE[];
+///////////TASK N_RUN
+//extern char N_RUN[];
+///////////TASK PARAM
+//extern unsigned int PARAM[];
+
+///////////////////////////Intel Attributes
+///////////ACTUAL TASK
+extern unsigned char act_TASK;
+
+
+
+
 ///////////TASK STATES
 #define TASK_STATE_NEW 0
 #define TASK_STATE_TODO 1
@@ -30,6 +48,10 @@
 void initIntel();
 void runTasks();
 void addTask(void (*Task)(unsigned char Step, unsigned int Params),unsigned char type, char n_run, unsigned int param);
-void move_task(unsigned char Step, unsigned int Params);
-
+void runNextType();
+int getNextType();
+void startTask(int id);
+void stopTask(int id);
+void endTask();
+void setStep(unsigned char step);
 #endif /* INTEL_H_ */

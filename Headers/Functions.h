@@ -7,4 +7,6 @@
 #include "Deplacements.h"
 #include "init.h"
 #include "Intel.h"
+#include "SysTask.h"
+#include "UsrTask.h"
 #endif /* FUNCTIONS_H_ */
