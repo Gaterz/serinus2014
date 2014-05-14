@@ -9,4 +9,7 @@
 #include "Intel.h"
 #include "SysTask.h"
 #include "UsrTask.h"
+#include "Routine_1ms.h"
+#include "can_HL.h"
+#include "Msg_can.h"
 #endif /* FUNCTIONS_H_ */

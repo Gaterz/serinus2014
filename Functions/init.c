@@ -19,4 +19,5 @@ void init_global()
 	initFunction_PWM();
 	initPWM();
 	initIntel();
+	CANinit_HW();
 }

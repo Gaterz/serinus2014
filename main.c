@@ -8,10 +8,6 @@ extern signed int phase_deplacement;
                        MAIN
 **********************************************************/
 int	main (void) {
-	// loop counter (stack variable)
-	//long c_droit=0;
-	//long c_gauche=0;
-	int k=0;
 	init_global();
 	Mode_Asserv(MODE_PID);
 	addTask(move_systask,TASK_MOVE, 1, 0);
@@ -27,42 +23,7 @@ int	main (void) {
 	{
 		blinkled();
 		runTasks();
-		//Asserv_Cons_distance = 15000;
-
-		/*phase_deplacement=DEPLACEMENT_DEBUT;
-		do
-		{
-			k=move_to(60000,0);
-		}while(k!=DEPLACEMENT_ARRET);
-		phase_deplacement=DEPLACEMENT_DEBUT;
-		do
-		{
-			k=move_to(60000,60000);
-		}while(k!=DEPLACEMENT_ARRET);
-		phase_deplacement=DEPLACEMENT_DEBUT;
-		do
-		{
-			k=move_to(0,60000);
-		}while(k!=DEPLACEMENT_ARRET);
-		phase_deplacement=DEPLACEMENT_DEBUT;
-		do
-		{
-			k=move_to(100,100);
-		}while(k!=DEPLACEMENT_ARRET);*/
-
-
-
-		/*
-		//////////////////debug///////////////////////
-		//testtimeval=TIMER1_TC;
-				//Gestion_Asserv_HL(100,100,&c_droit,&c_gauche);
-				//Asserv_Cons_distance=500;
-				printString("X : ");
-				printLongVal(Odo_pos_x);//2147483647);
-				printString(" Y : ");
-				printLongVal(Odo_pos_y);//-2147483647);
-				UART0_Sendchar('\n');*/
-		//////////////////////////////////////////////
+		Routine_CAN();
 	}
 }
 

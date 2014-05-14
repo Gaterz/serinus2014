@@ -46,8 +46,8 @@ void routine_1ms(void)
 					printLongVal(Asserv_Cons_angle*1000);//2147483647);
 					printString(" Asserv_zero : ");
 					printLongVal(Asserv_zero*1000);//-2147483647);
-
 					UART0_Sendchar('\n');*/
 					 FLAG_IT_1MS=0;
 	//IO0CLR |= 0x40000000;
+
 }
