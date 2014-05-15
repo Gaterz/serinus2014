@@ -73,17 +73,35 @@ static int Asserv_mode=0;
 */
 signed int phase_deplacement=DEPLACEMENT_DEBUT;
 static unsigned int Tempo_move_to=0;
+unsigned char flag_stop=0;
 signed int move_to(signed long x_dest,signed long y_dest)
 {
 	signed long distance;
+
 	double angle;
 	get_linear_coord(x_dest,y_dest,Odo_pos_x,Odo_pos_y,&distance,&angle);
+	if(flag_stop==1)
+	{
+		if(Check_Dist_Sonard()==0)
+		{
+			flag_stop=0;
+			Mode_Asserv(MODE_PID);
+		}
+	}
+	else if(Check_Dist_Sonard()==1)
+	{
+		Mode_Asserv(MODE_STOP);
+		flag_stop=1;
+	}
+	else
+	{
+
 	switch(phase_deplacement)
 	{
 
 	case DEPLACEMENT_DEBUT :
 		FLAG_RESET_CODEURS=1;
-		Mode_Asserv(MODE_PID);
+
 		while(FLAG_RESET_CODEURS==1);
 		phase_deplacement=DEPLACEMENT_ROTATION;
 		break;
@@ -140,6 +158,7 @@ signed int move_to(signed long x_dest,signed long y_dest)
 		break;
 
 	}
+	}
 	return phase_deplacement;
 }
 unsigned int Dist_Sonard0=0;
@@ -148,5 +167,9 @@ unsigned int Dist_Sonard2=0;
 unsigned int Dist_Sonard3=0;
 unsigned char Check_Dist_Sonard()
 {
-
+	if(Dist_Sonard0<350||Dist_Sonard1<350)
+	{
+		return 1;
+	}
+	return 0;
 }

@@ -13,4 +13,5 @@ extern unsigned int Dist_Sonard0;
 extern unsigned int Dist_Sonard1;
 extern unsigned int Dist_Sonard2;
 extern unsigned int Dist_Sonard3;
+unsigned char Check_Dist_Sonard();
 #endif /* DEPLACEMENTS_H_ */
