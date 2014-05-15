@@ -21,7 +21,7 @@ int	main (void) {
 	// endless loop to toggle the red  LED P0.30
 	while (1)
 	{
-		blinkled();
+		//blinkled();
 		runTasks();
 		Routine_CAN();
 	}

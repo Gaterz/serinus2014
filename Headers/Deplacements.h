@@ -9,4 +9,8 @@
 void get_linear_coord(signed long x_dest,signed long y_dest,signed long x_source,signed long y_source,signed long* distance,double* angle);
 signed int move_to(signed long x_dest,signed long y_dest);
 extern signed int phase_deplacement;
+extern unsigned int Dist_Sonard0;
+extern unsigned int Dist_Sonard1;
+extern unsigned int Dist_Sonard2;
+extern unsigned int Dist_Sonard3;
 #endif /* DEPLACEMENTS_H_ */
