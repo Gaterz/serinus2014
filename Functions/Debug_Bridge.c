@@ -24,6 +24,9 @@ void init_DebugBridge()
 	}
 	addToSend(addDebug(&Odo_pos_x, TYPE_LONG));
 	addToSend(addDebug(&Odo_pos_y, TYPE_LONG));
+	addToSend(addDebug(&Asserv_Cons_distance, TYPE_LONG));
+	addToSend(addDebug(&Asserv_dst_act, TYPE_LONG));
+	addToSend(addDebug(&Odo_angle, TYPE_DOUBLE));
 }
 void routine_DebugBridge()
 {
@@ -95,7 +98,7 @@ unsigned char RX_buffer[10];
 void addToRXBuffer(unsigned char c)
 {
 	int i;
-	for(i=1;i<10;i++)
+	for(i=10;i>0;i--)
 	{
 		RX_buffer[i]=RX_buffer[i-1];
 	}
@@ -113,30 +116,30 @@ unsigned char id=RX_buffer[3];
 switch(type)
 {
 case TYPE_INT :
-	*(int*)debugList[id]=RX_buffer[3]>>8;
-	*(int*)debugList[id]+=RX_buffer[4];
+	*(int*)debugList[id]=RX_buffer[4]<<8;
+	*(int*)debugList[id]+=RX_buffer[5];
 			break;
 case TYPE_UINT :
-	*(unsigned int*)debugList[id]=RX_buffer[3]>>8;
-	*(unsigned int*)debugList[id]+=RX_buffer[4];
+	*(unsigned int*)debugList[id]=RX_buffer[4]<<8;
+	*(unsigned int*)debugList[id]+=RX_buffer[5];
 			break;
 case TYPE_LONG :
-	*(long*)debugList[id]=RX_buffer[3]>>24;
-	*(long*)debugList[id]+=RX_buffer[4]>>16;
-	*(long*)debugList[id]+=RX_buffer[5]>>8;
-	*(long*)debugList[id]+=RX_buffer[6];
+	*(long*)debugList[id]=RX_buffer[4]<<24;
+	*(long*)debugList[id]+=RX_buffer[5]<<16;
+	*(long*)debugList[id]+=RX_buffer[6]<<8;
+	*(long*)debugList[id]+=RX_buffer[7];
 			break;
 case TYPE_ULONG :
-	*(unsigned long*)debugList[id]=RX_buffer[3]>>24;
-	*(unsigned long*)debugList[id]+=RX_buffer[4]>>16;
-	*(unsigned long*)debugList[id]+=RX_buffer[5]>>8;
-	*(unsigned long*)debugList[id]+=RX_buffer[6];
+	*(unsigned long*)debugList[id]=RX_buffer[4]<<24;
+	*(unsigned long*)debugList[id]+=RX_buffer[5]<<16;
+	*(unsigned long*)debugList[id]+=RX_buffer[6]<<8;
+	*(unsigned long*)debugList[id]+=RX_buffer[7];
 			break;
 case TYPE_DOUBLE :
-	tmp.data[0]=RX_buffer[3];
-	tmp.data[1]=RX_buffer[4];
-	tmp.data[2]=RX_buffer[5];
-	tmp.data[3]=RX_buffer[6];
+	tmp.data[0]=RX_buffer[4];
+	tmp.data[1]=RX_buffer[5];
+	tmp.data[2]=RX_buffer[6];
+	tmp.data[3]=RX_buffer[7];
 	*(double*)debugList[id]=tmp.f;
 		break;
 }

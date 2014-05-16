@@ -53,6 +53,10 @@ void routine_1ms(void)
 					printString("sonard1 : ");
 					printLongVal(Dist_Sonard1);//2147483647);
 					UART0_Sendchar('\n');*/
+	while(UART0_GetAvailable())
+	{
+		addToRXBuffer(UART0_Read());
+	}
 					 FLAG_IT_1MS=0;
 	//IO0CLR |= 0x40000000;
 }

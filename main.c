@@ -14,6 +14,10 @@ int	main (void) {
 	addTask(move_systask,TASK_MOVE, 1, 1);
 	addTask(move_systask,TASK_MOVE, 1, 2);
 	addTask(move_systask,TASK_MOVE, 1, 3);
+	while(FLAG_START==0)
+	{
+
+	}
 	while (1)
 	{
 		//blinkled();

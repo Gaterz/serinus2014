@@ -8,3 +8,4 @@ Fonctions :
 #include "all_head.h"
 unsigned int FLAG_RESET_CODEURS=0;
 unsigned int FLAG_IT_1MS=0;
+unsigned char FLAG_START=0;
