@@ -12,4 +12,5 @@
 #include "Routine_1ms.h"
 #include "can_HL.h"
 #include "Msg_can.h"
+#include "Debug_Bridge.h"
 #endif /* FUNCTIONS_H_ */

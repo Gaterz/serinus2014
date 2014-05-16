@@ -14,11 +14,6 @@ int	main (void) {
 	addTask(move_systask,TASK_MOVE, 1, 1);
 	addTask(move_systask,TASK_MOVE, 1, 2);
 	addTask(move_systask,TASK_MOVE, 1, 3);
-	//Asserv_Cons_angle=0;
-	//printString("AT+BAUD6");
-	//UART0_Sendchar('\n');
-	//while(1);
-	// endless loop to toggle the red  LED P0.30
 	while (1)
 	{
 		//blinkled();

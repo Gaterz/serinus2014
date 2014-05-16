@@ -3,6 +3,7 @@
 
 void init_UART0(void);
 void UART0_Sendchar(char C);
+void UART0_Sendchar_u(char C);
 void printLongVal(signed long value);
 
 #endif /* UART_H_ */

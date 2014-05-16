@@ -33,7 +33,8 @@ SRCS=\
 	Functions/UsrTask.c \
 	Low_LVL/can.c \
 	Functions/can_HL.c \
-	Functions/Msg_can.c
+	Functions/Msg_can.c \
+	Functions/Debug_Bridge.c
 
 CC      = arm-none-eabi-gcc
 LD      = arm-none-eabi-gcc

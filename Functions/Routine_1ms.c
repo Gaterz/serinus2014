@@ -37,11 +37,7 @@ void routine_1ms(void)
 	Gestion_Asserv_LL(Codeur_d,Codeur_g,&Cons_droite,&Cons_gauche);
 	controlMotor1_invert(Cons_droite);
 	controlMotor2_invert(Cons_gauche);
-	/*printString("sonard0 : ");
-	printLongVal(Dist_Sonard0);//2147483647);
-	printString("sonard1 : ");
-	printLongVal(Dist_Sonard1);//2147483647);
-	UART0_Sendchar('\n');*/
+	routine_DebugBridge();
 					/*
 					printString("cdroite : ");
 					printLongVal(Codeur_d);//2147483647);
@@ -52,7 +48,11 @@ void routine_1ms(void)
 					printString(" Asserv_zero : ");
 					printLongVal(Asserv_zero*1000);//-2147483647);
 					UART0_Sendchar('\n');*/
+					/*printString("sonard0 : ");
+					printLongVal(Dist_Sonard0);//2147483647);
+					printString("sonard1 : ");
+					printLongVal(Dist_Sonard1);//2147483647);
+					UART0_Sendchar('\n');*/
 					 FLAG_IT_1MS=0;
 	//IO0CLR |= 0x40000000;
-
 }

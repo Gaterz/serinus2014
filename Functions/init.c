@@ -20,4 +20,5 @@ void init_global()
 	initPWM();
 	initIntel();
 	CANinit_HW();
+	init_DebugBridge();
 }
