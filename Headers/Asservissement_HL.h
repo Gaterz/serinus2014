@@ -15,4 +15,10 @@ void Gestion_Asserv_HL(long Tick_droit,long Tick_gauche,long* ordre_distance,lon
 void Asserv_Reset_Integrateur(void);
 void Asserv_Reset_Derivateur(void);
 void set_Asserv_angle_abs(double angle_abs);
+extern float P_PID_DISTANCE;//5.7 3.1
+extern float I_PID_DISTANCE;//0.2 0.22
+extern float D_PID_DISTANCE;//20.0 37.0
+extern float P_PID_ANGLE;//5.1 2.6
+extern float I_PID_ANGLE;//0.25 0.27
+extern float D_PID_ANGLE;//15.3 23.0
 #endif /* ASSERVISSEMENT_HL_H_ */
