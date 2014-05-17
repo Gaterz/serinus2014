@@ -44,6 +44,10 @@ extern unsigned char act_TASK;
 #define INTEL_STATE_RUN 4
 ///////////TASK TYPES
 #define TASK_MOVE 0
+///////////SYS TASK
+#define MATCH_SYSTASK_TYPE 0
+#define DEPLACEMENT_SYSTASK_TYPE 1
+#define MOVE_SYSTASK_TYPE 2
 
 void initIntel();
 void runTasks();

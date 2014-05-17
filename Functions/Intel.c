@@ -46,7 +46,7 @@ void initIntel()
 		N_RUN[i]=-1;
 		PARAM[i]=0;
 	}
-	RUN[0]=1;
+	//RUN[0]=1;
 }
 unsigned int addTask(void (*Task)(unsigned char Step, unsigned int Params),unsigned char type, char n_run, unsigned int param)
 {
@@ -60,16 +60,30 @@ unsigned int addTask(void (*Task)(unsigned char Step, unsigned int Params),unsig
 void runTasks()
 {
 	int i;
-	for(i=0;i<N_Task;i++)
+	switch(INTEL_STATE)
 	{
-		if(RUN[i]==1 &&(N_RUN[i]==-1 || N_RUN[i] > 0))
+	case INTEL_STATE_PAUSE :
+			break;
+	case INTEL_STATE_HALT :
+	case INTEL_STATE_STOP :
+		break;
+	case INTEL_STATE_START :
+		startTask(addTask(&match_systask,MATCH_SYSTASK_TYPE,-1,0));
+		startTask(addTask(&deplacement_systask,DEPLACEMENT_SYSTASK_TYPE,-1,0));
+		startTask(addTask(&move_systask,MOVE_SYSTASK_TYPE,-1,0));
+	case INTEL_STATE_RUN :
+		for(i=0;i<N_Task;i++)
 		{
-			act_TASK=i;
-			(*Task_pool[i])(STEP[i],PARAM[i]);
-
+			if(RUN[i]==1 &&(N_RUN[i]==-1 || N_RUN[i] > 0))
+			{
+				act_TASK=i;
+				(*Task_pool[i])(STEP[i],PARAM[i]);
+			}
 		}
-
+		break;
 	}
+
+
 }
 void runNextType()
 {
