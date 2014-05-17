@@ -48,13 +48,14 @@ void initIntel()
 	}
 	RUN[0]=1;
 }
-void addTask(void (*Task)(unsigned char Step, unsigned int Params),unsigned char type, char n_run, unsigned int param)
+unsigned int addTask(void (*Task)(unsigned char Step, unsigned int Params),unsigned char type, char n_run, unsigned int param)
 {
 	Task_pool[N_Task]=Task;
 	STATE[N_Task]=TASK_STATE_NEW;
 	N_RUN[N_Task]=n_run;
 	PARAM[N_Task]=param;
 	N_Task++;
+	return N_Task-1;
 }
 void runTasks()
 {
@@ -108,4 +109,12 @@ void endTask()
 void setStep(unsigned char step)
 {
 	STEP[act_TASK]=step;
+}
+void setParam(int id, unsigned int param)
+{
+	PARAM[id]=param;
+}
+unsigned int getParam(int id)
+{
+	return PARAM[id];
 }

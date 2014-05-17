@@ -47,11 +47,13 @@ extern unsigned char act_TASK;
 
 void initIntel();
 void runTasks();
-void addTask(void (*Task)(unsigned char Step, unsigned int Params),unsigned char type, char n_run, unsigned int param);
+unsigned int addTask(void (*Task)(unsigned char Step, unsigned int Params),unsigned char type, char n_run, unsigned int param);
 void runNextType();
 int getNextType();
 void startTask(int id);
 void stopTask(int id);
 void endTask();
 void setStep(unsigned char step);
+void setParam(int id, unsigned int param);
+unsigned int getParam(int id);
 #endif /* INTEL_H_ */
