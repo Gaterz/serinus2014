@@ -13,6 +13,22 @@ void deplacement_systask(unsigned char Step, unsigned int Params)
 
 void match_systask(unsigned char Step, unsigned int Params)
 {
+	switch(Step)
+		{
+		case 0:
+			setParam(act_TASK, addTask(move_systask,MOVE_SYSTASK_TYPE, 1, 0));
+			addTask(move_systask,MOVE_SYSTASK_TYPE, 1, 1);
+			addTask(move_systask,MOVE_SYSTASK_TYPE, 1, 2);
+			addTask(move_systask,MOVE_SYSTASK_TYPE, 1, 3);
+			setStep(1);
+			break;
+		case 1:
+			startTask(Params);
+			setStep(2);
+			break;
+		case 2:
+			break;
+		}
 
 }
 

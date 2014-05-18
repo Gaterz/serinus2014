@@ -10,14 +10,12 @@ extern signed int phase_deplacement;
 int	main (void) {
 	init_global();
 	Mode_Asserv(MODE_PID);
-	addTask(move_systask,TASK_MOVE, 1, 0);
-	addTask(move_systask,TASK_MOVE, 1, 1);
-	addTask(move_systask,TASK_MOVE, 1, 2);
-	addTask(move_systask,TASK_MOVE, 1, 3);
+
 	while(FLAG_START==0)
 	{
 
 	}
+	Intel_Start();
 	while (1)
 	{
 		//blinkled();

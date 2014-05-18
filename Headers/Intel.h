@@ -32,10 +32,11 @@ extern unsigned char act_TASK;
 ///////////TASK STATES
 #define TASK_STATE_NEW 0
 #define TASK_STATE_TODO 1
-#define TASK_STATE_DELAYED 2
-#define TASK_STATE_ENDED 3
-#define TASK_STATE_CANCEL 4
-#define TASK_STATE_NONE 5
+#define TASK_STATE_RUNNING 2
+#define TASK_STATE_DELAYED 3
+#define TASK_STATE_ENDED 4
+#define TASK_STATE_CANCEL 5
+#define TASK_STATE_NONE 6
 ///////////INTEL STATES
 #define INTEL_STATE_STOP 0
 #define INTEL_STATE_HALT 1
@@ -43,7 +44,6 @@ extern unsigned char act_TASK;
 #define INTEL_STATE_START 3
 #define INTEL_STATE_RUN 4
 ///////////TASK TYPES
-#define TASK_MOVE 0
 ///////////SYS TASK
 #define MATCH_SYSTASK_TYPE 0
 #define DEPLACEMENT_SYSTASK_TYPE 1
@@ -60,4 +60,6 @@ void endTask();
 void setStep(unsigned char step);
 void setParam(int id, unsigned int param);
 unsigned int getParam(int id);
+unsigned char getTaskState(int id);
+void Intel_Start();
 #endif /* INTEL_H_ */

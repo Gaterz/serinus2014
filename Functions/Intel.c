@@ -70,7 +70,8 @@ void runTasks()
 	case INTEL_STATE_START :
 		startTask(addTask(&match_systask,MATCH_SYSTASK_TYPE,-1,0));
 		startTask(addTask(&deplacement_systask,DEPLACEMENT_SYSTASK_TYPE,-1,0));
-		startTask(addTask(&move_systask,MOVE_SYSTASK_TYPE,-1,0));
+		//startTask(addTask(&move_systask,MOVE_SYSTASK_TYPE,-1,0));
+		INTEL_STATE=INTEL_STATE_RUN;
 	case INTEL_STATE_RUN :
 		for(i=0;i<N_Task;i++)
 		{
@@ -78,6 +79,14 @@ void runTasks()
 			{
 				act_TASK=i;
 				(*Task_pool[i])(STEP[i],PARAM[i]);
+				switch(STATE[i])
+				{
+				case TASK_STATE_NEW :
+					STATE[i]=TASK_STATE_RUNNING;
+					break;
+				case TASK_STATE_RUNNING :
+					break;
+				}
 			}
 		}
 		break;
@@ -131,4 +140,12 @@ void setParam(int id, unsigned int param)
 unsigned int getParam(int id)
 {
 	return PARAM[id];
+}
+unsigned char getTaskState(int id)
+{
+	return STATE[id];
+}
+void Intel_Start()
+{
+	INTEL_STATE=INTEL_STATE_START;
 }
