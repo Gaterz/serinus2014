@@ -20,7 +20,6 @@ int	main (void) {
 	{
 		//blinkled();
 		runTasks();
-		Routine_CAN();
 	}
 }
 

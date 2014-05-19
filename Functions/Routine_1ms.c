@@ -38,6 +38,8 @@ void routine_1ms(void)
 	controlMotor1_invert(Cons_droite);
 	controlMotor2_invert(Cons_gauche);
 	routine_DebugBridge();
+	Routine_CAN();
+
 					/*
 					printString("cdroite : ");
 					printLongVal(Codeur_d);//2147483647);
@@ -57,6 +59,7 @@ void routine_1ms(void)
 	{
 		addToRXBuffer(UART0_Read());
 	}
-					 FLAG_IT_1MS=0;
+
+	FLAG_IT_1MS=0;
 	//IO0CLR |= 0x40000000;
 }
