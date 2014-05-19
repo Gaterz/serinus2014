@@ -161,10 +161,7 @@ signed int move_to(signed long x_dest,signed long y_dest)
 	}
 	return phase_deplacement;
 }
-unsigned int Dist_Sonard0=0;
-unsigned int Dist_Sonard1=0;
-unsigned int Dist_Sonard2=0;
-unsigned int Dist_Sonard3=0;
+
 unsigned char Check_Dist_Sonard()
 {
 	if(Dist_Sonard0<350||Dist_Sonard1<350)
