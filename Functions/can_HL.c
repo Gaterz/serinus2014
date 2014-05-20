@@ -26,3 +26,9 @@ void Routine_CAN()
 		}
 	}
 }
+void Envoi_POS_AX12()
+{
+	 Message_Ax_12.dataL=(long)(POS_AX12[3]<<24)+(long)(POS_AX12[2]<<16)+(long)(POS_AX12[1]<<8)+(long)POS_AX12[0];
+	 Message_Ax_12.dataH=(long)(POS_AX12[7]<<24)+(long)(POS_AX12[6]<<16)+(long)(POS_AX12[5]<<8)+(long)POS_AX12[4];
+	 CANTransmitMessage(&Message_Ax_12);
+}

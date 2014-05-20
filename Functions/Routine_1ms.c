@@ -59,7 +59,7 @@ void routine_1ms(void)
 	{
 		addToRXBuffer(UART0_Read());
 	}
-
+	Envoi_POS_AX12();
 	FLAG_IT_1MS=0;
 	//IO0CLR |= 0x40000000;
 }

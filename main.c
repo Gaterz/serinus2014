@@ -10,7 +10,14 @@ extern signed int phase_deplacement;
 int	main (void) {
 	init_global();
 	Mode_Asserv(MODE_PID);
-
+	POS_AX12[0]=1;
+	POS_AX12[1]=2;
+	POS_AX12[2]=3;
+	POS_AX12[3]=4;
+	POS_AX12[4]=5;
+	POS_AX12[5]=6;
+	POS_AX12[6]=7;
+	POS_AX12[7]=8;
 	while(FLAG_START==0)
 	{
 

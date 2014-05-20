@@ -7,7 +7,7 @@
 
 #ifndef CAN_HL_H_
 void Routine_CAN();
-
+void Envoi_POS_AX12();
 
 #define CAN_HL_H_
 

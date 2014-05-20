@@ -27,6 +27,7 @@ void init_DebugBridge()
 	addToSend(addDebug(&Asserv_Cons_distance, TYPE_LONG));
 	addToSend(addDebug(&Asserv_dst_act, TYPE_LONG));
 	addToSend(addDebug(&Odo_angle, TYPE_DOUBLE));
+	addToSend(addDebug(&Asserv_Cons_angle, TYPE_DOUBLE));
 }
 void routine_DebugBridge()
 {

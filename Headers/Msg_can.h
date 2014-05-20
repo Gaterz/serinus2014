@@ -20,3 +20,4 @@ extern canMsgType Message_Activat;
 #define ID_MSG_CAN_AX12_R 5		//R
 #define ID_MSG_CAN_ACTIVATE 6	//T
 #endif /* MSG_CAN_H_ */
+
