@@ -26,8 +26,17 @@ void init_DebugBridge()
 	addToSend(addDebug(&Odo_pos_y, TYPE_LONG));
 	addToSend(addDebug(&Asserv_Cons_distance, TYPE_LONG));
 	addToSend(addDebug(&Asserv_dst_act, TYPE_LONG));
+
+
 	addToSend(addDebug(&Odo_angle, TYPE_DOUBLE));
 	addToSend(addDebug(&Asserv_Cons_angle, TYPE_DOUBLE));
+
+	addToSend(addDebug(&POS_AX12[0], TYPE_UCHAR));
+	addToSend(addDebug(&POS_AX12[1], TYPE_UCHAR));
+	addToSend(addDebug(&POS_AX12[2], TYPE_UCHAR));
+	addToSend(addDebug(&POS_AX12[3], TYPE_UCHAR));
+
+
 }
 void routine_DebugBridge()
 {
@@ -45,6 +54,9 @@ void routine_DebugBridge()
 			UART0_Sendchar_u(debugType[i]);
 			switch(debugType[i])
 			{
+			case TYPE_UCHAR :
+				UART0_Sendchar_u(*(unsigned char*)debugList[i]&0xFF);
+						break;
 			case TYPE_INT :
 				UART0_Sendchar_u(*(int*)debugList[i]>>8);
 				UART0_Sendchar_u(*(int*)debugList[i]&0xFF);
@@ -116,6 +128,10 @@ unsigned char type= RX_buffer[2];
 unsigned char id=RX_buffer[3];
 switch(type)
 {
+
+case TYPE_UCHAR :
+	*(unsigned char*)debugList[id]=RX_buffer[4];
+			break;
 case TYPE_INT :
 	*(int*)debugList[id]=RX_buffer[4]<<8;
 	*(int*)debugList[id]+=RX_buffer[5];
@@ -141,7 +157,7 @@ case TYPE_DOUBLE :
 	tmp.data[1]=RX_buffer[5];
 	tmp.data[2]=RX_buffer[6];
 	tmp.data[3]=RX_buffer[7];
-	*(double*)debugList[id]=tmp.f;
+	*(double*)debugList[id]=(double)tmp.f;
 		break;
 }
 }

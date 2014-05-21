@@ -12,6 +12,7 @@
 #define TYPE_LONG 2
 #define TYPE_ULONG 3
 #define TYPE_DOUBLE 4
+#define TYPE_UCHAR 5
 void routine_DebugBridge();
 unsigned char addDebug(void* varAdr, unsigned char varType);
 void init_DebugBridge();
