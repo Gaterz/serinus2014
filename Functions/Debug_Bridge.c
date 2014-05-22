@@ -31,10 +31,15 @@ void init_DebugBridge()
 	addToSend(addDebug(&Odo_angle, TYPE_DOUBLE));
 	addToSend(addDebug(&Asserv_Cons_angle, TYPE_DOUBLE));
 
-	addToSend(addDebug(&POS_AX12[0], TYPE_UCHAR));
-	addToSend(addDebug(&POS_AX12[1], TYPE_UCHAR));
-	addToSend(addDebug(&POS_AX12[2], TYPE_UCHAR));
-	addToSend(addDebug(&POS_AX12[3], TYPE_UCHAR));
+	addToSend(addDebug(&AX12[0], TYPE_UCHAR));
+	addToSend(addDebug(&AX12[1], TYPE_UCHAR));
+	addToSend(addDebug(&AX12[2], TYPE_UCHAR));
+	addToSend(addDebug(&AX12[3], TYPE_UCHAR));
+
+	addToSend(addDebug(&Pompe1, TYPE_UCHAR));
+	addToSend(addDebug(&Pompe2, TYPE_UCHAR));
+	addToSend(addDebug(&Pompe3, TYPE_UCHAR));
+
 
 
 }
