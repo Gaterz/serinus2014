@@ -7,7 +7,7 @@ Fonctions : void routine_1ms(void) : Vas gérer l'appel au diverses fonction d'od
 et d'asservissement
 **************************************************************************************/
 #include "../all_head.h"
-
+unsigned int Timer_Match=0;
 void routine_1ms(void)
 {
 	//vars
@@ -61,6 +61,7 @@ void routine_1ms(void)
 	}
 	Envoi_POS_AX12();
 	Envoi_Etat_Pompes();
+	Timer_Match++;
 	FLAG_IT_1MS=0;
 	//IO0CLR |= 0x40000000;
 }

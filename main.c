@@ -3,7 +3,7 @@
  **********************************************************/
 
 #include "main.h"
-extern signed int phase_deplacement;
+//extern signed int phase_deplacement;
 /**********************************************************
                        MAIN
 **********************************************************/
@@ -15,10 +15,10 @@ int	main (void) {
 
 	}
 	Intel_Start();
-	while (1)
+	while (!FLAG_TIMER_EN || Timer_Match <=2000)
 	{
-		//blinkled();
-		runTasks();
+		blinkled();
+		//runTasks();
 	}
 }
 
