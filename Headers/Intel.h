@@ -55,7 +55,7 @@ unsigned int addTask(void (*Task)(unsigned char Step, unsigned int Params),unsig
 void runNextType();
 int getNextType();
 void startTask(int id);
-void stopTask(int id);
+void PauseTask(int id);
 void endTask();
 void setStep(unsigned char step);
 void setParam(int id, unsigned int param);

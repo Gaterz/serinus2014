@@ -40,8 +40,8 @@ float I_PID_ANGLE = 0.1;//0.25 0.27
 float D_PID_ANGLE = 15.3;//15.3 23.0
 ///////////global_vars/////////////////////////////////////////////////////
 signed long Asserv_Cons_distance = 0;
-double Asserv_Cons_angle = 0;
-double Asserv_zero = 0;
+double Asserv_Cons_angle = 0.0;
+double Asserv_zero = 0.0;
 signed long Asserv_dst_act =0;
 ///////////static_vars/////////////////////////////////////////////////////
 static int Asserv_mode=0;

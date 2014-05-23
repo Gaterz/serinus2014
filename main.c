@@ -10,15 +10,15 @@
 int	main (void) {
 	init_global();
 	Mode_Asserv(MODE_PID);
+	Intel_Start();
 	while(FLAG_START==0)
 	{
-
 	}
-	Intel_Start();
+
 	while (!FLAG_TIMER_EN || Timer_Match <=2000)
 	{
-		blinkled();
-		//runTasks();
+		//blinkled();
+		runTasks();
 	}
 }
 

@@ -35,8 +35,12 @@ void routine_1ms(void)
 	Gestion_Odometrie_LL(Codeur_d,Codeur_g);
 	//gestion asserv
 	Gestion_Asserv_LL(Codeur_d,Codeur_g,&Cons_droite,&Cons_gauche);
-	controlMotor1_invert(Cons_droite);
-	controlMotor2_invert(Cons_gauche);
+	if(FLAG_MANUAL==0)
+	{
+		controlMotor1_invert(Cons_droite);
+		controlMotor2_invert(Cons_gauche);
+	}
+
 	routine_DebugBridge();
 	Routine_CAN();
 
@@ -61,7 +65,10 @@ void routine_1ms(void)
 	}
 	Envoi_POS_AX12();
 	Envoi_Etat_Pompes();
-	Timer_Match++;
+	if(FLAG_START==1)
+	{
+		Timer_Match++;
+	}
 	FLAG_IT_1MS=0;
 	//IO0CLR |= 0x40000000;
 }

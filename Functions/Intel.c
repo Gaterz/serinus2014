@@ -120,13 +120,25 @@ void startTask(int id)
 	STEP[id]=0;
 	RUN[id]=1;
 }
-void stopTask(int id)
+void PauseTask(int id)
 {
 	RUN[id]=0;
+	STATE[id]=TASK_STATE_DELAYED ;
+}
+void AbortTask(int id)
+{
+	RUN[id]=0;
+	STATE[id]=TASK_STATE_CANCEL ;
+}
+void ResumeTask(int id)
+{
+	RUN[id]=1;
+	STATE[id]=TASK_STATE_TODO;
 }
 void endTask()
 {
 	N_RUN[act_TASK]--;
+	STATE[act_TASK]=TASK_STATE_ENDED;
 	if(N_RUN[act_TASK]<-1)N_RUN[act_TASK]=-1;
 }
 void setStep(unsigned char step)

@@ -170,3 +170,82 @@ unsigned char Check_Dist_Sonard()
 	}
 	return 0;
 }
+void self_pos()
+{
+	int i;
+	FLAG_IT_1MS=1;
+	while(FLAG_IT_1MS==1)
+	{
+	}
+	Mode_Asserv(MODE_STOP);
+	FLAG_MANUAL=1;
+	controlMotor1_invert(-2000);
+	controlMotor2_invert(-2000);
+	for(i=0;i<300;i++)
+	{
+		FLAG_IT_1MS=1;
+		while(FLAG_IT_1MS==1)
+		{
+		}
+	}
+	Odo_pos_y=2000;
+	Odo_angle=ODO_PI/2.0;
+	controlMotor1_invert(2000);
+	controlMotor2_invert(2000);
+
+	for(i=0;i<100;i++)
+	{
+		FLAG_IT_1MS=1;
+		while(FLAG_IT_1MS==1)
+		{
+		}
+	}
+	controlMotor1_invert(0);
+	controlMotor2_invert(0);
+	Mode_Asserv(MODE_PID);
+	FLAG_MANUAL=0;
+	Asserv_Cons_angle=0.0;
+	for(i=0;i<200;i++)
+		{
+			FLAG_IT_1MS=1;
+			while(FLAG_IT_1MS==1)
+			{
+			}
+		}
+
+
+
+	FLAG_IT_1MS=1;
+	while(FLAG_IT_1MS==1)
+	{
+	}
+	Mode_Asserv(MODE_STOP);
+	FLAG_MANUAL=1;
+	controlMotor1_invert(-2000);
+	controlMotor2_invert(-2000);
+	for(i=0;i<300;i++)
+	{
+		FLAG_IT_1MS=1;
+		while(FLAG_IT_1MS==1)
+		{
+		}
+	}
+	Odo_pos_x=2000;
+	controlMotor1_invert(2000);
+	controlMotor2_invert(2000);
+
+	for(i=0;i<100;i++)
+	{
+		FLAG_IT_1MS=1;
+		while(FLAG_IT_1MS==1)
+		{
+		}
+	}
+	controlMotor1_invert(0);
+	controlMotor2_invert(0);
+	Asserv_Cons_angle=0.0;
+	Mode_Asserv(MODE_PID);
+	FLAG_MANUAL=0;
+
+
+}

@@ -32,8 +32,8 @@ void match_systask(unsigned char Step, unsigned int Params)
 
 }
 
-int tmp_coordx[5]={40000,40000,0,100};
-int tmp_coordy[5]={0,40000,40000,100};
+long move_systask_coordx[40];
+long move_systask_coordy[40];
 void move_systask(unsigned char Step, unsigned int Params)
 {
 	unsigned char k;
@@ -44,12 +44,23 @@ void move_systask(unsigned char Step, unsigned int Params)
 		setStep(1);
 		break;
 	case 1 :
-		k=move_to(tmp_coordx[Params],tmp_coordy[Params]);
+		k=move_to(move_systask_coordx[Params],move_systask_coordy[Params]);
 		if(k==DEPLACEMENT_ARRET)
 		{
 			endTask();
-			runNextType();
+			//runNextType();
 		}
 		break;
 	}
+}
+unsigned int n_Move_Task=0;
+
+int Add_move_task(signed long x,signed long y)
+{
+	int tID;
+	move_systask_coordx[n_Move_Task]=x;
+	move_systask_coordy[n_Move_Task]=y;
+	addTask(&move_systask,MOVE_SYSTASK_TYPE, 1, n_Move_Task);
+	n_Move_Task++;
+	return tID;
 }
