@@ -21,6 +21,14 @@ void Routine_CAN()
 			//CANTransmitMessage(&Message_R);
 			break;
 		case ID_MSG_CAN_BUTTON :
+			INTERUPTEUR_JACK=Message_R.dataL&1;
+			INTERUPTEUR_JAUNE=(Message_R.dataL>>1)&1;
+			INTERUPTEUR_ROUGE=(Message_R.dataL>>2)&1;
+			F_course1=(Message_R.dataL>>3)&1;
+			F_course2=(Message_R.dataL>>4)&1;
+			F_course3=(Message_R.dataL>>5)&1;
+			F_course4=(Message_R.dataL>>6)&1;
+			F_course5=(Message_R.dataL>>7)&1;
 
 			break;
 		case ID_MSG_CAN_AX12_R :

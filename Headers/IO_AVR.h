@@ -27,4 +27,9 @@ extern unsigned char POS_AX12[8];
 extern unsigned char INTERUPTEUR_ROUGE;
 extern unsigned char INTERUPTEUR_JAUNE;
 extern unsigned char INTERUPTEUR_JACK;
+extern unsigned char F_course1;
+extern unsigned char F_course2;
+extern unsigned char F_course3;
+extern unsigned char F_course4;
+extern unsigned char F_course5;
 #endif /* IO_AVR_H_ */
