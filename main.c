@@ -18,7 +18,7 @@ int	main (void) {
 	while (!FLAG_TIMER_EN || Timer_Match <=2000)
 	{
 		//blinkled();
-		runTasks();
+		//runTasks();
 	}
 }
 

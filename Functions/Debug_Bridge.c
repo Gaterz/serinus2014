@@ -30,6 +30,10 @@ void init_DebugBridge()
 
 	addToSend(addDebug(&Odo_angle, TYPE_DOUBLE));
 	addToSend(addDebug(&Asserv_Cons_angle, TYPE_DOUBLE));
+	addToSend(addDebug(&P_PID_ANGLE, TYPE_DOUBLE));
+	addToSend(addDebug(&I_PID_ANGLE, TYPE_DOUBLE));
+	addToSend(addDebug(&D_PID_ANGLE, TYPE_DOUBLE));
+
 
 	addToSend(addDebug(&AX12[0], TYPE_UCHAR));
 	addToSend(addDebug(&AX12[1], TYPE_UCHAR));
@@ -39,6 +43,10 @@ void init_DebugBridge()
 	addToSend(addDebug(&Pompe1, TYPE_UCHAR));
 	addToSend(addDebug(&Pompe2, TYPE_UCHAR));
 	addToSend(addDebug(&Pompe3, TYPE_UCHAR));
+
+	addToSend(addDebug(&INTERUPTEUR_JACK, TYPE_UCHAR));
+	addToSend(addDebug(&INTERUPTEUR_JAUNE, TYPE_UCHAR));
+	addToSend(addDebug(&INTERUPTEUR_ROUGE, TYPE_UCHAR));
 
 
 
