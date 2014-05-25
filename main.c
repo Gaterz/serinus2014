@@ -11,9 +11,11 @@ int	main (void) {
 	init_global();
 	Mode_Asserv(MODE_PID);
 	Intel_Start();
+
 	while(FLAG_START==0)
 	{
 	}
+	self_pos();
 
 	while (!FLAG_TIMER_EN || Timer_Match <=2000)
 	{

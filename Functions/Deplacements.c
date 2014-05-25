@@ -179,8 +179,8 @@ void self_pos()
 	}
 	Mode_Asserv(MODE_STOP);
 	FLAG_MANUAL=1;
-	controlMotor1_invert(-2000);
-	controlMotor2_invert(-2000);
+	controlMotor1_invert(-3000);
+	controlMotor2_invert(-3000);
 	for(i=0;i<300;i++)
 	{
 		FLAG_IT_1MS=1;
@@ -190,10 +190,11 @@ void self_pos()
 	}
 	Odo_pos_y=2000;
 	Odo_angle=ODO_PI/2.0;
-	controlMotor1_invert(2000);
-	controlMotor2_invert(2000);
 
-	for(i=0;i<100;i++)
+	controlMotor1_invert(3000);
+	controlMotor2_invert(3000);
+
+	for(i=0;i<70;i++)
 	{
 		FLAG_IT_1MS=1;
 		while(FLAG_IT_1MS==1)
@@ -202,9 +203,11 @@ void self_pos()
 	}
 	controlMotor1_invert(0);
 	controlMotor2_invert(0);
+	FLAG_RESET_CODEURS=1;
+		while(FLAG_RESET_CODEURS==1);
 	Mode_Asserv(MODE_PID);
 	FLAG_MANUAL=0;
-	Asserv_Cons_angle=0.0;
+	set_Asserv_angle_abs(0.0);
 	for(i=0;i<200;i++)
 		{
 			FLAG_IT_1MS=1;
@@ -221,8 +224,8 @@ void self_pos()
 	}
 	Mode_Asserv(MODE_STOP);
 	FLAG_MANUAL=1;
-	controlMotor1_invert(-2000);
-	controlMotor2_invert(-2000);
+	controlMotor1_invert(-3000);
+	controlMotor2_invert(-3000);
 	for(i=0;i<300;i++)
 	{
 		FLAG_IT_1MS=1;
@@ -231,10 +234,10 @@ void self_pos()
 		}
 	}
 	Odo_pos_x=2000;
-	controlMotor1_invert(2000);
-	controlMotor2_invert(2000);
+	controlMotor1_invert(3000);
+	controlMotor2_invert(3000);
 
-	for(i=0;i<100;i++)
+	for(i=0;i<70;i++)
 	{
 		FLAG_IT_1MS=1;
 		while(FLAG_IT_1MS==1)
@@ -243,8 +246,11 @@ void self_pos()
 	}
 	controlMotor1_invert(0);
 	controlMotor2_invert(0);
-	Asserv_Cons_angle=0.0;
+	FLAG_RESET_CODEURS=1;
+	while(FLAG_RESET_CODEURS==1);
 	Mode_Asserv(MODE_PID);
+	set_Asserv_angle_abs(0.0);
+
 	FLAG_MANUAL=0;
 
 

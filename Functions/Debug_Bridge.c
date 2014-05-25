@@ -48,6 +48,8 @@ void init_DebugBridge()
 	addToSend(addDebug(&INTERUPTEUR_JAUNE, TYPE_UCHAR));
 	addToSend(addDebug(&INTERUPTEUR_ROUGE, TYPE_UCHAR));
 
+	addToSend(addDebug(&FLAG_START, TYPE_UCHAR));
+
 
 
 }
