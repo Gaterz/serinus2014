@@ -65,7 +65,7 @@ void Gestion_Asserv_HL(signed long Tick_droit,signed long Tick_gauche,signed lon
 
 
 	//Différence///////////////////////////////////////////////////////////
-	signed long Difference = Tick_gauche-Tick_droit;
+	signed long Difference = Tick_droit-Tick_gauche;
 
 	//Calcul d'erreur//////////////////////////////////////////////////////
 	signed long Erreur_distance 	=Asserv_Cons_distance	-	Moyenne;

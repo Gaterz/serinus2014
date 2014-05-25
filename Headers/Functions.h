@@ -13,4 +13,5 @@
 #include "can_HL.h"
 #include "Msg_can.h"
 #include "Debug_Bridge.h"
+#include "TeamColor.h"
 #endif /* FUNCTIONS_H_ */

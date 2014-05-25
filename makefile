@@ -35,7 +35,8 @@ SRCS=\
 	Functions/can_HL.c \
 	Functions/Msg_can.c \
 	Functions/Debug_Bridge.c \
-	Low_LVL/IO_AVR.c
+	Low_LVL/IO_AVR.c \
+	Functions/TeamColor.c
 
 CC      = arm-none-eabi-gcc
 LD      = arm-none-eabi-gcc

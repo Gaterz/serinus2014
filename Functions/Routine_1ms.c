@@ -30,7 +30,7 @@ void routine_1ms(void)
 		FLAG_RESET_CODEURS=0;
 	}
 	//gestion codeurs
-	lectureCodeursSigned(&Codeur_d,&Codeur_g);
+	lectureCodeursSigned(&Codeur_g,&Codeur_d);
 	//gestion odoetrie
 	Gestion_Odometrie_LL(Codeur_d,Codeur_g);
 	//gestion asserv
