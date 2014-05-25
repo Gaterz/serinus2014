@@ -15,7 +15,12 @@ int	main (void) {
 	while(FLAG_START==0)
 	{
 	}
-	self_pos();
+
+	while(act_Team==TEAM_NONE)
+	{
+		selectTeam();
+	}
+	//self_pos();
 
 	while (!FLAG_TIMER_EN || Timer_Match <=2000)
 	{

@@ -12,6 +12,8 @@ unsigned char Pompe2=0;
 unsigned char Pompe3=0;
 unsigned char Pompe4=0;
 unsigned char Pompe5=0;
+unsigned char LED_ROUGE=0;
+unsigned char LED_JAUNE=0;
 unsigned char AX12[8]={0}; /*
 				+---+    +---+
 				| 3 |    | 4 |

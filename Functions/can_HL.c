@@ -52,7 +52,7 @@ void Envoi_POS_AX12()
 }
 void Envoi_Etat_Pompes()
 {
-	unsigned char buff=Pompe1+(Pompe2<<1)+(Pompe3<<2);
+	unsigned char buff=Pompe1+(Pompe2<<1)+(Pompe3<<2)+(Pompe4<<3)+(Pompe5<<4)+(LED_JAUNE<<6)+(LED_ROUGE<<7);
 	Message_Pompes.dataL=buff;
 	CANTransmitMessage(&Message_Pompes);
 }
