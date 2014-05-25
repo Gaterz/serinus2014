@@ -39,12 +39,14 @@ void selectTeam()
 	if(INTERUPTEUR_ROUGE==1)
 	{
 		LED_ROUGE=1;
+		LED_JAUNE=0;
 		*Coord=Coord_Rouge;
 		act_Team=TEAM_ROUGE;
 	}
 	else if(INTERUPTEUR_JAUNE==1)
 	{
 		LED_JAUNE=1;
+		LED_ROUGE=0;
 		*Coord=Coord_Jaune;
 		act_Team=TEAM_JAUNE;
 	}

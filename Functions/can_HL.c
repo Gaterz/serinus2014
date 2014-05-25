@@ -22,8 +22,8 @@ void Routine_CAN()
 			break;
 		case ID_MSG_CAN_BUTTON :
 			INTERUPTEUR_JACK=Message_R.dataL&1;
-			INTERUPTEUR_JAUNE=(Message_R.dataL>>1)&1;
-			INTERUPTEUR_ROUGE=(Message_R.dataL>>2)&1;
+			INTERUPTEUR_ROUGE=(Message_R.dataL>>1)&1;
+			INTERUPTEUR_JAUNE=(Message_R.dataL>>2)&1;
 			F_course1=(Message_R.dataL>>3)&1;
 			F_course2=(Message_R.dataL>>4)&1;
 			F_course3=(Message_R.dataL>>5)&1;
