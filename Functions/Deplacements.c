@@ -74,12 +74,23 @@ static int Asserv_mode=0;
 signed int phase_deplacement=DEPLACEMENT_DEBUT;
 static unsigned int Tempo_move_to=0;
 unsigned char flag_stop=0;
-signed int move_to(signed long x_dest,signed long y_dest)
+signed int move_to(signed long x_dest,signed long y_dest, unsigned char backward)
 {
 	signed long distance;
-
 	double angle;
 	get_linear_coord(x_dest,y_dest,Odo_pos_x,Odo_pos_y,&distance,&angle);
+	if(backward==1)
+	{
+		distance=-distance;
+		if(angle >0)
+		{
+			angle-=ODO_PI;
+		}
+		else
+		{
+			angle+=ODO_PI;
+		}
+	}
 	if(flag_stop==1)
 	{
 		if(Check_Dist_Sonard()==0)
@@ -88,7 +99,7 @@ signed int move_to(signed long x_dest,signed long y_dest)
 			Mode_Asserv(MODE_PID);
 		}
 	}
-	else if(Check_Dist_Sonard()==1)
+	else if(0)//Check_Dist_Sonard()==1)
 	{
 		Mode_Asserv(MODE_STOP);
 		flag_stop=1;
@@ -170,7 +181,7 @@ unsigned char Check_Dist_Sonard()
 	}
 	return 0;
 }
-void self_pos()
+void self_pos_jaune()
 {
 	int i;
 	FLAG_IT_1MS=1;
@@ -254,4 +265,101 @@ void self_pos()
 	FLAG_MANUAL=0;
 
 
+}
+
+void self_pos_rouge()
+{
+	int i;
+	FLAG_IT_1MS=1;
+	while(FLAG_IT_1MS==1)
+	{
+	}
+	Mode_Asserv(MODE_STOP);
+	FLAG_MANUAL=1;
+	controlMotor1_invert(-3000);
+	controlMotor2_invert(-3000);
+	for(i=0;i<300;i++)
+	{
+		FLAG_IT_1MS=1;
+		while(FLAG_IT_1MS==1)
+		{
+		}
+	}
+	Odo_pos_y=10400;
+	Odo_angle=ODO_PI/2.0;
+
+	controlMotor1_invert(3000);
+	controlMotor2_invert(3000);
+
+	for(i=0;i<30;i++)
+	{
+		FLAG_IT_1MS=1;
+		while(FLAG_IT_1MS==1)
+		{
+		}
+	}
+	controlMotor1_invert(0);
+	controlMotor2_invert(0);
+	for(i=0;i<200;i++)
+		{
+			FLAG_IT_1MS=1;
+			while(FLAG_IT_1MS==1)
+			{
+			}
+		}
+	FLAG_RESET_CODEURS=1;
+		while(FLAG_RESET_CODEURS==1);
+	Mode_Asserv(MODE_PID);
+	FLAG_MANUAL=0;
+	set_Asserv_angle_abs(0.0);
+	for(i=0;i<200;i++)
+		{
+			FLAG_IT_1MS=1;
+			while(FLAG_IT_1MS==1)
+			{
+			}
+		}
+
+
+
+	FLAG_IT_1MS=1;
+	while(FLAG_IT_1MS==1)
+	{
+	}
+	Mode_Asserv(MODE_STOP);
+	FLAG_MANUAL=1;
+	controlMotor1_invert(-3500);
+	controlMotor2_invert(-3000);
+	for(i=0;i<300;i++)
+	{
+		FLAG_IT_1MS=1;
+		while(FLAG_IT_1MS==1)
+		{
+		}
+	}
+	Odo_pos_x=10400;
+	controlMotor1_invert(3500);
+	controlMotor2_invert(3000);
+
+	for(i=0;i<70;i++)
+	{
+		FLAG_IT_1MS=1;
+		while(FLAG_IT_1MS==1)
+		{
+		}
+	}
+	controlMotor1_invert(0);
+	controlMotor2_invert(0);
+	for(i=0;i<200;i++)
+		{
+			FLAG_IT_1MS=1;
+			while(FLAG_IT_1MS==1)
+			{
+			}
+		}
+	FLAG_RESET_CODEURS=1;
+	while(FLAG_RESET_CODEURS==1);
+	Mode_Asserv(MODE_PID);
+	set_Asserv_angle_abs(0.0);
+	FLAG_MANUAL=0;
 }

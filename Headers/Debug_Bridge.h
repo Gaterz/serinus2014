@@ -13,6 +13,9 @@
 #define TYPE_ULONG 3
 #define TYPE_DOUBLE 4
 #define TYPE_UCHAR 5
+extern long debug_dest_x;
+extern long debug_dest_y;
+extern unsigned char debug_start_move;
 void routine_DebugBridge();
 unsigned char addDebug(void* varAdr, unsigned char varType);
 void init_DebugBridge();

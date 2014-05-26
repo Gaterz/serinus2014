@@ -10,7 +10,15 @@
 #define TEAM_NONE 0
 #define TEAM_JAUNE 1
 #define TEAM_ROUGE 2
+#define CM_TICK_RATIO 104
+typedef struct {
+	long x;
+	long y;
+	float ang;
+}CoordSys;
+extern CoordSys Coord[50];
 extern unsigned int act_Team;
-void addElement(long x, long y , float ang, unsigned char Team);
+void addElement(long x_cm, long y_cm , float ang);
+void addElement_rouge();
 void selectTeam();
 #endif /* TEAMCOLOR_H_ */

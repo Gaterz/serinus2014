@@ -6,9 +6,11 @@
 #define DEPLACEMENT_RALENTI 3
 #define DEPLACEMENT_DEBUT 4
 #define DEPLACEMENT_FIN 5
+#define DEPLACEMENT_STOP 6
 void get_linear_coord(signed long x_dest,signed long y_dest,signed long x_source,signed long y_source,signed long* distance,double* angle);
-signed int move_to(signed long x_dest,signed long y_dest);
+signed int move_to(signed long x_dest,signed long y_dest, unsigned char backward);
 extern signed int phase_deplacement;
-extern void self_pos();
+void self_pos_rouge();
+void self_pos_jaune();
 unsigned char Check_Dist_Sonard();
 #endif /* DEPLACEMENTS_H_ */

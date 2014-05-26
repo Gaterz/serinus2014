@@ -15,6 +15,9 @@ unsigned char debugType[100];
 unsigned char ToSend[100];
 unsigned char Ndebug=0;
 unsigned char NtoSend=0;
+long debug_dest_x=0;
+long debug_dest_y=0;
+unsigned char debug_start_move=0;
 void init_DebugBridge()
 {
 	int i;
@@ -27,6 +30,8 @@ void init_DebugBridge()
 	addToSend(addDebug(&Asserv_Cons_distance, TYPE_LONG));
 	addToSend(addDebug(&Asserv_dst_act, TYPE_LONG));
 
+	addToSend(addDebug(&debug_dest_x, TYPE_LONG));
+	addToSend(addDebug(&debug_dest_y, TYPE_LONG));
 
 	addToSend(addDebug(&Odo_angle, TYPE_DOUBLE));
 	addToSend(addDebug(&Asserv_Cons_angle, TYPE_DOUBLE));
@@ -49,9 +54,7 @@ void init_DebugBridge()
 	addToSend(addDebug(&INTERUPTEUR_ROUGE, TYPE_UCHAR));
 
 	addToSend(addDebug(&FLAG_START, TYPE_UCHAR));
-
-
-
+	addToSend(addDebug(&debug_start_move, TYPE_UCHAR));
 }
 void routine_DebugBridge()
 {
