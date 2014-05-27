@@ -32,9 +32,9 @@ void Asserv_Reset_Derivateur(void) : Reset des dérivateurs
 **************************************************************************************/
 #include "../all_head.h"
 ///////////coefficients////////////////////////////////////////////////////
-double P_PID_DISTANCE = 1.25;//2.5;//5.7 3.1
+double P_PID_DISTANCE = 3.0;//2.5;//5.7 3.1
 double I_PID_DISTANCE = 0.05;//0.1;//0.2 0.22
-double D_PID_DISTANCE = 20.0;//20.0;//20.0 37.0
+double D_PID_DISTANCE = 35.0;//20.0;//20.0 37.0
 double P_PID_ANGLE = 1.5;//2.5;//5.1 2.6
 double I_PID_ANGLE = 0.05;//0.1;//0.25 0.27
 double D_PID_ANGLE = 20;//15.3;//15.3 23.0

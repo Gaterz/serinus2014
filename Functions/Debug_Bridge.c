@@ -35,9 +35,9 @@ void init_DebugBridge()
 
 	addToSend(addDebug(&Odo_angle, TYPE_DOUBLE));
 	addToSend(addDebug(&Asserv_Cons_angle, TYPE_DOUBLE));
-	addToSend(addDebug(&P_PID_ANGLE, TYPE_DOUBLE));
-	addToSend(addDebug(&I_PID_ANGLE, TYPE_DOUBLE));
-	addToSend(addDebug(&D_PID_ANGLE, TYPE_DOUBLE));
+	addToSend(addDebug(&P_PID_DISTANCE, TYPE_DOUBLE));
+	addToSend(addDebug(&I_PID_DISTANCE, TYPE_DOUBLE));
+	addToSend(addDebug(&D_PID_DISTANCE, TYPE_DOUBLE));
 
 
 	addToSend(addDebug(&AX12[0], TYPE_UCHAR));

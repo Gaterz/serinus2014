@@ -9,26 +9,33 @@ Fonctions :
 
 CoordSys Coord[50];
 unsigned int act_Team=TEAM_NONE;
-unsigned int N_element=0;
-void addElement(long x_cm, long y_cm , float ang)
+//unsigned int N_element=0;
+void addElement(long x_cm, long y_cm , unsigned int id)
 {
 	long x=x_cm*CM_TICK_RATIO;
 	long y=y_cm*CM_TICK_RATIO;
-	Coord[N_element].x=x;
-	Coord[N_element].y=y;
-	Coord[N_element].ang=ang;
-	N_element++;
+	Coord[id].x=x;
+	Coord[id].y=y;
+	//Coord[N_element].ang=ang;
+	//N_element++;
 }
 void addElement_rouge()
 {
 	//addElement(1100, 400 , 0.0); //ID0 Triangle1
-	addElement(600, 230 , 0.0);//id0 sortie
-	addElement(800, 600 , 0.0); //ID1 approche triangle1
-	addElement(1100, 600 , 0.0); //ID2 renverssement triangle1
-	addElement(1350, 700 , 0.0); //ID3 prepa ligne droite
-	addElement(1350, 2100 , 0.0); //ID4 ligne droite
-	addElement(1400, 2100 , 0.0); //ID5 ligne droite
-	addElement(1400, 700 , 0.0); //ID6 ligne droite
+			//	X	 Y
+	addElement(600, 230 , DOT_SORTIE);
+	addElement(800, 600 , DOT_TRI1AP);
+	addElement(1100, 600 , DOT_TRI1REN);
+	addElement(1350, 700 , DOT_M1_E1);
+	addElement(1350, 2300 , DOT_M1_E2);
+	addElement(1400, 2300 , DOT_TRI4_2AP);
+	addElement(1400, 700 , DOT_TRI4_2REN);
+
+	addElement(600, 600 , DOT_M2_E1);
+	addElement(600, 1350 ,DOT_M2_E2);
+	addElement(200, 1350 ,DOT_FRESQUE_AP);
+
+
 }
 void addElement_jaune()
 {

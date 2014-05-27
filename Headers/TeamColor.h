@@ -18,7 +18,7 @@ typedef struct {
 }CoordSys;
 extern CoordSys Coord[50];
 extern unsigned int act_Team;
-void addElement(long x_cm, long y_cm , float ang);
+void addElement(long x_cm, long y_cm , unsigned int id);
 void addElement_rouge();
 void selectTeam();
 #endif /* TEAMCOLOR_H_ */
