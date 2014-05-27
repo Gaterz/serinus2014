@@ -34,13 +34,13 @@ void match_systask(unsigned char Step, unsigned int Params)
 	switch(Step)
 		{
 		case 0:
-			match_systask_id[0]=Add_move_task(Coord[0].x,Coord[0].y);
-			match_systask_id[1]=Add_move_task(Coord[1].x,Coord[1].y);
-			match_systask_id[2]=Add_move_task(Coord[2].x,Coord[2].y);
-			match_systask_id[3]=Add_move_task(Coord[3].x,Coord[3].y);
-			match_systask_id[4]=Add_move_task(Coord[4].x,Coord[4].y);
-			match_systask_id[5]=Add_move_task(Coord[5].x,Coord[5].y);
-			match_systask_id[6]=Add_move_task(Coord[6].x,Coord[6].y);
+			match_systask_id[0]=Add_move_task_coord(DOT_SORTIE);
+			match_systask_id[1]=Add_move_task_coord(DOT_TRI1AP);
+			match_systask_id[2]=Add_move_task_coord(DOT_TRI1REN);
+			match_systask_id[3]=Add_move_task_coord(DOT_M1_E1);
+			match_systask_id[4]=Add_move_task_coord(DOT_M1_E2);
+			match_systask_id[5]=Add_move_task_coord(DOT_TRI4_2AP);
+			match_systask_id[6]=Add_move_task_coord(DOT_TRI4_2REN);
 
 			setStep(1);
 			break;
@@ -49,14 +49,14 @@ void match_systask(unsigned char Step, unsigned int Params)
 			setStep(2);
 			break;
 		case 2:
-			if(getTaskState(match_systask_id[i])==TASK_STATE_ENDED && i<6)
+			if(getTaskState(match_systask_id[i])==TASK_STATE_ENDED)
 			{
 				i++;
 				if(i==2)
 				{
 					AX12[0]=180;
 				}
-				if(i==3)
+				else
 				{
 					AX12[0]=0;
 				}
@@ -64,12 +64,25 @@ void match_systask(unsigned char Step, unsigned int Params)
 				{
 					AX12[3]=180;
 				}
+				else
+				{
+					AX12[3]=0;
+				}
+				if(i==7)
+				{
+					setStep(3);
+				}
+				else
+				{
+					setStep(1);
+				}
 				//if(i>3)i=0;
-				setStep(1);
+
 			}
 			break;
+		case 3:
+			break;
 		}
-
 }
 
 long move_systask_coordx[40];
@@ -103,4 +116,8 @@ int Add_move_task(signed long x,signed long y)
 	tID=addTask(&move_systask,MOVE_SYSTASK_TYPE, 1, n_Move_Task);
 	n_Move_Task++;
 	return tID;
+}
+int Add_move_task_coord(unsigned int dot_id)
+{
+	return Add_move_task(Coord[dot_id].x,Coord[dot_id].y);
 }
