@@ -291,7 +291,7 @@ void self_pos_rouge()
 	controlMotor1_invert(3000);
 	controlMotor2_invert(3000);
 
-	for(i=0;i<30;i++)
+	for(i=0;i<40;i++)
 	{
 		FLAG_IT_1MS=1;
 		while(FLAG_IT_1MS==1)

@@ -44,10 +44,13 @@ void init_DebugBridge()
 	addToSend(addDebug(&AX12[1], TYPE_UCHAR));
 	addToSend(addDebug(&AX12[2], TYPE_UCHAR));
 	addToSend(addDebug(&AX12[3], TYPE_UCHAR));
+	addToSend(addDebug(&AX12[4], TYPE_UCHAR));
 
 	addToSend(addDebug(&Pompe1, TYPE_UCHAR));
 	addToSend(addDebug(&Pompe2, TYPE_UCHAR));
 	addToSend(addDebug(&Pompe3, TYPE_UCHAR));
+	addToSend(addDebug(&Pompe4, TYPE_UCHAR));
+	addToSend(addDebug(&Pompe5, TYPE_UCHAR));
 
 	addToSend(addDebug(&INTERUPTEUR_JACK, TYPE_UCHAR));
 	addToSend(addDebug(&INTERUPTEUR_JAUNE, TYPE_UCHAR));

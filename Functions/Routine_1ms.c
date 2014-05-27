@@ -41,7 +41,7 @@ void routine_1ms(void)
 		controlMotor2_invert(Cons_gauche);
 	}
 
-	routine_DebugBridge();
+	//routine_DebugBridge();
 	Routine_CAN();
 
 					/*

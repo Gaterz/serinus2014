@@ -44,6 +44,11 @@ extern unsigned char act_TASK;
 #define INTEL_STATE_START 3
 #define INTEL_STATE_RUN 4
 ///////////TASK TYPES
+#define FRESQUE_SYSTASK 3
+#define TRIANGLE24_SYSTASK 4
+#define TRIANGLE1_USRTASK 5
+#define TORCHE1_USRTASK 6
+
 ///////////SYS TASK
 #define MATCH_SYSTASK_TYPE 0
 #define DEPLACEMENT_SYSTASK_TYPE 1

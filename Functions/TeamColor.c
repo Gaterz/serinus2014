@@ -27,13 +27,17 @@ void addElement_rouge()
 	addElement(800, 600 , DOT_TRI1AP);
 	addElement(1100, 600 , DOT_TRI1REN);
 	addElement(1350, 700 , DOT_M1_E1);
-	addElement(1350, 2300 , DOT_M1_E2);
-	addElement(1400, 2300 , DOT_TRI4_2AP);
+	addElement(1350, 2100 , DOT_M1_E2);
+	addElement(1400, 2100 , DOT_TRI4_2AP);
 	addElement(1400, 700 , DOT_TRI4_2REN);
 
 	addElement(600, 600 , DOT_M2_E1);
 	addElement(600, 1350 ,DOT_M2_E2);
 	addElement(200, 1350 ,DOT_FRESQUE_AP);
+
+	addElement(1100, 650 ,DOT_T1_AP);
+	addElement(1100, 900 ,DOT_T1_ACT);
+
 
 
 }
