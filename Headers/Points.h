@@ -45,4 +45,7 @@
 //Mouvement Torche //AP : approche ACT : action
 #define DOT_T1_AP 10
 #define DOT_T1_ACT 11
+
+#define DOT_T2_AP 12
+#define DOT_T2_ACT 12
 #endif /* POINTS_H_ */

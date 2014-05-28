@@ -93,16 +93,30 @@ signed int move_to(signed long x_dest,signed long y_dest, unsigned char backward
 	}
 	if(flag_stop==1)
 	{
+
 		if(Check_Dist_Sonard()==0)
 		{
-			flag_stop=0;
-			Mode_Asserv(MODE_PID);
+			Tempo_move_to++;
+			if(Tempo_move_to>1000)
+			{
+				Tempo_move_to=0;
+				flag_stop=0;
+				phase_deplacement=DEPLACEMENT_DEBUT;
+			}
+
+			//Mode_Asserv(MODE_PID);
+		}
+		else
+		{
+			Tempo_move_to=0;
 		}
 	}
 	else if(0)//Check_Dist_Sonard()==1)
 	{
-		Mode_Asserv(MODE_STOP);
+		Asserv_Cons_distance=Asserv_moy_act;
+		//Mode_Asserv(MODE_STOP);
 		flag_stop=1;
+		Tempo_move_to=0;
 	}
 	else
 	{
@@ -199,13 +213,13 @@ void self_pos_jaune()
 		{
 		}
 	}
-	Odo_pos_y=2000;
-	Odo_angle=ODO_PI/2.0;
+	Odo_pos_y=301600;
+	Odo_angle=-ODO_PI/2.0;
 
 	controlMotor1_invert(3000);
 	controlMotor2_invert(3000);
 
-	for(i=0;i<70;i++)
+	for(i=0;i<40;i++)
 	{
 		FLAG_IT_1MS=1;
 		while(FLAG_IT_1MS==1)
@@ -214,6 +228,13 @@ void self_pos_jaune()
 	}
 	controlMotor1_invert(0);
 	controlMotor2_invert(0);
+	for(i=0;i<200;i++)
+		{
+			FLAG_IT_1MS=1;
+			while(FLAG_IT_1MS==1)
+			{
+			}
+		}
 	FLAG_RESET_CODEURS=1;
 		while(FLAG_RESET_CODEURS==1);
 	Mode_Asserv(MODE_PID);
@@ -235,7 +256,7 @@ void self_pos_jaune()
 	}
 	Mode_Asserv(MODE_STOP);
 	FLAG_MANUAL=1;
-	controlMotor1_invert(-3000);
+	controlMotor1_invert(-3500);
 	controlMotor2_invert(-3000);
 	for(i=0;i<300;i++)
 	{
@@ -244,8 +265,8 @@ void self_pos_jaune()
 		{
 		}
 	}
-	Odo_pos_x=2000;
-	controlMotor1_invert(3000);
+	Odo_pos_x=10400;
+	controlMotor1_invert(3500);
 	controlMotor2_invert(3000);
 
 	for(i=0;i<70;i++)
@@ -257,14 +278,18 @@ void self_pos_jaune()
 	}
 	controlMotor1_invert(0);
 	controlMotor2_invert(0);
+	for(i=0;i<200;i++)
+		{
+			FLAG_IT_1MS=1;
+			while(FLAG_IT_1MS==1)
+			{
+			}
+		}
 	FLAG_RESET_CODEURS=1;
 	while(FLAG_RESET_CODEURS==1);
 	Mode_Asserv(MODE_PID);
 	set_Asserv_angle_abs(0.0);
-
 	FLAG_MANUAL=0;
-
-
 }
 
 void self_pos_rouge()

@@ -35,10 +35,10 @@ void match_systask(unsigned char Step, unsigned int Params)
 		{
 		case 0:
 			match_systask_id[0]=Add_move_task_coord(DOT_SORTIE,0);
-			match_systask_id[1]=addTask(&Torche1_usrtask,TORCHE1_USRTASK,1, 0);
-			//match_systask_id[1]=addTask(&triangle1_usrtask,TRIANGLE1_USRTASK,1, 0);
-			//match_systask_id[2]=addTask(&triangle24_systask,TRIANGLE24_SYSTASK,1, 0);
-			//match_systask_id[3]=addTask(&fresque_systask,FRESQUE_SYSTASK,1, 0);
+			//match_systask_id[1]=addTask(&Torche1_usrtask,TORCHE1_USRTASK,1, 0);
+			match_systask_id[1]=addTask(&triangle1_usrtask,TRIANGLE1_USRTASK,1, 0);
+			match_systask_id[2]=addTask(&triangle24_systask,TRIANGLE24_SYSTASK,1, 0);
+			match_systask_id[3]=addTask(&fresque_systask,FRESQUE_SYSTASK,1, 0);
 			setStep(1);
 			break;
 		case 1:
@@ -49,7 +49,7 @@ void match_systask(unsigned char Step, unsigned int Params)
 			if(getTaskState(match_systask_id[Params])==TASK_STATE_ENDED)
 			{
 				setParam(act_TASK, Params+1);
-				if( getParam(act_TASK)==2)
+				if( getParam(act_TASK)==4)
 				{
 					setStep(3);
 				}

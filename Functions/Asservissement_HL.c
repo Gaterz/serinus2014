@@ -43,6 +43,7 @@ signed long Asserv_Cons_distance = 0;
 double Asserv_Cons_angle = 0.0;
 double Asserv_zero = 0.0;
 signed long Asserv_dst_act =0;
+signed long Asserv_moy_act =0;
 ///////////static_vars/////////////////////////////////////////////////////
 static int Asserv_mode=0;
 static signed long Asserv_Integrale_Distance = 0;
@@ -69,6 +70,7 @@ void Gestion_Asserv_HL(signed long Tick_droit,signed long Tick_gauche,signed lon
 
 	//Calcul d'erreur//////////////////////////////////////////////////////
 	signed long Erreur_distance 	=Asserv_Cons_distance	-	Moyenne;
+	Asserv_moy_act=Moyenne;
 	Asserv_dst_act=Erreur_distance;
 	signed long Erreur_angle 		=Asserv_Cons_angle*ENTRAXE_TICK_DIA		-	Difference;
 

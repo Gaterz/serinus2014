@@ -169,3 +169,44 @@ void Torche1_usrtask(unsigned char Step, unsigned int Params)
 			break;
 		}
 }
+
+int Torche2_usrtask_id[2];
+void Torche2_usrtask(unsigned char Step, unsigned int Params)
+{
+	//static char i=0;
+	switch(Step)
+		{
+		case 0:
+
+			Torche2_usrtask_id[0]=Add_move_task_coord(DOT_T2_AP,0);
+			Torche2_usrtask_id[1]=Add_move_task_coord(DOT_T2_ACT,1);
+			setStep(1);
+			break;
+		case 1:
+			startTask(Torche2_usrtask_id[Params]);
+			setStep(2);
+			break;
+		case 2:
+			if(getTaskState(Torche2_usrtask_id[Params])==TASK_STATE_ENDED)
+			{
+				setParam(act_TASK, Params+1);
+				if(getParam(act_TASK)==1)
+				{
+					AX12[4]=255;
+				}
+				else
+				{
+					//AX12[4]=0;
+				}
+				if(getParam(act_TASK)==2)
+				{
+					endTask();
+				}
+				else
+				{
+					setStep(1);
+				}
+			}
+			break;
+		}
+}

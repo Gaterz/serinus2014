@@ -38,14 +38,29 @@ void addElement_rouge()
 	addElement(1100, 650 ,DOT_T1_AP);
 	addElement(1100, 900 ,DOT_T1_ACT);
 
-
+	addElement(1350, 2000 ,DOT_T2_AP);
+	addElement(1100, 2100 ,DOT_T2_ACT);
 
 }
 void addElement_jaune()
 {
-	addElement(100, 140 , 0.0);
+	addElement(600, 3000-230 , DOT_SORTIE);
+	addElement(800, 3000-600 , DOT_TRI1AP);
+	addElement(1100, 3000-600 , DOT_TRI1REN);
+	addElement(1350, 3000-700 , DOT_M1_E1);
+	addElement(1350, 3000-2100 , DOT_M1_E2);
+	addElement(1400, 3000-2100 , DOT_TRI4_2AP);
+	addElement(1400, 3000-700 , DOT_TRI4_2REN);
 
-	addElement(100, 140 , 0.0);
+	addElement(600, 3000-600 , DOT_M2_E1);
+	addElement(600, 3000-1350 ,DOT_M2_E2);
+	addElement(200, 3000-1350 ,DOT_FRESQUE_AP);
+
+	addElement(1100, 3000-650 ,DOT_T1_AP);
+	addElement(1100, 3000-900 ,DOT_T1_ACT);
+
+	addElement(1350, 3000-2000 ,DOT_T2_AP);
+	addElement(1100, 3000-2100 ,DOT_T2_ACT);
 }
 void selectTeam()
 {
@@ -63,6 +78,7 @@ void selectTeam()
 		LED_ROUGE=0;
 		//*Coord=Coord_Jaune;
 		act_Team=TEAM_JAUNE;
+		addElement_jaune();
 	}
 	else
 	{
