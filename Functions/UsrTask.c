@@ -112,10 +112,14 @@ void triangle1_usrtask(unsigned char Step, unsigned int Params)
 				if(getParam(act_TASK)==1)
 				{
 					AX12[0]=180;
+					INHIB_SONAR0=1;
+					INHIB_SONAR2=1;
 				}
 				else
 				{
 					AX12[0]=0;
+					INHIB_SONAR0=0;
+					INHIB_SONAR2=0;
 				}
 				if(getParam(act_TASK)==2)
 				{
@@ -152,9 +156,11 @@ void Torche1_usrtask(unsigned char Step, unsigned int Params)
 				if(getParam(act_TASK)==1)
 				{
 					AX12[4]=255;
+					//INHIB_SONAR1=0;
 				}
 				else
 				{
+					//INHIB_SONAR1=1;
 					//AX12[4]=0;
 				}
 				if(getParam(act_TASK)==2)

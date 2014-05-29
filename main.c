@@ -18,15 +18,24 @@ int	main (void) {
 	{
 		selectTeam();
 	}
-	self_pos_rouge();
+	//self_pos_rouge();
 	while(FLAG_START==0)
 		{
+		if(INTERUPTEUR_JACK==1)
+		{
+			FLAG_START=1;
 		}
-	while (!FLAG_TIMER_EN || Timer_Match <=2000)
+		}
+	while (!FLAG_TIMER_EN || Timer_Match <=9000)
 	{
 		//blinkled();
 		//
 		runTasks();
+	}
+	Mode_Asserv(MODE_STOP);
+	while(1)
+	{
+
 	}
 }
 

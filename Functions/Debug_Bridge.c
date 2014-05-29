@@ -30,21 +30,27 @@ void init_DebugBridge()
 	addToSend(addDebug(&Asserv_Cons_distance, TYPE_LONG));
 	addToSend(addDebug(&Asserv_dst_act, TYPE_LONG));
 
-	addToSend(addDebug(&debug_dest_x, TYPE_LONG));
-	addToSend(addDebug(&debug_dest_y, TYPE_LONG));
+	addToSend(addDebug(&Dist_Sonard0, TYPE_LONG));
+	addToSend(addDebug(&Dist_Sonard1, TYPE_LONG));
+	addToSend(addDebug(&Dist_Sonard2, TYPE_LONG));
+	addToSend(addDebug(&Dist_Sonard3, TYPE_LONG));
+
+
+	//addToSend(addDebug(&debug_dest_x, TYPE_LONG));
+	//addToSend(addDebug(&debug_dest_y, TYPE_LONG));
 
 	addToSend(addDebug(&Odo_angle, TYPE_DOUBLE));
 	addToSend(addDebug(&Asserv_Cons_angle, TYPE_DOUBLE));
-	addToSend(addDebug(&P_PID_DISTANCE, TYPE_DOUBLE));
-	addToSend(addDebug(&I_PID_DISTANCE, TYPE_DOUBLE));
-	addToSend(addDebug(&D_PID_DISTANCE, TYPE_DOUBLE));
+	//addToSend(addDebug(&P_PID_DISTANCE, TYPE_DOUBLE));
+	//addToSend(addDebug(&I_PID_DISTANCE, TYPE_DOUBLE));
+	//addToSend(addDebug(&D_PID_DISTANCE, TYPE_DOUBLE));
 
 
-	addToSend(addDebug(&AX12[0], TYPE_UCHAR));
+	/*addToSend(addDebug(&AX12[0], TYPE_UCHAR));
 	addToSend(addDebug(&AX12[1], TYPE_UCHAR));
 	addToSend(addDebug(&AX12[2], TYPE_UCHAR));
 	addToSend(addDebug(&AX12[3], TYPE_UCHAR));
-	addToSend(addDebug(&AX12[4], TYPE_UCHAR));
+	addToSend(addDebug(&AX12[4], TYPE_UCHAR));*/
 
 	addToSend(addDebug(&Pompe1, TYPE_UCHAR));
 	addToSend(addDebug(&Pompe2, TYPE_UCHAR));
@@ -52,12 +58,12 @@ void init_DebugBridge()
 	addToSend(addDebug(&Pompe4, TYPE_UCHAR));
 	addToSend(addDebug(&Pompe5, TYPE_UCHAR));
 
-	addToSend(addDebug(&INTERUPTEUR_JACK, TYPE_UCHAR));
+	addToSend(addDebug(&INTERUPTEUR_JACK, TYPE_UCHAR));/*
 	addToSend(addDebug(&INTERUPTEUR_JAUNE, TYPE_UCHAR));
-	addToSend(addDebug(&INTERUPTEUR_ROUGE, TYPE_UCHAR));
+	addToSend(addDebug(&INTERUPTEUR_ROUGE, TYPE_UCHAR));*/
 
-	addToSend(addDebug(&FLAG_START, TYPE_UCHAR));
-	addToSend(addDebug(&debug_start_move, TYPE_UCHAR));
+	/*addToSend(addDebug(&FLAG_START, TYPE_UCHAR));
+	addToSend(addDebug(&debug_start_move, TYPE_UCHAR));*/
 }
 void routine_DebugBridge()
 {

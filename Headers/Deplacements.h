@@ -12,5 +12,9 @@ signed int move_to(signed long x_dest,signed long y_dest, unsigned char backward
 extern signed int phase_deplacement;
 void self_pos_rouge();
 void self_pos_jaune();
-unsigned char Check_Dist_Sonard();
+extern unsigned char Check_Dist_Sonard();
+extern unsigned char INHIB_SONAR0;
+extern unsigned char INHIB_SONAR1;
+extern unsigned char INHIB_SONAR2;
+extern unsigned char INHIB_SONAR3;
 #endif /* DEPLACEMENTS_H_ */

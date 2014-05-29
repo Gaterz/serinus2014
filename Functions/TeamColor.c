@@ -71,6 +71,7 @@ void selectTeam()
 		//*Coord=Coord_Rouge;
 		act_Team=TEAM_ROUGE;
 		addElement_rouge();
+		self_pos_rouge();
 	}
 	else if(INTERUPTEUR_JAUNE==1)
 	{
@@ -79,6 +80,7 @@ void selectTeam()
 		//*Coord=Coord_Jaune;
 		act_Team=TEAM_JAUNE;
 		addElement_jaune();
+		self_pos_jaune();
 	}
 	else
 	{

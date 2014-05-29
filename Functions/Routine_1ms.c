@@ -44,7 +44,7 @@ void routine_1ms(void)
 	//routine_DebugBridge();
 	Routine_CAN();
 
-					/*
+/*
 					printString("cdroite : ");
 					printLongVal(Codeur_d);//2147483647);
 					printString(" cgauche : ");

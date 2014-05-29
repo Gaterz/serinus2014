@@ -111,7 +111,7 @@ signed int move_to(signed long x_dest,signed long y_dest, unsigned char backward
 			Tempo_move_to=0;
 		}
 	}
-	else if(0)//Check_Dist_Sonard()==1)
+	else if(Check_Dist_Sonard()==1)
 	{
 		Asserv_Cons_distance=Asserv_moy_act;
 		//Mode_Asserv(MODE_STOP);
@@ -186,13 +186,44 @@ signed int move_to(signed long x_dest,signed long y_dest, unsigned char backward
 	}
 	return phase_deplacement;
 }
-
+unsigned char INHIB_SONAR0=0;
+unsigned char INHIB_SONAR1=1;
+unsigned char INHIB_SONAR2=0;
+unsigned char INHIB_SONAR3=0;
 unsigned char Check_Dist_Sonard()
 {
-	if(Dist_Sonard0<350||Dist_Sonard1<350)
+	if(INHIB_SONAR0==0)
+	{
+		if(Dist_Sonard0<350)
+		{
+			return 1;
+		}
+	}
+	if(INHIB_SONAR1==0)
+		{
+			if(Dist_Sonard1<350)
+			{
+				return 1;
+			}
+		}
+	if(INHIB_SONAR2==0)
+		{
+			if(Dist_Sonard2<350)
+			{
+				return 1;
+			}
+		}
+	if(INHIB_SONAR3==0)
+		{
+			if(Dist_Sonard3<450)
+			{
+				return 1;
+			}
+		}
+	/*if(Dist_Sonard0<350||Dist_Sonard1<350)
 	{
 		return 1;
-	}
+	}*/
 	return 0;
 }
 void self_pos_jaune()
